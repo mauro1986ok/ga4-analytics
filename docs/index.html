@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhartec | Dashboard Estadístico GA4 & Google Ads API v23</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+    .glass-card { background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 0.875rem; }
+    .tab-btn.active { background: #10b981; color: #052e16; font-weight: 700; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35); }
+    .period-btn.active { background: #3b82f6; color: #ffffff; font-weight: 600; }
+    table th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; }
+    table td { font-size: 0.875rem; }
+    tr:hover td { background-color: rgba(51, 65, 85, 0.45); }
+  </style>
+</head>
+<body class="min-h-screen pb-16">
+
+  <!-- TOP NAVBAR -->
+  <header class="sticky top-0 z-30 backdrop-blur-md bg-slate-900/90 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-lg">
+          🌿
+        </div>
+        <div>
+          <h1 class="text-lg sm:text-xl font-bold text-white tracking-tight">
+            Dhartec · Inteligencia Digital GA4 & Google Ads API v23
+          </h1>
+          <p class="text-xs text-slate-400">
+            Propiedad GA4: <span class="text-slate-200 font-medium">291106508</span> &nbsp;|&nbsp;
+            Google Ads: <span class="text-slate-200 font-medium">368-683-2552 (DHARTEC S.A.S.)</span> &nbsp;|&nbsp;
+            Actualizado: <span class="text-emerald-400 font-medium">12/11/2026 14:37</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- SELECTOR DE PERÍODO PARA CANALES -->
+      <div class="flex items-center gap-2 bg-slate-800/90 p-1 rounded-lg border border-slate-700 self-start md:self-auto">
+        <span class="text-xs text-slate-400 px-2">Ventana Canales:</span>
+        <button onclick="setPeriod('7d')" id="period-7d" class="period-btn px-3 py-1.5 rounded-md text-xs text-slate-300 transition">7 Días (WoW)</button>
+        <button onclick="setPeriod('30d')" id="period-30d" class="period-btn active px-3 py-1.5 rounded-md text-xs text-slate-300 transition">30 Días</button>
+        <button onclick="setPeriod('90d')" id="period-90d" class="period-btn px-3 py-1.5 rounded-md text-xs text-slate-300 transition">90 Días</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 space-y-6">
+
+    <!-- KPI CARDS ROW -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="kpi-cards-container"></section>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="flex flex-wrap gap-2 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800">
+      <button onclick="showTab('tab-channels')" id="btn-tab-channels" class="tab-btn active px-4 py-2 rounded-lg text-xs sm:text-sm text-slate-300 transition">
+        📊 5 Canales & Tendencia WoW
+      </button>
+      <button onclick="showTab('tab-ads')" id="btn-tab-ads" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm text-slate-300 transition">
+        💰 Google Ads API v23 (Quality Score & IS)
+      </button>
+      <button onclick="showTab('tab-qs-monitor')" id="btn-tab-qs-monitor" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm text-amber-300 bg-amber-500/10 border border-amber-500/30 transition">
+        🎯 Semáforo de Quality Score
+      </button>
+      <button onclick="showTab('tab-funnel')" id="btn-tab-funnel" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm text-slate-300 transition">
+        🚨 Embudo /hablemos/ & Landings Core
+      </button>
+      <button onclick="showTab('tab-device-geo')" id="btn-tab-device-geo" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm text-slate-300 transition">
+        💻📱 Dispositivos & 🗺️ Provincias
+      </button>
+      <button onclick="showTab('tab-memory')" id="btn-tab-memory" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm text-slate-300 transition">
+        🧠 Insights Gemini & Memoria
+      </button>
+      <button onclick="showTab('tab-pending-actions')" id="btn-tab-pending-actions" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm text-slate-300 transition">
+        ⏳ Tareas Pendientes
+      </button>
+    </nav>
+
+    <!-- TAB 1: 5 CANALES & TENDENCIA -->
+    <section id="tab-channels" class="space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-sm font-semibold text-slate-200" id="chart-channels-title">Sesiones vs. Tasa de Interacción (%) por Segmento</h2>
+            <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30" id="active-period-badge">30 Días</span>
+          </div>
+          <div class="h-72">
+            <canvas id="channelsChart"></canvas>
+          </div>
+        </div>
+
+        <div class="glass-card p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-sm font-semibold text-slate-200">Tiempo Medio de Permanencia (Segundos) vs. Conversiones</h2>
+            <span class="text-xs text-slate-400">Comparativa de Calidad B2B</span>
+          </div>
+          <div class="h-72">
+            <canvas id="durationChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card p-5 overflow-x-auto">
+        <h3 class="text-sm font-semibold text-white mb-1">Desglose Detallado de los 5 Segmentos de Adquisición</h3>
+        <p class="text-xs text-slate-400 mb-4">Incluye variaciones semana contra semana (WoW %: últimos 7 días vs. 7 días previos) y las sub-fuentes principales dentro de cada canal.</p>
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700/80">
+              <th class="py-3 px-3">Segmento</th>
+              <th class="py-3 px-3">Sesiones</th>
+              <th class="py-3 px-3">Usuarios</th>
+              <th class="py-3 px-3">Variación WoW (7d)</th>
+              <th class="py-3 px-3">Interacción (Eng %)</th>
+              <th class="py-3 px-3">Permanencia Media</th>
+              <th class="py-3 px-3">Págs / Sesión</th>
+              <th class="py-3 px-3">Conversiones</th>
+              <th class="py-3 px-3">Sub-fuentes Principales</th>
+            </tr>
+          </thead>
+          <tbody id="channels-table-body" class="divide-y divide-slate-800"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 2: GOOGLE ADS API v23 + GA4 -->
+    <section id="tab-ads" class="space-y-6 hidden">
+      <!-- Estado API Nativa v23 -->
+      <div id="native-ads-banner" class="glass-card p-4 border-l-4 border-emerald-500"></div>
+
+      <!-- SECCIÓN NATIVA GOOGLE ADS API v23: CUOTA DE IMPRESIONES & QUALITY SCORE -->
+      <div id="native-ads-tables-wrapper" class="space-y-6">
+        <div class="glass-card p-5 overflow-x-auto">
+          <h3 class="text-sm font-semibold text-emerald-400 mb-1">⚡ [API Nativa v23] Cuota de Impresiones de Búsqueda (Search Impression Share - Últimos 30 Días)</h3>
+          <p class="text-xs text-slate-400 mb-4">Muestra qué porcentaje de búsquedas totales capta cada campaña y cuánto pierde por falta de Presupuesto vs. por bajo Ad Rank / Quality Score.</p>
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-700/80">
+                <th class="py-2.5 px-3">Campaña</th>
+                <th class="py-2.5 px-3">Estado</th>
+                <th class="py-2.5 px-3">Presupuesto Diario</th>
+                <th class="py-2.5 px-3">Imp. (30d)</th>
+                <th class="py-2.5 px-3">Clics (30d)</th>
+                <th class="py-2.5 px-3">Gasto (30d)</th>
+                <th class="py-2.5 px-3">Impression Share Captado</th>
+                <th class="py-2.5 px-3">Perdido por Presupuesto</th>
+                <th class="py-2.5 px-3">Perdido por Ranking / QS</th>
+              </tr>
+            </thead>
+            <tbody id="native-is-tbody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="glass-card p-5 overflow-x-auto">
+            <h3 class="text-sm font-semibold text-emerald-400 mb-1">⚡ [API Nativa v23] Diagnóstico de Quality Score (1-10) por Keyword</h3>
+            <p class="text-xs text-slate-400 mb-4">Desglosa por qué Google Ads penaliza el Ad Rank: Relevancia del Anuncio, CTR Esperado y Experiencia Post-Clic en la Landing Page.</p>
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-slate-700/80">
+                  <th class="py-2 px-2">Keyword (Concordancia)</th>
+                  <th class="py-2 px-2">Grupo</th>
+                  <th class="py-2 px-2">QS (1-10)</th>
+                  <th class="py-2 px-2">Anuncio</th>
+                  <th class="py-2 px-2">CTR Esp.</th>
+                  <th class="py-2 px-2">Exp. Landing</th>
+                </tr>
+              </thead>
+              <tbody id="native-qs-tbody" class="divide-y divide-slate-800"></tbody>
+            </table>
+          </div>
+
+          <div class="glass-card p-5 overflow-x-auto">
+            <h3 class="text-sm font-semibold text-emerald-400 mb-1">⚡ [API Nativa v23] Copys de Anuncios RSA y Fuerza (`Ad Strength`)</h3>
+            <p class="text-xs text-slate-400 mb-4">Títulos y descripciones reales activos en cada grupo de anuncios junto con su URL de destino.</p>
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-slate-700/80">
+                  <th class="py-2 px-2">Anuncio ID & Fuerza</th>
+                  <th class="py-2 px-2">Grupo & URL Destino</th>
+                  <th class="py-2 px-2">Títulos RSA Activos</th>
+                  <th class="py-2 px-2">CTR (30d)</th>
+                </tr>
+              </thead>
+              <tbody id="native-rsa-tbody" class="divide-y divide-slate-800"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRÁFICOS KEYWORDS -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-5">
+          <h2 class="text-sm font-semibold text-slate-200 mb-4">Top Keywords Compradas: Impresiones vs. CTR (%) (90d)</h2>
+          <div class="h-72">
+            <canvas id="adsKeywordsChart"></canvas>
+          </div>
+        </div>
+        <div class="glass-card p-5">
+          <h2 class="text-sm font-semibold text-slate-200 mb-4">Permanencia en Landing (Segundos) por Keyword Comprada (90d)</h2>
+          <div class="h-72">
+            <canvas id="adsKeywordDurationChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla 1: Campañas y Grupos (90d GA4+Ads) -->
+      <div class="glass-card p-5 overflow-x-auto">
+        <h3 class="text-sm font-semibold text-white mb-1">1. Cruce GA4 + Ads por Campaña y Grupo de Anuncios (90 Días)</h3>
+        <p class="text-xs text-slate-400 mb-4">Cruza inversión, CTR, retención de clic a sesión (fuga técnica), Costo por Sesión Interactiva (CPES) y permanencia en web.</p>
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700/80">
+              <th class="py-3 px-3">Campaña</th>
+              <th class="py-3 px-3">Grupo de Anuncios</th>
+              <th class="py-3 px-3">Impresiones</th>
+              <th class="py-3 px-3">Clics</th>
+              <th class="py-3 px-3">CTR</th>
+              <th class="py-3 px-3">Gasto</th>
+              <th class="py-3 px-3">CPC Medio</th>
+              <th class="py-3 px-3">Sesiones (% Clic)</th>
+              <th class="py-3 px-3">Costo / Ses. Eng</th>
+              <th class="py-3 px-3">Permanencia</th>
+              <th class="py-3 px-3">Eng %</th>
+              <th class="py-3 px-3">Conv.</th>
+            </tr>
+          </thead>
+          <tbody id="ads-campaigns-tbody" class="divide-y divide-slate-800"></tbody>
+        </table>
+      </div>
+
+      <!-- Tabla 2: Keywords Compradas (90d) -->
+      <div class="glass-card p-5 overflow-x-auto">
+        <h3 class="text-sm font-semibold text-white mb-1">2. Keywords Compradas Cruzadas con Retención en Web (90 Días)</h3>
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700/80">
+              <th class="py-3 px-3">Keyword Comprada</th>
+              <th class="py-3 px-3">Grupo de Anuncios</th>
+              <th class="py-3 px-3">Impresiones</th>
+              <th class="py-3 px-3">Clics</th>
+              <th class="py-3 px-3">CTR %</th>
+              <th class="py-3 px-3">Gasto</th>
+              <th class="py-3 px-3">CPC</th>
+              <th class="py-3 px-3">Sesiones</th>
+              <th class="py-3 px-3">Permanencia Media</th>
+              <th class="py-3 px-3">Interacción %</th>
+            </tr>
+          </thead>
+          <tbody id="ads-bidded-tbody" class="divide-y divide-slate-800"></tbody>
+        </table>
+      </div>
+
+      <!-- Tabla 3 y 4: Creatividades x Red + Search Queries -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-5 overflow-x-auto">
+          <h3 class="text-sm font-semibold text-white mb-1">3. Rendimiento por Anuncio (`Creative ID`) y Red (`Search` vs `Partners`)</h3>
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-700/80">
+                <th class="py-2.5 px-2">Anuncio ID</th>
+                <th class="py-2.5 px-2">Grupo</th>
+                <th class="py-2.5 px-2">Red</th>
+                <th class="py-2.5 px-2">Imp.</th>
+                <th class="py-2.5 px-2">CTR</th>
+                <th class="py-2.5 px-2">Gasto</th>
+                <th class="py-2.5 px-2">Duración</th>
+                <th class="py-2.5 px-2">Eng %</th>
+              </tr>
+            </thead>
+            <tbody id="ads-creatives-tbody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+
+        <div class="glass-card p-5 overflow-x-auto">
+          <h3 class="text-sm font-semibold text-white mb-1">4. Términos Buscados Reales (`Search Query`) x Landing Page</h3>
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-700/80">
+                <th class="py-2.5 px-2">Término Buscado</th>
+                <th class="py-2.5 px-2">Landing Page</th>
+                <th class="py-2.5 px-2">Sesiones</th>
+                <th class="py-2.5 px-2">Permanencia</th>
+                <th class="py-2.5 px-2">Eng %</th>
+              </tr>
+            </thead>
+            <tbody id="ads-queries-tbody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: SEMÁFORO DE QUALITY SCORE (MONITOREO DEDICADO) -->
+    <section id="tab-qs-monitor" class="space-y-6 hidden">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="qs-kpi-summary-cards"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-5">
+          <h2 class="text-sm font-semibold text-slate-200 mb-2">Distribución de Keywords por Nivel de Calidad (1 a 10)</h2>
+          <p class="text-xs text-slate-400 mb-4">Muestra cuántas palabras clave están en zona crítica (1-3), regular (4-6) o saludable (7-10).</p>
+          <div class="h-64">
+            <canvas id="qsDistributionChart"></canvas>
+          </div>
+        </div>
+
+        <div class="glass-card p-5">
+          <h2 class="text-sm font-semibold text-slate-200 mb-2">Diagnóstico de los 3 Factores del Quality Score</h2>
+          <p class="text-xs text-slate-400 mb-4">Dónde castiga Google a Dhartec: Relevancia del Anuncio vs. CTR Esperado vs. Experiencia en la Landing Page.</p>
+          <div class="h-64">
+            <canvas id="qsComponentsChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card p-5 overflow-x-auto">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-sm font-semibold text-white">Semáforo de Palabras Clave y Acciones Correctivas</h3>
+          <span class="text-xs text-slate-400">Google Ads API v23 (Últimos 30 días)</span>
+        </div>
+        <p class="text-xs text-slate-400 mb-4">Las keywords con nota 1 a 3 pagan sobrecosto por clic o pierden apariciones por culpa de la página de destino.</p>
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700/80">
+              <th class="py-2.5 px-3">Estado</th>
+              <th class="py-2.5 px-3">Palabra Clave</th>
+              <th class="py-2.5 px-3">Grupo</th>
+              <th class="py-2.5 px-3">Nota QS</th>
+              <th class="py-2.5 px-3">Anuncio</th>
+              <th class="py-2.5 px-3">CTR Esperado</th>
+              <th class="py-2.5 px-3">Página de Destino</th>
+              <th class="py-2.5 px-3">Impresiones (30d)</th>
+              <th class="py-2.5 px-3">Acción Recomendada</th>
+            </tr>
+          </thead>
+          <tbody id="qs-monitor-table-body" class="divide-y divide-slate-800"></tbody>
+        </table>
+      </div>
+    </section>
+    <section id="tab-funnel" class="space-y-6 hidden">
+      <div id="hablemos-alert-card" class="glass-card p-5 border-l-4 border-rose-500"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-5 overflow-x-auto">
+          <h3 class="text-sm font-semibold text-white mb-1">Rastreo de Conversiones por Primer Origen (`firstUserSourceMedium`)</h3>
+          <p class="text-xs text-slate-400 mb-4">Recupera el canal que trajo por primera vez al usuario aunque la sesión en `/hablemos/` figure como Directa.</p>
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-700/80">
+                <th class="py-2.5 px-3">Primer Origen del Usuario</th>
+                <th class="py-2.5 px-3">Origen de la Sesión</th>
+                <th class="py-2.5 px-3">Sesiones</th>
+                <th class="py-2.5 px-3">Conversiones</th>
+                <th class="py-2.5 px-3">Duración Media</th>
+              </tr>
+            </thead>
+            <tbody id="hablemos-attr-tbody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+
+        <div class="glass-card p-5 overflow-x-auto">
+          <h3 class="text-sm font-semibold text-white mb-1">Rendimiento Comparativo de las 3 Landings Core (30 Días)</h3>
+          <p class="text-xs text-slate-400 mb-4">Habilitaciones y Permisos vs. Huella de Carbono vs. Sustentabilidad.</p>
+          <table class="w-full text-left border-collapse mb-4">
+            <thead>
+              <tr class="border-b border-slate-700/80">
+                <th class="py-2.5 px-3">Oferta Core</th>
+                <th class="py-2.5 px-3">Usuarios</th>
+                <th class="py-2.5 px-3">Sesiones</th>
+                <th class="py-2.5 px-3">Permanencia</th>
+                <th class="py-2.5 px-3">Interacción</th>
+                <th class="py-2.5 px-3">Conv.</th>
+              </tr>
+            </thead>
+            <tbody id="landings-core-tbody" class="divide-y divide-slate-800"></tbody>
+          </table>
+
+          <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mt-6 mb-2">Top Páginas y Artículos de Blog (Últimos 30 Días)</h4>
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-700/80">
+                <th class="py-2 px-2">Ruta</th>
+                <th class="py-2 px-2">Sesiones</th>
+                <th class="py-2 px-2">Vistas</th>
+                <th class="py-2 px-2">Permanencia</th>
+                <th class="py-2 px-2">Eng %</th>
+              </tr>
+            </thead>
+            <tbody id="content-pages-tbody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: DISPOSITIVOS & GEOGRAFÍA -->
+    <section id="tab-device-geo" class="space-y-6 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-5">
+          <h2 class="text-sm font-semibold text-slate-200 mb-4">Brecha Desktop vs. Mobile: Permanencia Media (Segundos - 90d)</h2>
+          <div class="h-72">
+            <canvas id="deviceChart"></canvas>
+          </div>
+        </div>
+        <div class="glass-card p-5">
+          <h2 class="text-sm font-semibold text-slate-200 mb-4">Top Provincias de Argentina: Sesiones vs. Permanencia (90d)</h2>
+          <div class="h-72">
+            <canvas id="geoChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-5 overflow-x-auto">
+          <h3 class="text-sm font-semibold text-white mb-3">Matriz Dispositivo (`Desktop` vs `Mobile`) por Canal (90d)</h3>
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-700/80">
+                <th class="py-2.5 px-3">Canal</th>
+                <th class="py-2.5 px-3">Dispositivo</th>
+                <th class="py-2.5 px-3">Sesiones</th>
+                <th class="py-2.5 px-3">Permanencia</th>
+                <th class="py-2.5 px-3">Eng %</th>
+                <th class="py-2.5 px-3">Conv. (% Tasa)</th>
+              </tr>
+            </thead>
+            <tbody id="device-tbody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+
+        <div class="glass-card p-5 overflow-x-auto">
+          <h3 class="text-sm font-semibold text-white mb-3">Desempeño por Jurisdicción / Provincia (90d)</h3>
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-700/80">
+                <th class="py-2.5 px-3">Provincia</th>
+                <th class="py-2.5 px-3">Sesiones</th>
+                <th class="py-2.5 px-3">Permanencia</th>
+                <th class="py-2.5 px-3">Eng %</th>
+                <th class="py-2.5 px-3">Conv.</th>
+                <th class="py-2.5 px-3">Mix de Canales</th>
+              </tr>
+            </thead>
+            <tbody id="geo-tbody" class="divide-y divide-slate-800"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: INSIGHTS GEMINI & MEMORIA DE ACCIONES -->
+    <section id="tab-memory" class="space-y-6 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="glass-card p-6 border-l-4 border-emerald-500">
+          <h3 class="text-base font-bold text-white mb-3">💡 Insights Estratégicos de la Semana (Gemini AI)</h3>
+          <div id="gemini-insights-box" class="text-sm text-slate-200 leading-relaxed space-y-2"></div>
+        </div>
+        <div class="glass-card p-6 border-l-4 border-blue-500">
+          <h3 class="text-base font-bold text-white mb-3">🧠 Evaluación de Seguimiento de Memoria</h3>
+          <div id="gemini-memory-box" class="text-sm text-slate-200 leading-relaxed space-y-2"></div>
+        </div>
+      </div>
+
+      <div class="glass-card p-6">
+        <h3 class="text-base font-bold text-white mb-1">Registro Histórico de Acciones (`actions_memory.json`)</h3>
+        <p class="text-xs text-slate-400 mb-4">Cada acción guarda una foto de las métricas base (`baseline_snapshot`) del momento en que se creó para evaluar el impacto antes vs. después.</p>
+        <div id="actions-cards-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
+    </section>
+
+    <!-- TAB 6: TAREAS PENDIENTES PRIORITARIAS -->
+    <section id="tab-pending-actions" class="space-y-6 hidden">
+      <div class="glass-card p-6 border-l-4 border-amber-500">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-bold text-white">⏳ Plan de Tareas Pendientes para Dhartec</h2>
+            <p class="text-xs text-slate-300 mt-1">
+              Acciones prácticas identificadas a partir de los datos reales de GA4 y Google Ads. Al resolverlas se frena el gasto en visitas accidentales y se duplican las consultas comerciales sin aumentar el presupuesto.
+            </p>
+          </div>
+          <div class="text-xs px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold self-start sm:self-auto">
+            7 Tareas Prioritarias
+          </div>
+        </div>
+      </div>
+
+      <div id="dedicated-pending-list" class="space-y-4"></div>
+    </section>
+
+    <!-- SECCIÓN SIEMPRE VISIBLE AL FINAL DE LA WEB: TAREAS PENDIENTES -->
+    <footer class="mt-12 pt-8 border-t border-slate-800 space-y-6">
+      <div class="glass-card p-6 border-l-4 border-amber-500">
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+            <span>📋</span> Lista de Tareas y Mejoras Pendientes
+          </h2>
+          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+            En Seguimiento
+          </span>
+        </div>
+        <p class="text-xs text-slate-400 mb-6">
+          Estas son las indicaciones concretas que deben implementarse en el sitio web y en Google Ads para aprovechar mejor el presupuesto:
+        </p>
+        <div id="footer-pending-actions" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
+
+      <div class="text-center text-xs text-slate-500 pb-4">
+        Dhartec · Sistema de Reportes Automatizados GA4 + Google Ads API v23
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    const REPORT_DATA = {"generated_at": "12/11/2026 14:37", "property_id": "291106508", "google_ads_customer_id": "3686832552", "data_7d": {"label": "Últimos 7 Días", "segments": {"Google Ads": {"users": 63, "sessions": 68, "engagement_rate": 60.29411764705882, "avg_duration": 118.74612025, "pages_per_session": 1.5, "key_events": 0, "top_sources": {"google / cpc": {"sessions": 62, "avg_duration": 130.23768027419356, "engagement_rate": 66.12903225806451, "key_events": 0}, "adwords / ppc": {"sessions": 4, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}, "(data not available)": {"sessions": 2, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}}}, "Meta Ads (IG/FB/AN)": {"users": 581, "sessions": 612, "engagement_rate": 9.803921568627452, "avg_duration": 19.148047449346404, "pages_per_session": 1.1160130718954249, "key_events": 2, "top_sources": {"ig / paid": {"sessions": 345, "avg_duration": 6.761879542028986, "engagement_rate": 3.1884057971014492, "key_events": 0}, "fb / paid": {"sessions": 255, "avg_duration": 31.39896724705882, "engagement_rate": 18.43137254901961, "key_events": 0}, "m.facebook.com / referral": {"sessions": 4, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}, "instagram.com / referral": {"sessions": 3, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}}}, "Google Orgánico": {"users": 14, "sessions": 19, "engagement_rate": 68.42105263157895, "avg_duration": 174.70956642105264, "pages_per_session": 1.2105263157894737, "key_events": 1, "top_sources": {"google / organic": {"sessions": 19, "avg_duration": 174.70956642105264, "engagement_rate": 68.42105263157895, "key_events": 1}}}, "Directo": {"users": 68, "sessions": 75, "engagement_rate": 28.000000000000004, "avg_duration": 119.07906988, "pages_per_session": 2.066666666666667, "key_events": 7, "top_sources": {"(direct) / (none)": {"sessions": 75, "avg_duration": 119.07906988, "engagement_rate": 28.000000000000004, "key_events": 7}}}, "IA & Otros": {"users": 11, "sessions": 11, "engagement_rate": 18.181818181818183, "avg_duration": 70.47933981818183, "pages_per_session": 0.9090909090909091, "key_events": 0, "top_sources": {"aocr.org / referral": {"sessions": 4, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}, "(not set)": {"sessions": 4, "avg_duration": 0.06178175, "engagement_rate": 0.0, "key_events": 0}, "ig / social": {"sessions": 1, "avg_duration": 86.411034, "engagement_rate": 100.0, "key_events": 0}, "integrations.funnels.top / referral": {"sessions": 1, "avg_duration": 688.614577, "engagement_rate": 100.0, "key_events": 0}}}}}, "wow_deltas": {"Google Ads": {"sessions_delta": "+1%", "duration_delta": "+8%", "engagement_delta": "-8%", "prev_sessions": 67}, "Meta Ads (IG/FB/AN)": {"sessions_delta": "-6%", "duration_delta": "+317%", "engagement_delta": "+31%", "prev_sessions": 654}, "Google Orgánico": {"sessions_delta": "-21%", "duration_delta": "-54%", "engagement_delta": "-3%", "prev_sessions": 24}, "Directo": {"sessions_delta": "-12%", "duration_delta": "+542%", "engagement_delta": "-48%", "prev_sessions": 85}, "IA & Otros": {"sessions_delta": "+175%", "duration_delta": "-40%", "engagement_delta": "-76%", "prev_sessions": 4}}, "data_30d": {"label": "Últimos 30 Días", "segments": {"Google Ads": {"users": 279, "sessions": 307, "engagement_rate": 66.44951140065146, "avg_duration": 108.3153776416938, "pages_per_session": 1.3713355048859934, "key_events": 1, "top_sources": {"google / cpc": {"sessions": 291, "avg_duration": 112.77460857388314, "engagement_rate": 68.38487972508591, "key_events": 1}, "(data not available)": {"sessions": 9, "avg_duration": 48.378871222222216, "engagement_rate": 55.55555555555556, "key_events": 0}, "adwords / ppc": {"sessions": 7, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}}}, "Meta Ads (IG/FB/AN)": {"users": 4897, "sessions": 6053, "engagement_rate": 15.248637039484553, "avg_duration": 100.48657269849662, "pages_per_session": 1.2334379646456302, "key_events": 2, "top_sources": {"ig / paid": {"sessions": 2867, "avg_duration": 2.4482137446808507, "engagement_rate": 2.127659574468085, "key_events": 0}, "an / paid": {"sessions": 2384, "avg_duration": 246.89150362416103, "engagement_rate": 31.669463087248324, "key_events": 0}, "fb / paid": {"sessions": 753, "avg_duration": 13.725767877822044, "engagement_rate": 13.280212483399733, "key_events": 0}, "th / paid": {"sessions": 22, "avg_duration": 26.577943545454545, "engagement_rate": 4.545454545454546, "key_events": 0}}}, "Google Orgánico": {"users": 76, "sessions": 105, "engagement_rate": 61.904761904761905, "avg_duration": 254.72171037142854, "pages_per_session": 1.2285714285714286, "key_events": 5, "top_sources": {"google / organic": {"sessions": 105, "avg_duration": 254.72171037142854, "engagement_rate": 61.904761904761905, "key_events": 5}}}, "Directo": {"users": 294, "sessions": 307, "engagement_rate": 35.50488599348534, "avg_duration": 42.04081434527687, "pages_per_session": 1.3941368078175895, "key_events": 77, "top_sources": {"(direct) / (none)": {"sessions": 307, "avg_duration": 42.04081434527687, "engagement_rate": 35.50488599348534, "key_events": 77}}}, "IA & Otros": {"users": 29, "sessions": 30, "engagement_rate": 43.333333333333336, "avg_duration": 154.83754213333333, "pages_per_session": 1.4333333333333333, "key_events": 2, "top_sources": {"(not set)": {"sessions": 8, "avg_duration": 79.09404425, "engagement_rate": 0.0, "key_events": 0}, "bing / organic": {"sessions": 5, "avg_duration": 88.092016, "engagement_rate": 100.0, "key_events": 1}, "aocr.org / referral": {"sessions": 4, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}, "l.wl.co / referral": {"sessions": 3, "avg_duration": 13.302733666666667, "engagement_rate": 33.33333333333333, "key_events": 0}}}}}, "data_90d": {"label": "Últimos 90 Días", "segments": {"Google Ads": {"users": 777, "sessions": 870, "engagement_rate": 62.41379310344828, "avg_duration": 112.32309111034482, "pages_per_session": 1.3379310344827586, "key_events": 3, "top_sources": {"google / cpc": {"sessions": 836, "avg_duration": 114.75348083253589, "engagement_rate": 63.63636363636363, "key_events": 2}, "(data not available)": {"sessions": 18, "avg_duration": 99.28773833333334, "engagement_rate": 61.111111111111114, "key_events": 1}, "adwords / ppc": {"sessions": 16, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}}}, "Meta Ads (IG/FB/AN)": {"users": 6579, "sessions": 7985, "engagement_rate": 16.981840951784598, "avg_duration": 107.92661785735754, "pages_per_session": 1.2574827802128992, "key_events": 3, "top_sources": {"an / paid": {"sessions": 3707, "avg_duration": 226.27267803075264, "engagement_rate": 30.995414081467494, "key_events": 0}, "ig / paid": {"sessions": 3381, "avg_duration": 2.235719034309376, "engagement_rate": 2.188701567583555, "key_events": 0}, "fb / paid": {"sessions": 826, "avg_duration": 13.948626261501209, "engagement_rate": 13.922518159806296, "key_events": 0}, "th / paid": {"sessions": 25, "avg_duration": 23.38859032, "engagement_rate": 4.0, "key_events": 0}}}, "Google Orgánico": {"users": 284, "sessions": 374, "engagement_rate": 60.16042780748663, "avg_duration": 204.4139562513369, "pages_per_session": 1.3235294117647058, "key_events": 21, "top_sources": {"google / organic": {"sessions": 374, "avg_duration": 204.4139562513369, "engagement_rate": 60.16042780748663, "key_events": 21}}}, "Directo": {"users": 668, "sessions": 713, "engagement_rate": 31.697054698457222, "avg_duration": 67.93220562973352, "pages_per_session": 1.3211781206171107, "key_events": 108, "top_sources": {"(direct) / (none)": {"sessions": 713, "avg_duration": 67.93220562973352, "engagement_rate": 31.697054698457222, "key_events": 108}}}, "IA & Otros": {"users": 86, "sessions": 101, "engagement_rate": 45.54455445544555, "avg_duration": 138.03102209900987, "pages_per_session": 1.1782178217821782, "key_events": 8, "top_sources": {"bing / organic": {"sessions": 39, "avg_duration": 178.3889875128205, "engagement_rate": 64.1025641025641, "key_events": 1}, "(not set)": {"sessions": 18, "avg_duration": 35.15385644444444, "engagement_rate": 0.0, "key_events": 0}, "linkedin / post_organico": {"sessions": 10, "avg_duration": 133.20871960000002, "engagement_rate": 50.0, "key_events": 1}, "chatgpt.com / ai-assistant": {"sessions": 6, "avg_duration": 485.0515706666667, "engagement_rate": 100.0, "key_events": 6}}}}}, "ads_financials": [{"campaign": "CAMPAÑA-UNI-HUELLA-EXT.AR #2", "ad_group": "Grupo Huella", "impressions": 11232, "clicks": 424, "ctr_pct": 3.77, "sessions": 358, "click_retention_pct": 84.4, "cost": 232.68, "cpc": 0.55, "cost_per_engaged_session": 1.0, "engagement_rate": 64.8, "avg_duration": 92.95437553351954, "key_events": 0}, {"campaign": "CAMPAÑA-UNI-HAB.AR", "ad_group": "Ingenieria / Gestión", "impressions": 9292, "clicks": 278, "ctr_pct": 2.99, "sessions": 242, "click_retention_pct": 87.1, "cost": 153.35, "cpc": 0.55, "cost_per_engaged_session": 1.02, "engagement_rate": 62.0, "avg_duration": 99.07526472727272, "key_events": 0}, {"campaign": "CAMPAÑA-UNI-HAB.AR", "ad_group": "Consultoría - Habilitaciones", "impressions": 7052, "clicks": 251, "ctr_pct": 3.56, "sessions": 211, "click_retention_pct": 84.1, "cost": 152.36, "cpc": 0.61, "cost_per_engaged_session": 1.01, "engagement_rate": 71.6, "avg_duration": 183.3176752180095, "key_events": 2}, {"campaign": "CAMPAÑA-UNI-HUELLA-EXT.AR #2", "ad_group": "(not set)", "impressions": 0, "clicks": 0, "ctr_pct": 0.0, "sessions": 1, "click_retention_pct": 0.0, "cost": 0.0, "cpc": 0.0, "cost_per_engaged_session": 0.0, "engagement_rate": 0.0, "avg_duration": 0.0, "key_events": 0}], "ads_bidded_keywords": [{"ad_group": "Grupo Huella", "keyword": "la huella de carbono", "impressions": 3484, "clicks": 78, "ctr_pct": 2.24, "cost": 36.81, "cpc": 0.47, "sessions": 60, "avg_duration": 93.7, "engagement_rate": 70.0}, {"ad_group": "Grupo Huella", "keyword": "tu huella de carbono", "impressions": 2806, "clicks": 76, "ctr_pct": 2.71, "cost": 26.55, "cpc": 0.35, "sessions": 60, "avg_duration": 73.4, "engagement_rate": 65.0}, {"ad_group": "Ingenieria / Gestión", "keyword": "gestión medioambiental", "impressions": 2696, "clicks": 72, "ctr_pct": 2.67, "cost": 39.79, "cpc": 0.55, "sessions": 54, "avg_duration": 95.4, "engagement_rate": 61.1}, {"ad_group": "Ingenieria / Gestión", "keyword": "gestión ambiental", "impressions": 2536, "clicks": 73, "ctr_pct": 2.88, "cost": 40.11, "cpc": 0.55, "sessions": 61, "avg_duration": 107.1, "engagement_rate": 62.3}, {"ad_group": "Ingenieria / Gestión", "keyword": "informe de impacto ambiental", "impressions": 1357, "clicks": 36, "ctr_pct": 2.65, "cost": 25.72, "cpc": 0.71, "sessions": 38, "avg_duration": 103.9, "engagement_rate": 57.9}, {"ad_group": "Ingenieria / Gestión", "keyword": "certificado de aptitud ambiental", "impressions": 1208, "clicks": 30, "ctr_pct": 2.48, "cost": 25.4, "cpc": 0.85, "sessions": 25, "avg_duration": 97.1, "engagement_rate": 48.0}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultora medio ambiente", "impressions": 1180, "clicks": 40, "ctr_pct": 3.39, "cost": 25.32, "cpc": 0.63, "sessions": 46, "avg_duration": 146.5, "engagement_rate": 71.7}, {"ad_group": "Ingenieria / Gestión", "keyword": "ingeniero en ambiental", "impressions": 922, "clicks": 47, "ctr_pct": 5.1, "cost": 16.25, "cpc": 0.35, "sessions": 50, "avg_duration": 107.3, "engagement_rate": 68.0}, {"ad_group": "Grupo Huella", "keyword": "reducir la huella de carbono", "impressions": 878, "clicks": 12, "ctr_pct": 1.37, "cost": 5.38, "cpc": 0.45, "sessions": 11, "avg_duration": 58.0, "engagement_rate": 45.5}, {"ad_group": "Grupo Huella", "keyword": "medir huella de carbono", "impressions": 791, "clicks": 38, "ctr_pct": 4.8, "cost": 25.09, "cpc": 0.66, "sessions": 32, "avg_duration": 48.9, "engagement_rate": 62.5}, {"ad_group": "Grupo Huella", "keyword": "calcular huella de carbono", "impressions": 766, "clicks": 56, "ctr_pct": 7.31, "cost": 22.77, "cpc": 0.41, "sessions": 50, "avg_duration": 78.3, "engagement_rate": 66.0}, {"ad_group": "Grupo Huella", "keyword": "calcula tu huella de carbono", "impressions": 678, "clicks": 51, "ctr_pct": 7.52, "cost": 26.49, "cpc": 0.52, "sessions": 46, "avg_duration": 89.8, "engagement_rate": 63.0}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "asesoría medioambiental", "impressions": 627, "clicks": 24, "ctr_pct": 3.83, "cost": 15.06, "cpc": 0.63, "sessions": 17, "avg_duration": 178.5, "engagement_rate": 58.8}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "permisos ambientales", "impressions": 610, "clicks": 16, "ctr_pct": 2.62, "cost": 6.64, "cpc": 0.41, "sessions": 17, "avg_duration": 72.7, "engagement_rate": 64.7}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "gestoria medioambiental", "impressions": 609, "clicks": 24, "ctr_pct": 3.94, "cost": 17.48, "cpc": 0.73, "sessions": 15, "avg_duration": 412.8, "engagement_rate": 93.3}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultoras de medio ambiente", "impressions": 532, "clicks": 24, "ctr_pct": 4.51, "cost": 14.25, "cpc": 0.59, "sessions": 19, "avg_duration": 121.9, "engagement_rate": 78.9}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultora de gestion ambiental", "impressions": 529, "clicks": 14, "ctr_pct": 2.65, "cost": 12.0, "cpc": 0.86, "sessions": 12, "avg_duration": 189.4, "engagement_rate": 75.0}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultoria medioambiental", "impressions": 498, "clicks": 13, "ctr_pct": 2.61, "cost": 4.72, "cpc": 0.36, "sessions": 10, "avg_duration": 139.0, "engagement_rate": 90.0}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultor ambiental", "impressions": 464, "clicks": 17, "ctr_pct": 3.66, "cost": 15.56, "cpc": 0.92, "sessions": 6, "avg_duration": 525.0, "engagement_rate": 66.7}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "servicios de consultoria ambiental", "impressions": 396, "clicks": 18, "ctr_pct": 4.55, "cost": 8.5, "cpc": 0.47, "sessions": 15, "avg_duration": 110.8, "engagement_rate": 73.3}, {"ad_group": "Ingenieria / Gestión", "keyword": "ingenieria ambiental", "impressions": 370, "clicks": 13, "ctr_pct": 3.51, "cost": 4.06, "cpc": 0.31, "sessions": 9, "avg_duration": 25.4, "engagement_rate": 77.8}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "empresas de asesoria ambiental", "impressions": 366, "clicks": 13, "ctr_pct": 3.55, "cost": 7.16, "cpc": 0.55, "sessions": 7, "avg_duration": 156.8, "engagement_rate": 57.1}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "asesoría ambiental", "impressions": 360, "clicks": 23, "ctr_pct": 6.39, "cost": 8.63, "cpc": 0.38, "sessions": 23, "avg_duration": 116.0, "engagement_rate": 60.9}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultoria ambiental", "impressions": 356, "clicks": 6, "ctr_pct": 1.69, "cost": 3.57, "cpc": 0.6, "sessions": 7, "avg_duration": 161.5, "engagement_rate": 57.1}, {"ad_group": "Grupo Huella", "keyword": "huella de carbono calcular", "impressions": 321, "clicks": 26, "ctr_pct": 8.1, "cost": 15.57, "cpc": 0.6, "sessions": 21, "avg_duration": 31.1, "engagement_rate": 71.4}, {"ad_group": "Grupo Huella", "keyword": "certificacion huella de carbono", "impressions": 320, "clicks": 20, "ctr_pct": 6.25, "cost": 22.82, "cpc": 1.14, "sessions": 18, "avg_duration": 113.9, "engagement_rate": 44.4}, {"ad_group": "Grupo Huella", "keyword": "mide tu huella de carbono", "impressions": 272, "clicks": 17, "ctr_pct": 6.25, "cost": 10.59, "cpc": 0.62, "sessions": 14, "avg_duration": 187.1, "engagement_rate": 78.6}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultoria de impacto ambiental", "impressions": 211, "clicks": 6, "ctr_pct": 2.84, "cost": 6.96, "cpc": 1.16, "sessions": 6, "avg_duration": 249.5, "engagement_rate": 66.7}, {"ad_group": "Ingenieria / Gestión", "keyword": "ingenieria del ambiente", "impressions": 194, "clicks": 6, "ctr_pct": 3.09, "cost": 1.44, "cpc": 0.24, "sessions": 4, "avg_duration": 80.9, "engagement_rate": 100.0}, {"ad_group": "Grupo Huella", "keyword": "huella de carbono de empresas", "impressions": 188, "clicks": 11, "ctr_pct": 5.85, "cost": 10.15, "cpc": 0.92, "sessions": 12, "avg_duration": 145.2, "engagement_rate": 41.7}], "ads_creatives": [{"ad_group": "Grupo Huella", "creative_id": "809591338682", "network": "Google search", "impressions": 7579, "clicks": 275, "ctr_pct": 3.63, "cost": 148.55, "sessions": 242, "avg_duration": 81.2, "engagement_rate": 65.7}, {"ad_group": "Ingenieria / Gestión", "creative_id": "791550456360", "network": "Google search", "impressions": 7120, "clicks": 224, "ctr_pct": 3.15, "cost": 123.65, "sessions": 194, "avg_duration": 109.1, "engagement_rate": 61.3}, {"ad_group": "Consultoría - Habilitaciones", "creative_id": "824408151755", "network": "Google search", "impressions": 3426, "clicks": 122, "ctr_pct": 3.56, "cost": 73.69, "sessions": 108, "avg_duration": 183.8, "engagement_rate": 75.0}, {"ad_group": "Grupo Huella", "creative_id": "801631969635", "network": "Google search", "impressions": 2171, "clicks": 101, "ctr_pct": 4.65, "cost": 65.71, "sessions": 81, "avg_duration": 118.3, "engagement_rate": 64.2}, {"ad_group": "Consultoría - Habilitaciones", "creative_id": "818187212112", "network": "Google search", "impressions": 2696, "clicks": 88, "ctr_pct": 3.26, "cost": 61.23, "sessions": 69, "avg_duration": 179.0, "engagement_rate": 71.0}, {"ad_group": "Consultoría - Habilitaciones", "creative_id": "810491087683", "network": "Google search", "impressions": 786, "clicks": 31, "ctr_pct": 3.94, "cost": 15.18, "sessions": 27, "avg_duration": 238.0, "engagement_rate": 66.7}, {"ad_group": "Grupo Huella", "creative_id": "829275931174", "network": "Google search", "impressions": 818, "clicks": 32, "ctr_pct": 3.91, "cost": 14.47, "sessions": 25, "avg_duration": 140.7, "engagement_rate": 68.0}, {"ad_group": "Ingenieria / Gestión", "creative_id": "827357924075", "network": "Google search", "impressions": 860, "clicks": 16, "ctr_pct": 1.86, "cost": 14.16, "sessions": 13, "avg_duration": 32.3, "engagement_rate": 69.2}, {"ad_group": "Ingenieria / Gestión", "creative_id": "818191502823", "network": "Google search", "impressions": 608, "clicks": 27, "ctr_pct": 4.44, "cost": 10.43, "sessions": 26, "avg_duration": 66.7, "engagement_rate": 53.8}, {"ad_group": "Ingenieria / Gestión", "creative_id": "735553391229", "network": "Google search", "impressions": 307, "clicks": 9, "ctr_pct": 2.93, "cost": 4.83, "sessions": 7, "avg_duration": 79.3, "engagement_rate": 85.7}, {"ad_group": "Grupo Huella", "creative_id": "809591338682", "network": "Search partners", "impressions": 456, "clicks": 12, "ctr_pct": 2.63, "cost": 3.27, "sessions": 9, "avg_duration": 59.4, "engagement_rate": 44.4}, {"ad_group": "Consultoría - Habilitaciones", "creative_id": "824408151755", "network": "Search partners", "impressions": 79, "clicks": 9, "ctr_pct": 11.39, "cost": 2.24, "sessions": 7, "avg_duration": 6.9, "engagement_rate": 42.9}, {"ad_group": "Grupo Huella", "creative_id": "801631969635", "network": "Search partners", "impressions": 142, "clicks": 1, "ctr_pct": 0.7, "cost": 0.51, "sessions": 1, "avg_duration": 0.0, "engagement_rate": 0.0}, {"ad_group": "Ingenieria / Gestión", "creative_id": "791550456360", "network": "Search partners", "impressions": 278, "clicks": 2, "ctr_pct": 0.72, "cost": 0.28, "sessions": 2, "avg_duration": 51.3, "engagement_rate": 100.0}], "ads_keywords": [{"landing": "/habilitaciones-permisos", "query": "consultoras ambientales", "users": 2, "sessions": 2, "avg_duration": 2682.599391, "engagement_rate": 100.0, "key_events": 0}, {"landing": "(not set)", "query": "consultora ambiental la plata", "users": 1, "sessions": 2, "avg_duration": 649.556411, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/", "query": "empresas de medio ambiente", "users": 1, "sessions": 2, "avg_duration": 578.65606, "engagement_rate": 100.0, "key_events": 1}, {"landing": "/habilitaciones-permisos", "query": "consultoras ambientales argentina", "users": 2, "sessions": 2, "avg_duration": 550.102864, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "consultora ambiental buenos aires", "users": 2, "sessions": 2, "avg_duration": 438.4713475, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "estudio de impacto ambiental provincia de buenos aires", "users": 3, "sessions": 3, "avg_duration": 411.7051406666667, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "consultorías ambientales", "users": 2, "sessions": 2, "avg_duration": 390.0808795, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "consultoras ambientales mendoza", "users": 2, "sessions": 2, "avg_duration": 346.352892, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "gestion ambiental", "users": 3, "sessions": 3, "avg_duration": 280.21451233333335, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "la huella de carbono", "users": 4, "sessions": 4, "avg_duration": 252.5773205, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "gestión ambiental", "users": 5, "sessions": 6, "avg_duration": 229.18548733333333, "engagement_rate": 66.66666666666666, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "decarbonization strategies", "users": 2, "sessions": 2, "avg_duration": 221.6744645, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "medicion de huella de carbono", "users": 4, "sessions": 4, "avg_duration": 205.8147165, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "consultora ambiental la plata", "users": 4, "sessions": 5, "avg_duration": 150.5684792, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "consultor ambiental cordoba", "users": 4, "sessions": 4, "avg_duration": 121.2599065, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "ingeniero ambiental", "users": 6, "sessions": 6, "avg_duration": 94.85134683333332, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "huella de carbono argentina", "users": 3, "sessions": 3, "avg_duration": 87.57372733333334, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "calcular huella de carbono", "users": 13, "sessions": 13, "avg_duration": 79.78008607692308, "engagement_rate": 61.53846153846154, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "huella de carbono", "users": 65, "sessions": 69, "avg_duration": 65.61130913043479, "engagement_rate": 60.86956521739131, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "consultora ambiental", "users": 9, "sessions": 11, "avg_duration": 57.474235454545465, "engagement_rate": 72.72727272727273, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "crux consultora ambiental", "users": 2, "sessions": 3, "avg_duration": 52.269377, "engagement_rate": 66.66666666666666, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "huella de carbono como se mide", "users": 2, "sessions": 2, "avg_duration": 46.160664, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "certificado aptitud ambiental", "users": 3, "sessions": 3, "avg_duration": 37.89810966666666, "engagement_rate": 33.33333333333333, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "como calcular la huella de carbono de una empresa", "users": 2, "sessions": 2, "avg_duration": 32.261266, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "consultora ambiental cordoba", "users": 4, "sessions": 4, "avg_duration": 30.645997, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "huella de carbono medicion", "users": 2, "sessions": 2, "avg_duration": 29.7616005, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "informes de impacto ambiental", "users": 2, "sessions": 2, "avg_duration": 29.7316985, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "medir huella de carbono", "users": 2, "sessions": 2, "avg_duration": 29.3587115, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "huella de carbono calcular", "users": 7, "sessions": 7, "avg_duration": 29.029074857142856, "engagement_rate": 85.71428571428571, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "estudio de impacto ambiental", "users": 3, "sessions": 3, "avg_duration": 27.117007666666666, "engagement_rate": 66.66666666666666, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "certificado aptitud ambiental caba", "users": 3, "sessions": 3, "avg_duration": 26.398819, "engagement_rate": 66.66666666666666, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "como calcular la huella de carbono", "users": 3, "sessions": 3, "avg_duration": 23.118459666666666, "engagement_rate": 66.66666666666666, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "calculo de huella de carbono", "users": 9, "sessions": 10, "avg_duration": 22.021944400000002, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "gestor ambiental", "users": 2, "sessions": 2, "avg_duration": 20.179803, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "ambiental planet rosario", "users": 1, "sessions": 1, "avg_duration": 19.124496, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "huellas de carbono", "users": 3, "sessions": 3, "avg_duration": 15.818656666666667, "engagement_rate": 66.66666666666666, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "ambiental planet", "users": 1, "sessions": 1, "avg_duration": 15.206539, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "certificado de aptitud ambiental provincia de buenos aires", "users": 2, "sessions": 2, "avg_duration": 14.7929295, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "estudio de impacto ambiental cordoba", "users": 2, "sessions": 2, "avg_duration": 13.7139005, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "medicion huella de carbono", "users": 2, "sessions": 2, "avg_duration": 13.557727, "engagement_rate": 100.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "huella de carbono medir", "users": 2, "sessions": 2, "avg_duration": 12.287523, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "calcular la huella de carbono", "users": 3, "sessions": 3, "avg_duration": 12.264769000000001, "engagement_rate": 66.66666666666666, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "certificado de aptitud ambiental caba", "users": 2, "sessions": 2, "avg_duration": 11.6354295, "engagement_rate": 50.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "sea consultores", "users": 7, "sessions": 7, "avg_duration": 6.903988428571429, "engagement_rate": 42.857142857142854, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "acumar gob ar", "users": 1, "sessions": 1, "avg_duration": 1.15792, "engagement_rate": 0.0, "key_events": 0}, {"landing": "/huella-de-carbono", "query": "como se mide la huella de carbono", "users": 3, "sessions": 3, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}, {"landing": "/habilitaciones-permisos", "query": "vhq ambiental", "users": 2, "sessions": 4, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}, {"landing": "(not set)", "query": "certificado aptitud ambiental caba", "users": 1, "sessions": 1, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}, {"landing": "(not set)", "query": "consultora medioambiental", "users": 1, "sessions": 1, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}, {"landing": "(not set)", "query": "huella de carbono", "users": 1, "sessions": 2, "avg_duration": 0.0, "engagement_rate": 0.0, "key_events": 0}], "native_google_ads_v23": {"status": "ok", "campaign_impression_share": [{"campaign": "CAMPAÑA-UNI-HAB.AR", "status": "ENABLED", "daily_budget": 5400.0, "impressions_30d": 5682, "clicks_30d": 189, "cost_30d": 164201.81, "search_impression_share_pct": 32.5, "lost_is_budget_pct": 0.8, "lost_is_rank_pct": 66.7}, {"campaign": "CAMPAÑA-UNI-HUELLA-EXT.AR #2", "status": "ENABLED", "daily_budget": 4000.0, "impressions_30d": 3860, "clicks_30d": 156, "cost_30d": 120873.07, "search_impression_share_pct": 39.8, "lost_is_budget_pct": 26.0, "lost_is_rank_pct": 34.3}], "keywords_quality_score": [{"ad_group": "Grupo Huella", "keyword": "la huella de carbono", "match_type": "PHRASE", "quality_score": 3, "creative_quality": "ABOVE_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 1265, "clicks_30d": 25, "cost_30d": 18780.36}, {"ad_group": "Grupo Huella", "keyword": "tu huella de carbono", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 978, "clicks_30d": 32, "cost_30d": 16069.51}, {"ad_group": "Ingenieria / Gestión", "keyword": "gestión medioambiental", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 932, "clicks_30d": 30, "cost_30d": 21656.52}, {"ad_group": "Ingenieria / Gestión", "keyword": "gestión ambiental", "match_type": "PHRASE", "quality_score": 1, "creative_quality": "BELOW_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 865, "clicks_30d": 29, "cost_30d": 24367.58}, {"ad_group": "Ingenieria / Gestión", "keyword": "informe de impacto ambiental", "match_type": "PHRASE", "quality_score": 2, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 466, "clicks_30d": 8, "cost_30d": 6609.7}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultora de gestion ambiental", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 417, "clicks_30d": 13, "cost_30d": 17174.96}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "asesoría medioambiental", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 349, "clicks_30d": 10, "cost_30d": 7601.8}, {"ad_group": "Ingenieria / Gestión", "keyword": "certificado de aptitud ambiental", "match_type": "PHRASE", "quality_score": 2, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 326, "clicks_30d": 5, "cost_30d": 9035.05}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "permisos ambientales", "match_type": "PHRASE", "quality_score": 3, "creative_quality": "ABOVE_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 297, "clicks_30d": 10, "cost_30d": 6303.65}, {"ad_group": "Ingenieria / Gestión", "keyword": "ingeniero en ambiental", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 296, "clicks_30d": 10, "cost_30d": 5553.3}, {"ad_group": "Grupo Huella", "keyword": "calcular huella de carbono", "match_type": "PHRASE", "quality_score": 6, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "ABOVE_AVERAGE", "impressions_30d": 292, "clicks_30d": 33, "cost_30d": 21713.77}, {"ad_group": "Grupo Huella", "keyword": "reducir la huella de carbono", "match_type": "PHRASE", "quality_score": 1, "creative_quality": "BELOW_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 268, "clicks_30d": 4, "cost_30d": 4292.94}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultora medio ambiente", "match_type": "PHRASE", "quality_score": 5, "creative_quality": "ABOVE_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "AVERAGE", "impressions_30d": 257, "clicks_30d": 13, "cost_30d": 11388.31}, {"ad_group": "Grupo Huella", "keyword": "calcula tu huella de carbono", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 254, "clicks_30d": 17, "cost_30d": 15795.33}, {"ad_group": "Grupo Huella", "keyword": "medir huella de carbono", "match_type": "PHRASE", "quality_score": 6, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "ABOVE_AVERAGE", "impressions_30d": 203, "clicks_30d": 11, "cost_30d": 12724.71}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "gestoria medioambiental", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 199, "clicks_30d": 7, "cost_30d": 7419.45}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "asesoría ambiental", "match_type": "PHRASE", "quality_score": 3, "creative_quality": "ABOVE_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 197, "clicks_30d": 11, "cost_30d": 5733.68}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "servicios de consultoria ambiental", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 188, "clicks_30d": 12, "cost_30d": 7342.49}, {"ad_group": "Grupo Huella", "keyword": "huella de carbono empresas", "match_type": "PHRASE", "quality_score": 4, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "AVERAGE", "impressions_30d": 164, "clicks_30d": 7, "cost_30d": 10263.99}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultoras de medio ambiente", "match_type": "PHRASE", "quality_score": 1, "creative_quality": "BELOW_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 155, "clicks_30d": 10, "cost_30d": 10295.65}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultor ambiental", "match_type": "PHRASE", "quality_score": 2, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 154, "clicks_30d": 5, "cost_30d": 4358.86}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultoria ambiental", "match_type": "PHRASE", "quality_score": 6, "creative_quality": "AVERAGE", "landing_experience": "AVERAGE", "expected_ctr": "AVERAGE", "impressions_30d": 140, "clicks_30d": 2, "cost_30d": 2724.58}, {"ad_group": "Grupo Huella", "keyword": "mide tu huella de carbono", "match_type": "PHRASE", "quality_score": 5, "creative_quality": "BELOW_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "ABOVE_AVERAGE", "impressions_30d": 128, "clicks_30d": 6, "cost_30d": 4243.69}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "empresas de asesoria ambiental", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 91, "clicks_30d": 5, "cost_30d": 4018.83}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultoria medio ambiente", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 81, "clicks_30d": 1, "cost_30d": 1804.85}, {"ad_group": "Ingenieria / Gestión", "keyword": "ingenieria del ambiente", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 78, "clicks_30d": 2, "cost_30d": 1188.58}, {"ad_group": "Grupo Huella", "keyword": "huella de carbono calcular", "match_type": "PHRASE", "quality_score": 6, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "ABOVE_AVERAGE", "impressions_30d": 77, "clicks_30d": 7, "cost_30d": 3472.85}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "consultoria de impacto ambiental", "match_type": "PHRASE", "quality_score": 7, "creative_quality": "ABOVE_AVERAGE", "landing_experience": "AVERAGE", "expected_ctr": "AVERAGE", "impressions_30d": 74, "clicks_30d": 3, "cost_30d": 6187.31}, {"ad_group": "Ingenieria / Gestión", "keyword": "ingenieria ambiental", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 64, "clicks_30d": 1, "cost_30d": 969.99}, {"ad_group": "Grupo Huella", "keyword": "como calcular la huella de carbono", "match_type": "PHRASE", "quality_score": 1, "creative_quality": "BELOW_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 57, "clicks_30d": 7, "cost_30d": 3170.12}, {"ad_group": "Grupo Huella", "keyword": "consultora huella de carbono", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 43, "clicks_30d": 1, "cost_30d": 908.52}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "permiso de impacto ambiental", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 36, "clicks_30d": 1, "cost_30d": 2262.02}, {"ad_group": "Grupo Huella", "keyword": "calculos de huella de carbono", "match_type": "PHRASE", "quality_score": 3, "creative_quality": "BELOW_AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "AVERAGE", "impressions_30d": 36, "clicks_30d": 1, "cost_30d": 305.42}, {"ad_group": "Grupo Huella", "keyword": "consultoria huella de carbono", "match_type": "PHRASE", "quality_score": 8, "creative_quality": "ABOVE_AVERAGE", "landing_experience": "AVERAGE", "expected_ctr": "ABOVE_AVERAGE", "impressions_30d": 33, "clicks_30d": 4, "cost_30d": 6109.46}, {"ad_group": "Grupo Huella", "keyword": "huella de carbono de empresas", "match_type": "PHRASE", "quality_score": 2, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 17, "clicks_30d": 0, "cost_30d": 0.0}, {"ad_group": "Grupo Huella", "keyword": "medir huella de carbono empresa", "match_type": "PHRASE", "quality_score": 6, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "ABOVE_AVERAGE", "impressions_30d": 15, "clicks_30d": 1, "cost_30d": 3022.41}, {"ad_group": "Grupo Huella", "keyword": "presupuesto huella de carbono", "match_type": "PHRASE", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 15, "clicks_30d": 0, "cost_30d": 0.0}, {"ad_group": "Consultoría - Habilitaciones", "keyword": "empresa de consultoria ambiental", "match_type": "PHRASE", "quality_score": 7, "creative_quality": "ABOVE_AVERAGE", "landing_experience": "AVERAGE", "expected_ctr": "AVERAGE", "impressions_30d": 11, "clicks_30d": 1, "cost_30d": 204.65}, {"ad_group": "Grupo Huella", "keyword": "huella de carbono industrial", "match_type": "PHRASE", "quality_score": 2, "creative_quality": "AVERAGE", "landing_experience": "BELOW_AVERAGE", "expected_ctr": "BELOW_AVERAGE", "impressions_30d": 7, "clicks_30d": 0, "cost_30d": 0.0}, {"ad_group": "Ingenieria / Gestión", "keyword": "busco ingeniero ambiental", "match_type": "EXACT", "quality_score": null, "creative_quality": "N/A", "landing_experience": "N/A", "expected_ctr": "N/A", "impressions_30d": 5, "clicks_30d": 0, "cost_30d": 0.0}], "quality_score_summary": {"weighted_avg_qs": 2.99, "total_scored_keywords": 24, "critical_keywords_count": 13, "below_avg_landing_count": 20, "total_cost_30d": 175308.74}, "rsa_ads": [{"ad_id": "809591338682", "ad_group": "Grupo Huella", "ad_strength": "EXCELLENT", "final_url": "https://www.dhartec.com/huella-de-carbono/", "headlines": ["Huella de Carbono Corporativa", "Gana Nuevos Mercados Hoy", "Dhartec: Consultoría B2B", "Huella de Carbono: Industrial", "Exportá Sin Barreras Verdes", "Reducir la Huella de Carbono"], "descriptions": ["Certifica tu Huella y Exporta sin trabas", "Que las normativas ambientales no frenen tu negocio", "Mide el impacto de tu organización. Cumple normativas internacionales y Gana clientes"], "impressions_30d": 2976, "clicks_30d": 121, "ctr_30d": 4.07, "cost_30d": 98364.29}, {"ad_id": "824408151755", "ad_group": "Consultoría - Habilitaciones", "ad_strength": "EXCELLENT", "final_url": "https://www.dhartec.com/habilitaciones-permisos/", "headlines": ["{KeyWord:Consultoría Ambiental}", "Expertos en Asesoría Ambiental", "Gestión Ambiental Eficiente", "Comenzá Agendando una Reunión", "Habilitaciones y Permisos", "Ingeniería Ambiental"], "descriptions": ["Permisos, soluciones y sistemas de gestión para empresas comprometidas con el futuro. Mirá", "Gestión integral ante ACUMAR, OPDS, APRA, Nacion, Autoridad del Agua y Municipios.", "Simplificá tus trámites ambientales. Ingresá y Agendá una Reunión"], "impressions_30d": 2353, "clicks_30d": 98, "ctr_30d": 4.16, "cost_30d": 85963.32}, {"ad_id": "791550456360", "ad_group": "Ingenieria / Gestión", "ad_strength": "EXCELLENT", "final_url": "https://www.dhartec.com/habilitaciones-permisos/", "headlines": ["{KeyWord:Consultoría Ambiental}", "Consultor Ambiental", "Sistemas de Gestión Ambiental", "Comenzá Agendando una Reunión", "Permisos Ambientales", "Certificá como Empresa B"], "descriptions": ["¿Tu habilitación fue rechazada o está demorada?", "Gestionamos Permisos y Habilitaciones ante organismos oficiales. Asesoramiento Experto.", "Nos encargamos de todo el proceso de habilitaciones y permisos. Ingresá y Agendá Reunión"], "impressions_30d": 1728, "clicks_30d": 47, "ctr_30d": 2.72, "cost_30d": 37431.9}, {"ad_id": "829275931174", "ad_group": "Grupo Huella", "ad_strength": "EXCELLENT", "final_url": "https://www.dhartec.com/huella-de-carbono/", "headlines": ["Huella de Carbono Corporativa", "Asesoramiento Especializado", "Dhartec: Consultoría B2B", "Mide Emisiones de tu Empresa", "Mide el Impacto Ambiental", "Reducir la Huella de Carbono"], "descriptions": ["Acompañamos a tu empresa en la medición, gestión y reducción de su huella de carbono", "Contacto Ahora", "Asesoramiento integral para empresas y organizaciones. Mira Más"], "impressions_30d": 884, "clicks_30d": 35, "ctr_30d": 3.96, "cost_30d": 22508.78}, {"ad_id": "818191502823", "ad_group": "Ingenieria / Gestión", "ad_strength": "EXCELLENT", "final_url": "https://www.dhartec.com/habilitaciones-permisos/", "headlines": ["{KeyWord:Consultoría Ambiental}", "Soluciones Ambientales Hoy", "Evita las multas ambientales", "Comenzá Agendando una Reunión", "Permisos Ambientales", "Conocé nuestro Sistema DBO"], "descriptions": ["Permisos, soluciones y sistemas de gestión para empresas comprometidas con el futuro. Mirá", "Gestión integral ante ACUMAR, OPDS, APRA, Autoridad del Agua y Municipios.", "Simplificá tus trámites ambientales. Ingresá y Agendá una Reunión"], "impressions_30d": 674, "clicks_30d": 27, "ctr_30d": 4.01, "cost_30d": 15990.57}, {"ad_id": "827357924075", "ad_group": "Ingenieria / Gestión", "ad_strength": "EXCELLENT", "final_url": "https://www.dhartec.com/habilitaciones-permisos/", "headlines": ["{KeyWord:Consultoría Ambiental}", "Dhartec Habilitaciones", "Sistemas de Gestión Ambiental", "Comenzá Agendando una Reunión", "Permisos Ambientales", "¿Listo Para Una Inspección?"], "descriptions": ["Mantené la documentación de tu empresa al día. Asesoramiento con ACUMAR, OPDS y CABA.", "Garantizamos el Cumplimiento Normativo Ambiental. Permisos Ambientales sin complicaciones", "Asegurá la continuidad de tus operaciones con la documentación ambiental en regla"], "impressions_30d": 630, "clicks_30d": 11, "ctr_30d": 1.75, "cost_30d": 15958.25}, {"ad_id": "818187212112", "ad_group": "Consultoría - Habilitaciones", "ad_strength": "EXCELLENT", "final_url": "https://www.dhartec.com/habilitaciones-permisos/", "headlines": ["{KeyWord:Consultoría Ambiental}", "Dhartec Habilitaciones", "Sistemas de Gestión Ambiental", "Comenzá Agendando una Reunión", "Permisos Ambientales", "¿Listo Para Una Inspección?"], "descriptions": ["Mantené la documentación de tu empresa al día. Asesoramiento con ACUMAR, OPDS y CABA.", "Garantizamos el Cumplimiento Normativo Ambiental. Permisos Ambientales sin complicaciones", "Asegurá la continuidad de tus operaciones con la documentación ambiental en regla"], "impressions_30d": 297, "clicks_30d": 6, "ctr_30d": 2.02, "cost_30d": 8857.77}]}, "device_matrix": {"Google Ads": {"desktop": {"sessions": 306, "engagement_rate": 64.1, "avg_duration": 178.9, "key_events": 3, "conv_rate": 0.98}, "mobile": {"sessions": 559, "engagement_rate": 61.7, "avg_duration": 76.7, "key_events": 0, "conv_rate": 0.0}}, "Meta Ads (IG/FB/AN)": {"desktop": {"sessions": 41, "engagement_rate": 34.1, "avg_duration": 135.9, "key_events": 3, "conv_rate": 7.32}, "mobile": {"sessions": 7692, "engagement_rate": 16.6, "avg_duration": 105.1, "key_events": 0, "conv_rate": 0.0}}, "Google Orgánico": {"desktop": {"sessions": 289, "engagement_rate": 63.3, "avg_duration": 229.0, "key_events": 17, "conv_rate": 5.88}, "mobile": {"sessions": 84, "engagement_rate": 50.0, "avg_duration": 122.4, "key_events": 4, "conv_rate": 4.76}}, "Directo": {"desktop": {"sessions": 501, "engagement_rate": 27.9, "avg_duration": 70.8, "key_events": 41, "conv_rate": 8.18}, "mobile": {"sessions": 211, "engagement_rate": 41.7, "avg_duration": 61.4, "key_events": 67, "conv_rate": 31.75}}}, "hablemos_audit": {"hablemos_page_views_90d": 143, "hablemos_conversions_90d": 143, "hablemos_session_starts_90d": 80, "is_1to1_pageview_trigger": true, "direct_session_reset_pct": 55.9, "conversion_attribution_breakdown": [{"first_user_source_medium": "(direct) / (none)", "session_source_medium": "(direct) / (none)", "page_referrer": "(sin referrer)", "sessions": 687, "key_events": 79, "avg_duration": 41.7}, {"first_user_source_medium": "(direct) / (none)", "session_source_medium": "(direct) / (none)", "page_referrer": "https://www.dhartec.com/", "sessions": 31, "key_events": 16, "avg_duration": 112.7}, {"first_user_source_medium": "google / organic", "session_source_medium": "google / organic", "page_referrer": "https://www.dhartec.com/", "sessions": 52, "key_events": 10, "avg_duration": 156.0}, {"first_user_source_medium": "google / organic", "session_source_medium": "google / organic", "page_referrer": "https://www.dhartec.com/empresa-b/", "sessions": 6, "key_events": 4, "avg_duration": 7.4}, {"first_user_source_medium": "(direct) / (none)", "session_source_medium": "(direct) / (none)", "page_referrer": "https://www.dhartec.com/faq/", "sessions": 5, "key_events": 3, "avg_duration": 37.1}, {"first_user_source_medium": "google / organic", "session_source_medium": "google / organic", "page_referrer": "(sin referrer)", "sessions": 19, "key_events": 2, "avg_duration": 158.5}, {"first_user_source_medium": "google / organic", "session_source_medium": "google / organic", "page_referrer": "https://www.dhartec.com/nosotros/", "sessions": 13, "key_events": 1, "avg_duration": 108.9}]}, "geo_summary": [{"province": "Buenos Aires", "sessions": 3627, "avg_duration": 126.6, "engagement_rate": 24.5, "key_events": 26, "top_segments": ["Meta Ads (IG/FB/AN): 3178 ses (1m 59s, 19% eng)", "Google Ads: 232 ses (2m 11s, 63% eng)", "Google Orgánico: 140 ses (3m 39s, 63% eng)"]}, {"province": "Buenos Aires", "sessions": 1471, "avg_duration": 87.8, "engagement_rate": 27.3, "key_events": 76, "top_segments": ["Meta Ads (IG/FB/AN): 1070 ses (1m 7s, 13% eng)", "Google Ads: 183 ses (1m 47s, 57% eng)", "Directo: 114 ses (2m 13s, 76% eng)"]}, {"province": "Santa Fe", "sessions": 880, "avg_duration": 127.7, "engagement_rate": 21.6, "key_events": 0, "top_segments": ["Meta Ads (IG/FB/AN): 827 ses (2m 12s, 18% eng)", "Google Ads: 53 ses (58s, 74% eng)"]}, {"province": "Cordoba", "sessions": 818, "avg_duration": 71.9, "engagement_rate": 18.2, "key_events": 0, "top_segments": ["Meta Ads (IG/FB/AN): 739 ses (1m 6s, 13% eng)", "Google Ads: 79 ses (2m 6s, 68% eng)"]}, {"province": "Mendoza", "sessions": 262, "avg_duration": 177.4, "engagement_rate": 23.7, "key_events": 0, "top_segments": ["Meta Ads (IG/FB/AN): 262 ses (2m 57s, 24% eng)"]}, {"province": "Tucuman", "sessions": 227, "avg_duration": 122.7, "engagement_rate": 20.7, "key_events": 0, "top_segments": ["Meta Ads (IG/FB/AN): 227 ses (2m 3s, 21% eng)"]}], "target_landings": {"Habilitaciones y Permisos": {"users": 5081, "sessions": 6197, "avg_duration": 101.07709894916894, "engagement_rate": 16.71776666128772, "key_events": 0, "paths": ["/habilitaciones-permisos (5080 u, 1m 41s)", "/gracias-por-tu-envio-habilitaciones-y-permisos (1 u, 0s)"]}, "Huella de Carbono": {"users": 134, "sessions": 143, "avg_duration": 95.50006653146853, "engagement_rate": 68.53146853146853, "key_events": 0, "paths": ["/huella-de-carbono (128 u, 1m 36s)", "/la-huella-de-carbono-en-la-industria-textil-argentina-una-oportunidad-para-ganar-nuevos-mercados-y-clientes (5 u, 1m 30s)", "/faq-items/que-es-exactamente-la-huella-de-carbono-y-por-que-deberia-importarle-a-mi-pyme (1 u, 0s)"]}, "Sustentabilidad": {"users": 16, "sessions": 16, "avg_duration": 424.15957349999996, "engagement_rate": 31.25, "key_events": 0, "paths": ["/la-sustentabilidad-en-la-industria-hotelera-un-compromiso-con-el-futuro (10 u, 11m 18s)", "/portfolio-items/sustentabilidad-y-cambio-climatico (4 u, 0s)", "/gracias-por-tu-envio-programa-de-sustentabilidad (2 u, 3s)"]}}, "content_data": [{"path": "/habilitaciones-permisos/", "title": "Habilitaciones y Permisos | DHARTEC - Ingeniería Ambiental", "users": 5080, "sessions": 6223, "avg_duration": 100.73354236590069, "views": 7709, "engagement_rate": 16.663988430017675}, {"path": "/", "title": "Home | DHARTEC - Ingeniería Ambiental", "users": 177, "sessions": 195, "avg_duration": 58.73426475897436, "views": 209, "engagement_rate": 37.94871794871795}, {"path": "/huella-de-carbono/", "title": "Huella de Carbono | DHARTEC - Ingeniería Ambiental", "users": 129, "sessions": 140, "avg_duration": 89.18313372857142, "views": 206, "engagement_rate": 67.85714285714286}, {"path": "/hablemos/", "title": "Hablemos | DHARTEC - Ingeniería Ambiental", "users": 84, "sessions": 85, "avg_duration": 49.75981591764706, "views": 87, "engagement_rate": 100.0}, {"path": "/faq/", "title": "FAQ | DHARTEC - Ingeniería Ambiental", "users": 33, "sessions": 34, "avg_duration": 31.344310058823535, "views": 34, "engagement_rate": 32.35294117647059}, {"path": "/servicios/", "title": "Servicios | DHARTEC - Ingeniería Ambiental", "users": 19, "sessions": 21, "avg_duration": 188.9448142857143, "views": 22, "engagement_rate": 90.47619047619048}, {"path": "/nosotros/", "title": "Nosotros | DHARTEC - Ingeniería Ambiental", "users": 16, "sessions": 18, "avg_duration": 29.25360338888889, "views": 18, "engagement_rate": 77.77777777777779}, {"path": "/tasa-ambiental-anual-2025-guia-completa-para-generadores-de-residuos-peligrosos/", "title": "Tasa Ambiental Anual 2025: Guía Completa para Generadores de Residuos Peligrosos | DHARTEC - Ingeniería Ambiental", "users": 12, "sessions": 17, "avg_duration": 243.98762805882356, "views": 20, "engagement_rate": 47.05882352941176}, {"path": "/empresa-b/", "title": "Empresa B | DHARTEC - Ingeniería Ambiental", "users": 10, "sessions": 13, "avg_duration": 10.95666076923077, "views": 12, "engagement_rate": 76.92307692307693}, {"path": "/la-sustentabilidad-en-la-industria-hotelera-un-compromiso-con-el-futuro/", "title": "La Sustentabilidad en la Industria Hotelera: Un Compromiso con el Futuro | DHARTEC - Ingeniería Ambiental", "users": 10, "sessions": 11, "avg_duration": 616.494815090909, "views": 13, "engagement_rate": 45.45454545454545}, {"path": "/articulos/", "title": "Artículos | DHARTEC - Ingeniería Ambiental", "users": 9, "sessions": 15, "avg_duration": 19.897338066666666, "views": 24, "engagement_rate": 80.0}, {"path": "/que-es-una-auditoria-ambiental-de-cumplimiento-legal/", "title": "Que es una auditoria ambiental de cumplimiento legal | DHARTEC - Ingeniería Ambiental", "users": 9, "sessions": 10, "avg_duration": 16.5382107, "views": 9, "engagement_rate": 30.0}, {"path": "/realizar-la-inscripcion-en-residuos-peligrosos-en-apra/", "title": "Realizar la inscripción en residuos peligrosos en APrA | DHARTEC - Ingeniería Ambiental", "users": 7, "sessions": 11, "avg_duration": 495.5741162727273, "views": 12, "engagement_rate": 81.81818181818183}, {"path": "/como-hacer-la-declaracion-jurada-de-efluentes-gaseosos/", "title": "Como hacer la Declaración Jurada de efluentes gaseosos | DHARTEC - Ingeniería Ambiental", "users": 6, "sessions": 7, "avg_duration": 80.62034885714286, "views": 6, "engagement_rate": 42.857142857142854}, {"path": "/como-hacer-una-declaracion-jurada-de-residuos-especiales/", "title": "Como hacer una declaración jurada de residuos especiales | DHARTEC - Ingeniería Ambiental", "users": 6, "sessions": 9, "avg_duration": 191.48724788888887, "views": 9, "engagement_rate": 55.55555555555556}, {"path": "/la-huella-de-carbono-en-la-industria-textil-argentina-una-oportunidad-para-ganar-nuevos-mercados-y-clientes/", "title": "La Huella de Carbono en la Industria Textil Argentina: Una Oportunidad para Ganar Nuevos Mercados y Clientes. | DHARTEC - Ingeniería Ambiental", "users": 6, "sessions": 9, "avg_duration": 63.50716911111111, "views": 9, "engagement_rate": 77.77777777777779}, {"path": "/portfolio-items/sustentabilidad-y-cambio-climatico/", "title": "Sustentabilidad y Cambio Climático | DHARTEC - Ingeniería Ambiental", "users": 6, "sessions": 6, "avg_duration": 5.165053833333333, "views": 6, "engagement_rate": 33.33333333333333}, {"path": "/efluentes-gaseosos-en-buenos-aires-guia-2025-de-dispersion-y-normativa/", "title": "Efluentes Gaseosos en Buenos Aires: Guía 2025 de Dispersión y Normativa | DHARTEC - Ingeniería Ambiental", "users": 5, "sessions": 8, "avg_duration": 156.686955875, "views": 7, "engagement_rate": 37.5}, {"path": "/el-mecanismo-de-ajuste-en-frontera-por-carbono-la-nueva-barrera-ambiental-de-la-union-europea/", "title": "El Mecanismo de Ajuste en Frontera por Carbono: La Nueva Barrera Ambiental de la Unión Europea | DHARTEC - Ingeniería Ambiental", "users": 5, "sessions": 5, "avg_duration": 8.2623418, "views": 5, "engagement_rate": 80.0}, {"path": "/la-doble-materialidad-en-la-gestion-corporativa-un-enfoque-integral/", "title": "La Doble Materialidad en la Gestión Corporativa: Un Enfoque Integral | DHARTEC - Ingeniería Ambiental", "users": 5, "sessions": 6, "avg_duration": 12.201298666666666, "views": 6, "engagement_rate": 100.0}, {"path": "/el-blog/", "title": "Blog | DHARTEC - Ingeniería Ambiental", "users": 4, "sessions": 4, "avg_duration": 13.3171615, "views": 4, "engagement_rate": 100.0}, {"path": "/implementacion-de-estrategias-de-sustentabilidad-guiando-tu-empresa-hacia-el-exito/", "title": "Implementación de Estrategias de Sustentabilidad: Guiando tu Empresa hacia el Éxito | DHARTEC - Ingeniería Ambiental", "users": 4, "sessions": 4, "avg_duration": 8.28126425, "views": 4, "engagement_rate": 100.0}, {"path": "/un-paso-decisivo-hacia-la-transparencia-empresarial-y-la-sostenibilidad-en-la-union-europea/", "title": "Un Paso Decisivo hacia la Transparencia Empresarial y la Sostenibilidad en la Unión Europea | DHARTEC - Ingeniería Ambiental", "users": 4, "sessions": 5, "avg_duration": 22.5730912, "views": 7, "engagement_rate": 60.0}, {"path": "/declaracion-jurada-de-efluentes-liquidos/", "title": "Declaración jurada de efluentes líquidos | DHARTEC - Ingeniería Ambiental", "users": 3, "sessions": 4, "avg_duration": 42.3038545, "views": 4, "engagement_rate": 50.0}, {"path": "/plan-de-gestion-ambiental-y-social-para-obras-de-infraestructura/", "title": "Plan de gestión ambiental y social para obras de infraestructura | DHARTEC - Ingeniería Ambiental", "users": 3, "sessions": 3, "avg_duration": 4.957583666666666, "views": 3, "engagement_rate": 0.0}], "gemini_insights_html": "<b>💰 1. Publicidad en Google: Por qué no aparecemos más y dónde se va la plata</b><br>En la campaña de Habilitaciones ('CAMPAÑA-UNI-HAB.AR') tenemos presupuesto suficiente: apenas perdemos un 0.8% de apariciones por falta de fondos. Sin embargo, en casi 7 de cada 10 búsquedas de clientes (66.7%) nuestros anuncios NO aparecen porque Google califica a nuestra página web con notas muy bajas (1 sobre 10 en 'gestión ambiental' y 2 sobre 10 en 'informe de impacto ambiental'). La solución es directa: incluir esas frases exactas en los títulos principales de la página <i>/habilitaciones-permisos/</i> para duplicar la presencia sin pagar un peso extra.<br>Por otro lado, vemos con claridad dónde funciona el dinero y dónde se desperdicia: los usuarios que buscan 'gestoría medioambiental' leen la página durante 6 minutos y 53 segundos, y quienes buscan 'consultor ambiental' superan los 8 minutos de lectura; en cambio, términos teóricos y amplios como 'reducir la huella de carbono' apenas retienen 58 segundos. Peor aún, en los sitios asociados fuera de Google ('Partners de búsqueda') las personas entran y se van en apenas 6 segundos.<br><i>Indicación exacta:</i> Destildar de inmediato la casilla 'Partners de búsqueda' en Google Ads y transferir ese presupuesto hacia las búsquedas concretas de gestoría y consultoría ambiental corporativa.<br><br><b>🚨 2. Formulario de Contacto, Celulares vs. Computadoras e Instagram</b><br>Hoy el sistema de medición nos muestra un dato engañoso: marca 143 consultas comerciales en los últimos 90 días, pero en realidad está contando a cualquier persona que simplemente abrió la página de contacto <i>/hablemos/</i> sin haber llenado ni enviado nada. Además, el 55.9% de los usuarios que entran a esa página pierden el rastro de origen, imposibilitando saber qué anuncio trajo al cliente.<br>Al analizar los dispositivos, vemos que quienes buscan desde computadoras de escritorio leen casi 3 minutos (178.9 segundos) y generan las consultas comerciales. Sin embargo, estamos gastando el doble de presupuesto en teléfonos celulares, donde los usuarios permanecen solo 1 minuto con 17 segundos y consiguieron 0 consultas reales. El caso más extremo es Instagram, desde donde llegaron 3.381 visitas que duraron un promedio de 2 segundos (toques accidentales en la pantalla mientras scrolleaban).<br><i>Indicación exacta:</i> Indicar al desarrollador web que la consulta se registre exclusivamente cuando el usuario haga clic en 'Enviar formulario'. En Google Ads, reducir fuertemente la puja en celulares para enfocar el gasto en computadoras de oficina, y pausar o reconfigurar los anuncios en Instagram.<br><br><b>🗺️ 3. Provincias y Servicios que más rinden</b><br>Buenos Aires y la Ciudad de Buenos Aires concentran el volumen inmediato de trámites y habilitaciones comerciales. No obstante, en polos industriales del interior del país detectamos un nivel de interés excepcional: en Mendoza los visitantes promedian casi 3 minutos de lectura (2m 57s) y llegan a picos de 5 minutos y 45 segundos, mientras que en Santa Fe leen más de 2 minutos sostenidos.<br>Los contenidos especializados son los grandes imanes de atención: los artículos sobre normativa de residuos peligrosos retienen más de 4 minutos y la nota de sustentabilidad hotelera supera los 11 minutos de lectura profunda, pero hoy no tienen una vía rápida para pedir presupuesto comercial.<br><i>Indicación exacta:</i> Destacar en la página de habilitaciones que Dhartec opera bajo las normativas vigentes de PBA, CABA, Santa Fe y Mendoza, e insertar botones claros y visibles de contacto ('Solicitar Evaluación') dentro de los artículos de residuos peligrosos y sustentabilidad.", "gemini_memory_html": "Actualmente tenemos <b>0 tareas completadas</b> y <b>7 tareas prioritarias pendientes</b>.<br>Las acciones pendientes atacan directamente los dos problemas que hoy desvían el dinero: la medición falsa de consultas en el formulario de contacto y el gasto publicitario en clics accidentales de celular.<br>Al implementar estas mejoras técnicas y redactar los textos exactos en la web, Dhartec logrará duplicar la visibilidad de sus anuncios en Google para clientes corporativos sin aumentar el presupuesto diario.", "memory_actions": [{"id": "ACT-001", "created_at": "2026-11-12", "topic": "Blog y Artículos", "title": "Escribir más notas sobre Residuos Peligrosos y Sustentabilidad Hotelera", "description": "La gente que entra a leer las notas de residuos peligrosos se queda más de 4 minutos leyendo, y en la nota de sustentabilidad hotelera se quedan más de 10 minutos. Como son temas que generan muchísimo interés real, conviene publicar nuevas notas sobre estos dos temas y poner adentro un botón directo para pedir presupuesto.", "target_metric": "Sumar más visitas desde buscadores y llevar lectores del blog hacia la página de contacto", "status": "pending", "resolution_notes": "", "baseline_snapshot": {"captured_at": "2026-11-12", "google_ads_30d_sessions": 307, "google_ads_30d_eng_rate": 66.4, "meta_ads_30d_sessions": 6053, "meta_ads_30d_eng_rate": 15.2, "organic_30d_sessions": 105, "ads_cost_90d": 538.39, "hablemos_views_90d": 143, "hablemos_conversions_90d": 143, "hablemos_direct_reset_pct": 55.9, "landings_30d": {"Habilitaciones y Permisos": {"sessions": 6197, "avg_duration_sec": 101.1, "eng_rate": 16.7}, "Huella de Carbono": {"sessions": 143, "avg_duration_sec": 95.5, "eng_rate": 68.5}, "Sustentabilidad": {"sessions": 16, "avg_duration_sec": 424.2, "eng_rate": 31.2}}}}, {"id": "ACT-002", "created_at": "2026-11-12", "topic": "Palabras Clave en Google Ads", "title": "Enfocar el presupuesto de Google Ads en las búsquedas donde la gente sí lee", "description": "Quienes buscan 'gestoría medioambiental' (6m 53s de lectura) o 'consultor ambiental' (8m 45s) se quedan muchísimo tiempo leyendo la web, mientras que búsquedas generales como 'reducir la huella de carbono' apenas retienen 58 segundos. Conviene pausar las frases demasiado generales y pasar ese dinero a las búsquedas de empresas que buscan una consultora o gestoría.", "target_metric": "Lograr que las visitas pagas en Google se queden más de 2 minutos en promedio", "status": "pending", "resolution_notes": "", "baseline_snapshot": {"captured_at": "2026-11-12", "google_ads_30d_sessions": 307, "google_ads_30d_eng_rate": 66.4, "meta_ads_30d_sessions": 6053, "meta_ads_30d_eng_rate": 15.2, "organic_30d_sessions": 105, "ads_cost_90d": 538.39, "hablemos_views_90d": 143, "hablemos_conversions_90d": 143, "hablemos_direct_reset_pct": 55.9, "landings_30d": {"Habilitaciones y Permisos": {"sessions": 6197, "avg_duration_sec": 101.1, "eng_rate": 16.7}, "Huella de Carbono": {"sessions": 143, "avg_duration_sec": 95.5, "eng_rate": 68.5}, "Sustentabilidad": {"sessions": 16, "avg_duration_sec": 424.2, "eng_rate": 31.2}}}}, {"id": "ACT-003", "created_at": "2026-11-12", "topic": "Botones de Contacto en la Web", "title": "Poner botones visibles hacia /hablemos/ dentro de los artículos más leídos", "description": "Mucha gente lee los artículos del blog durante 4 a 10 minutos pero se va sin pasar por la página de contacto (/hablemos/). Agregar un recuadro o botón claro a mitad y al final de cada nota invitando a agendar una consulta.", "target_metric": "Aumentar la cantidad de lectores que pasan del blog al formulario de contacto", "status": "pending", "resolution_notes": "", "baseline_snapshot": {"captured_at": "2026-11-12", "google_ads_30d_sessions": 307, "google_ads_30d_eng_rate": 66.4, "meta_ads_30d_sessions": 6053, "meta_ads_30d_eng_rate": 15.2, "organic_30d_sessions": 105, "ads_cost_90d": 538.39, "hablemos_views_90d": 143, "hablemos_conversions_90d": 143, "hablemos_direct_reset_pct": 55.9, "landings_30d": {"Habilitaciones y Permisos": {"sessions": 6197, "avg_duration_sec": 101.1, "eng_rate": 16.7}, "Huella de Carbono": {"sessions": 143, "avg_duration_sec": 95.5, "eng_rate": 68.5}, "Sustentabilidad": {"sessions": 16, "avg_duration_sec": 424.2, "eng_rate": 31.2}}}}, {"id": "ACT-004", "created_at": "2026-11-12", "topic": "Computadora vs. Celular y Publicidad en Instagram", "title": "Priorizar anuncios en Computadoras (Desktop) y frenar el rebote de Instagram", "description": "En Google Ads, la gente que entra desde una computadora se queda 3m 05s leyendo y genera consultas, pero casi el doble de presupuesto se va en celulares donde solo se quedan 1m 17s y no dejan ninguna consulta. Además, de los anuncios en Instagram entraron 3.381 visitas que se fueron a los 2 segundos (clics accidentales). Conviene subir la apuesta en Computadoras, bajarla en Celulares y revisar la campaña de Instagram.", "target_metric": "Dejar de gastar en clics de 2 segundos en Instagram y concentrar Google Ads en usuarios de computadora", "status": "pending", "resolution_notes": "", "baseline_snapshot": {"captured_at": "2026-11-12", "google_ads_30d_sessions": 307, "google_ads_30d_eng_rate": 66.4, "meta_ads_30d_sessions": 6053, "meta_ads_30d_eng_rate": 15.2, "organic_30d_sessions": 105, "ads_cost_90d": 538.39, "hablemos_views_90d": 143, "hablemos_conversions_90d": 143, "hablemos_direct_reset_pct": 55.9, "landings_30d": {"Habilitaciones y Permisos": {"sessions": 6197, "avg_duration_sec": 101.1, "eng_rate": 16.7}, "Huella de Carbono": {"sessions": 143, "avg_duration_sec": 95.5, "eng_rate": 68.5}, "Sustentabilidad": {"sessions": 16, "avg_duration_sec": 424.2, "eng_rate": 31.2}}}}, {"id": "ACT-005", "created_at": "2026-11-12", "topic": "Medición del Formulario de Contacto", "title": "Corregir cómo se cuentan las consultas en la página /hablemos/", "description": "Hoy Analytics cuenta una 'conversión' cada vez que alguien simplemente abre la página /hablemos/ (hubo 143 visitas a esa página y marcó 143 conversiones), aunque la persona no haya enviado el formulario. Además, más de la mitad de esas visitas (80 de 143) pierden el rastro de qué anuncio las trajo al pasar a /hablemos/. Hay que pedirle al responsable web que la conversión se cuente recién cuando el usuario aprieta 'Enviar' en el formulario.", "target_metric": "Contar únicamente los formularios realmente enviados y saber qué anuncio trajo a cada cliente", "status": "pending", "resolution_notes": "", "baseline_snapshot": {"captured_at": "2026-11-12", "google_ads_30d_sessions": 307, "google_ads_30d_eng_rate": 66.4, "meta_ads_30d_sessions": 6053, "meta_ads_30d_eng_rate": 15.2, "organic_30d_sessions": 105, "ads_cost_90d": 538.39, "hablemos_views_90d": 143, "hablemos_conversions_90d": 143, "hablemos_direct_reset_pct": 55.9, "landings_30d": {"Habilitaciones y Permisos": {"sessions": 6197, "avg_duration_sec": 101.1, "eng_rate": 16.7}, "Huella de Carbono": {"sessions": 143, "avg_duration_sec": 95.5, "eng_rate": 68.5}, "Sustentabilidad": {"sessions": 16, "avg_duration_sec": 424.2, "eng_rate": 31.2}}}}, {"id": "ACT-006", "created_at": "2026-11-12", "topic": "Configuración de Campañas en Google Ads", "title": "Destildar 'Partners de búsqueda' en Google Ads y pausar el anuncio que menos retiene", "description": "Cuando nuestro mejor anuncio de Habilitaciones (#824408151755) sale en el buscador de Google, la gente se queda 3m 04s leyendo; pero cuando sale en 'Partners de búsqueda' (sitios secundarios asociados a Google), se van a los 6 segundos. Conviene entrar a la configuración de las dos campañas en Google Ads y destildar 'Incluir partners de búsqueda de Google', además de pausar el anuncio #827357924075 donde solo se quedan 32 segundos.", "target_metric": "Evitar gastar presupuesto en sitios secundarios donde el usuario se va en 6 segundos", "status": "pending", "resolution_notes": "", "baseline_snapshot": {"captured_at": "2026-11-12", "google_ads_30d_sessions": 307, "google_ads_30d_eng_rate": 66.4, "meta_ads_30d_sessions": 6053, "meta_ads_30d_eng_rate": 15.2, "organic_30d_sessions": 105, "ads_cost_90d": 538.39, "hablemos_views_90d": 143, "hablemos_conversions_90d": 143, "hablemos_direct_reset_pct": 55.9, "landings_30d": {"Habilitaciones y Permisos": {"sessions": 6197, "avg_duration_sec": 101.1, "eng_rate": 16.7}, "Huella de Carbono": {"sessions": 143, "avg_duration_sec": 95.5, "eng_rate": 68.5}, "Sustentabilidad": {"sessions": 16, "avg_duration_sec": 424.2, "eng_rate": 31.2}}}}, {"id": "ACT-007", "created_at": "2026-11-12", "topic": "Calificación de Google a nuestras Páginas (Nivel de Calidad)", "title": "Agregar en la web las frases exactas que buscamos vender para que Google muestre más nuestros anuncios", "description": "En la campaña de Habilitaciones no nos falta presupuesto (solo perdemos 0.8% de apariciones por plata), pero nuestro anuncio NO aparece en el 66.7% de las búsquedas porque Google le pone nota baja a nuestra página (1 sobre 10 en 'gestión ambiental', 2 sobre 10 en 'informe de impacto ambiental' y 3 sobre 10 en 'la huella de carbono'). Para subir esa nota y aparecer el doble sin pagar más, hay que escribir esos títulos exactos ('Informe de Impacto Ambiental', 'Gestión Ambiental', 'Certificado de Aptitud Ambiental') bien visibles en los títulos de la página /habilitaciones-permisos/.", "target_metric": "Subir la nota de Google de 1-3 puntos a más de 6/10 y aparecer en más del 65% de las búsquedas", "status": "pending", "resolution_notes": "", "baseline_snapshot": {"captured_at": "2026-11-12", "google_ads_30d_sessions": 307, "google_ads_30d_eng_rate": 66.4, "meta_ads_30d_sessions": 6053, "meta_ads_30d_eng_rate": 15.2, "organic_30d_sessions": 105, "ads_cost_90d": 538.39, "hablemos_views_90d": 143, "hablemos_conversions_90d": 143, "hablemos_direct_reset_pct": 55.9, "landings_30d": {"Habilitaciones y Permisos": {"sessions": 6197, "avg_duration_sec": 101.1, "eng_rate": 16.7}, "Huella de Carbono": {"sessions": 143, "avg_duration_sec": 95.5, "eng_rate": 68.5}, "Sustentabilidad": {"sessions": 16, "avg_duration_sec": 424.2, "eng_rate": 31.2}}}}]};
+    let currentPeriod = '30d';
+    let channelsChartInstance = null;
+    let durationChartInstance = null;
+
+    function fmtDur(sec) {
+      const s = Math.round(sec || 0);
+      const m = Math.floor(s / 60);
+      const r = s % 60;
+      return m > 0 ? `${m}m ${r}s` : `${r}s`;
+    }
+
+    function fmtBadge(val) {
+      if (val === 'ABOVE_AVERAGE') return '<span class="px-2 py-0.5 rounded text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Superior</span>';
+      if (val === 'AVERAGE') return '<span class="px-2 py-0.5 rounded text-xs bg-blue-500/20 text-blue-300 border border-blue-500/30">Promedio</span>';
+      if (val === 'BELOW_AVERAGE') return '<span class="px-2 py-0.5 rounded text-xs bg-rose-500/20 text-rose-300 border border-rose-500/30">Inferior ⚠️</span>';
+      return '<span class="text-xs text-slate-500">S/D</span>';
+    }
+
+    function showTab(tabId) {
+      ['tab-channels', 'tab-ads', 'tab-qs-monitor', 'tab-funnel', 'tab-device-geo', 'tab-memory', 'tab-pending-actions'].forEach(id => {
+        const el = document.getElementById(id);
+        const btn = document.getElementById('btn-' + id);
+        if (el) el.classList.add('hidden');
+        if (btn) btn.classList.remove('active');
+      });
+      const targetEl = document.getElementById(tabId);
+      const targetBtn = document.getElementById('btn-' + tabId);
+      if (targetEl) targetEl.classList.remove('hidden');
+      if (targetBtn) targetBtn.classList.add('active');
+    }
+
+    function setPeriod(period) {
+      currentPeriod = period;
+      ['7d', '30d', '90d'].forEach(p => {
+        document.getElementById('period-' + p).classList.toggle('active', p === period);
+      });
+      const labels = { '7d': 'Últimos 7 Días', '30d': 'Últimos 30 Días', '90d': 'Últimos 90 Días' };
+      document.getElementById('active-period-badge').textContent = labels[period];
+      renderKPIs();
+      renderChannelsSection();
+    }
+
+    function renderKPIs() {
+      const periodMap = { '7d': REPORT_DATA.data_7d, '30d': REPORT_DATA.data_30d, '90d': REPORT_DATA.data_90d };
+      const segs = periodMap[currentPeriod].segments;
+      let totalSess = 0, totalUsers = 0, weightedEng = 0, weightedDur = 0;
+      Object.values(segs).forEach(s => {
+        totalSess += s.sessions;
+        totalUsers += s.users;
+        weightedEng += (s.engagement_rate * s.sessions);
+        weightedDur += (s.avg_duration * s.sessions);
+      });
+      const avgEng = totalSess > 0 ? (weightedEng / totalSess).toFixed(1) : '0.0';
+      const avgDur = totalSess > 0 ? fmtDur(weightedDur / totalSess) : '0s';
+
+      const totalAdsCost = (REPORT_DATA.ads_financials || []).reduce((acc, c) => acc + c.cost, 0);
+      const totalAdsClicks = (REPORT_DATA.ads_financials || []).reduce((acc, c) => acc + c.clicks, 0);
+      const totalAdsSess = (REPORT_DATA.ads_financials || []).reduce((acc, c) => acc + c.sessions, 0);
+
+      const nativeAds = REPORT_DATA.native_google_ads_v23 || {};
+      const qsSum = nativeAds.quality_score_summary || {};
+      const avgQs = qsSum.weighted_avg_qs !== undefined ? qsSum.weighted_avg_qs.toFixed(1) : 'S/D';
+      const critCount = qsSum.critical_keywords_count || 0;
+
+      document.getElementById('kpi-cards-container').innerHTML = `
+        <div class="glass-card p-4">
+          <div class="text-xs text-slate-400">Sesiones (${currentPeriod.toUpperCase()})</div>
+          <div class="text-2xl font-bold text-white mt-1">${totalSess.toLocaleString('es-AR')}</div>
+          <div class="text-xs text-emerald-400 mt-1">${totalUsers.toLocaleString('es-AR')} usuarios activos</div>
+        </div>
+        <div class="glass-card p-4">
+          <div class="text-xs text-slate-400">Calidad Global (${currentPeriod.toUpperCase()})</div>
+          <div class="text-2xl font-bold text-white mt-1">${avgDur}</div>
+          <div class="text-xs text-blue-400 mt-1">Interacción media: ${avgEng}%</div>
+        </div>
+        <div class="glass-card p-4 border-l-2 border-amber-400">
+          <div class="text-xs text-slate-400">Quality Score Ponderado</div>
+          <div class="text-2xl font-bold ${avgQs < 5 ? 'text-amber-400' : 'text-emerald-400'} mt-1">${avgQs} <span class="text-xs font-normal text-slate-400">/ 10</span></div>
+          <div class="text-xs text-rose-400 mt-1">${critCount} keywords en alerta crítica (1-3)</div>
+        </div>
+        <div class="glass-card p-4">
+          <div class="text-xs text-slate-400">Inversión Google Ads (90d)</div>
+          <div class="text-2xl font-bold text-amber-400 mt-1">$${totalAdsCost.toFixed(2)}</div>
+          <div class="text-xs text-slate-300 mt-1">${totalAdsClicks} clics &rarr; ${totalAdsSess} sesiones</div>
+        </div>
+        <div class="glass-card p-4">
+          <div class="text-xs text-slate-400">Embudo /hablemos/ (90d)</div>
+          <div class="text-2xl font-bold text-rose-400 mt-1">${hab.hablemos_conversions_90d || 0} conv</div>
+          <div class="text-xs text-rose-300 mt-1">${hab.direct_session_reset_pct || 0}% reinicio a Directo (Alerta 1:1)</div>
+        </div>
+      `;
+    }
+
+    function renderChannelsSection() {
+      const periodMap = { '7d': REPORT_DATA.data_7d, '30d': REPORT_DATA.data_30d, '90d': REPORT_DATA.data_90d };
+      const segs = periodMap[currentPeriod].segments;
+      const deltas = REPORT_DATA.wow_deltas || {};
+      const names = Object.keys(segs);
+
+      const tbody = document.getElementById('channels-table-body');
+      tbody.innerHTML = names.map(name => {
+        const s = segs[name];
+        const d = deltas[name] || { sessions_delta: '-', duration_delta: '-' };
+        const subList = Object.entries(s.top_sources || {}).map(([k, v]) =>
+          `<span class="inline-block bg-slate-800 text-slate-300 text-xs px-2 py-0.5 rounded mr-1 mb-1 border border-slate-700">${k}: ${v.sessions} ses (${fmtDur(v.avg_duration)})</span>`
+        ).join('');
+        return `
+          <tr>
+            <td class="py-3 px-3 font-semibold text-white">${name}</td>
+            <td class="py-3 px-3 font-medium text-slate-200">${s.sessions.toLocaleString('es-AR')}</td>
+            <td class="py-3 px-3 text-slate-300">${s.users.toLocaleString('es-AR')}</td>
+            <td class="py-3 px-3">
+              <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-emerald-400 border border-slate-700">
+                Ses: ${d.sessions_delta} | Dur: ${d.duration_delta}
+              </span>
+            </td>
+            <td class="py-3 px-3 text-blue-400 font-medium">${s.engagement_rate.toFixed(1)}%</td>
+            <td class="py-3 px-3 text-emerald-400 font-medium">${fmtDur(s.avg_duration)}</td>
+            <td class="py-3 px-3 text-slate-300">${s.pages_per_session.toFixed(1)}</td>
+            <td class="py-3 px-3 font-bold text-amber-400">${s.key_events}</td>
+            <td class="py-3 px-3">${subList || '-'}</td>
+          </tr>
+        `;
+      }).join('');
+
+      const ctx1 = document.getElementById('channelsChart').getContext('2d');
+      if (channelsChartInstance) channelsChartInstance.destroy();
+      channelsChartInstance = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: names,
+          datasets: [
+            {
+              label: 'Sesiones',
+              data: names.map(n => segs[n].sessions),
+              backgroundColor: 'rgba(59, 130, 246, 0.7)',
+              borderColor: '#3b82f6',
+              borderWidth: 1,
+              yAxisID: 'y'
+            },
+            {
+              label: 'Interacción (%)',
+              data: names.map(n => Number(segs[n].engagement_rate.toFixed(1))),
+              type: 'line',
+              borderColor: '#10b981',
+              backgroundColor: '#10b981',
+              borderWidth: 2,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1' } } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.1)' } },
+            y: { position: 'left', ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.1)' } },
+            y1: { position: 'right', min: 0, max: 100, ticks: { color: '#10b981' }, grid: { drawOnChartArea: false } }
+          }
+        }
+      });
+
+      const ctx2 = document.getElementById('durationChart').getContext('2d');
+      if (durationChartInstance) durationChartInstance.destroy();
+      durationChartInstance = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: names,
+          datasets: [
+            {
+              label: 'Permanencia Media (Segundos)',
+              data: names.map(n => Math.round(segs[n].avg_duration)),
+              backgroundColor: 'rgba(16, 185, 129, 0.7)',
+              borderColor: '#10b981',
+              borderWidth: 1,
+              yAxisID: 'y'
+            },
+            {
+              label: 'Conversiones (Key Events)',
+              data: names.map(n => segs[n].key_events),
+              type: 'line',
+              borderColor: '#f59e0b',
+              backgroundColor: '#f59e0b',
+              borderWidth: 2,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1' } } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.1)' } },
+            y: { position: 'left', ticks: { color: '#94a3b8' }, grid: { color: 'rgba(148,163,184,0.1)' } },
+            y1: { position: 'right', ticks: { color: '#f59e0b' }, grid: { drawOnChartArea: false } }
+          }
+        }
+      });
+    }
+
+    function renderAdsSection() {
+      const nativeData = REPORT_DATA.native_google_ads_v23 || {};
+      const banner = document.getElementById('native-ads-banner');
+      if (nativeData.status === 'ok') {
+        banner.className = 'glass-card p-4 border-l-4 border-emerald-500';
+        banner.innerHTML = `<div class="text-sm font-semibold text-emerald-400">✅ Google Ads API Nativa (v23 · Explorer Access) Conectada en Tiempo Real</div>
+          <div class="text-xs text-slate-300 mt-1">Extrayendo Cuota de Impresiones (Impression Share), Nivel de Calidad (Quality Score 1-10) y Títulos RSA directamente desde la cuenta 368-683-2552 (DHARTEC S.A.S.).</div>`;
+
+        // Render Native Impression Share
+        document.getElementById('native-is-tbody').innerHTML = (nativeData.campaign_impression_share || []).map(c => `
+          <tr>
+            <td class="py-2.5 px-3 font-semibold text-white">${c.campaign}</td>
+            <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded text-xs bg-emerald-500/20 text-emerald-300">${c.status}</span></td>
+            <td class="py-2.5 px-3 text-slate-300">$${c.daily_budget.toLocaleString('es-AR')}</td>
+            <td class="py-2.5 px-3 text-slate-200">${c.impressions_30d.toLocaleString('es-AR')}</td>
+            <td class="py-2.5 px-3 text-slate-200">${c.clicks_30d}</td>
+            <td class="py-2.5 px-3 text-amber-400 font-semibold">$${c.cost_30d.toLocaleString('es-AR')}</td>
+            <td class="py-2.5 px-3 text-emerald-400 font-bold">${c.search_impression_share_pct}%</td>
+            <td class="py-2.5 px-3 text-blue-400 font-medium">${c.lost_is_budget_pct}%</td>
+            <td class="py-2.5 px-3 font-bold ${c.lost_is_rank_pct > 50 ? 'text-rose-400' : 'text-amber-300'}">${c.lost_is_rank_pct}%</td>
+          </tr>
+        `).join('');
+
+        // Render Native Quality Score
+        document.getElementById('native-qs-tbody').innerHTML = (nativeData.keywords_quality_score || []).map(k => {
+          const qs = k.quality_score;
+          const qsBadge = qs !== null && qs !== undefined
+            ? `<span class="px-2 py-0.5 rounded font-bold text-xs ${qs <= 3 ? 'bg-rose-500/25 text-rose-300 border border-rose-500/40' : (qs <= 6 ? 'bg-amber-500/25 text-amber-300' : 'bg-emerald-500/25 text-emerald-300')}">${qs} / 10</span>`
+            : '<span class="text-xs text-slate-500">S/C</span>';
+          return `
+            <tr>
+              <td class="py-2 px-2 font-medium text-white">${k.keyword} <span class="text-xs text-slate-500">(${k.match_type})</span></td>
+              <td class="py-2 px-2 text-xs text-slate-300">${k.ad_group}</td>
+              <td class="py-2 px-2">${qsBadge}</td>
+              <td class="py-2 px-2">${fmtBadge(k.creative_quality)}</td>
+              <td class="py-2 px-2">${fmtBadge(k.expected_ctr)}</td>
+              <td class="py-2 px-2">${fmtBadge(k.landing_experience)}</td>
+            </tr>
+          `;
+        }).join('');
+
+        // Render Native RSA Ads
+        document.getElementById('native-rsa-tbody').innerHTML = (nativeData.rsa_ads || []).map(a => `
+          <tr>
+            <td class="py-2 px-2">
+              <div class="font-mono text-xs text-white">#${a.ad_id}</div>
+              <span class="text-[11px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">${a.ad_strength}</span>
+            </td>
+            <td class="py-2 px-2">
+              <div class="text-xs font-semibold text-slate-200">${a.ad_group}</div>
+              <div class="text-[11px] text-blue-400 truncate max-w-[180px]">${a.final_url}</div>
+            </td>
+            <td class="py-2 px-2 text-xs text-slate-300">
+              ${(a.headlines || []).map(h => `<span class="inline-block bg-slate-800 border border-slate-700 rounded px-1.5 py-0.5 mr-1 mb-1">${h}</span>`).join('')}
+            </td>
+            <td class="py-2 px-2 font-semibold text-blue-400">${a.ctr_30d}%</td>
+          </tr>
+        `).join('');
+      } else {
+        document.getElementById('native-ads-tables-wrapper').classList.add('hidden');
+      }
+
+      // Tabla 1: Campañas
+      document.getElementById('ads-campaigns-tbody').innerHTML = (REPORT_DATA.ads_financials || []).map(c => `
+        <tr>
+          <td class="py-3 px-3 font-semibold text-white">${c.campaign}</td>
+          <td class="py-3 px-3 text-slate-200">${c.ad_group}</td>
+          <td class="py-3 px-3 text-slate-300">${c.impressions.toLocaleString('es-AR')}</td>
+          <td class="py-3 px-3 text-slate-300">${c.clicks}</td>
+          <td class="py-3 px-3 text-blue-400 font-semibold">${c.ctr_pct}%</td>
+          <td class="py-3 px-3 text-amber-400 font-semibold">$${c.cost.toFixed(2)}</td>
+          <td class="py-3 px-3 text-slate-300">$${c.cpc.toFixed(2)}</td>
+          <td class="py-3 px-3 text-slate-200">${c.sessions} <span class="text-xs text-slate-400">(${c.click_retention_pct}%)</span></td>
+          <td class="py-3 px-3 text-rose-300 font-medium">$${c.cost_per_engaged_session.toFixed(2)}</td>
+          <td class="py-3 px-3 text-emerald-400 font-medium">${fmtDur(c.avg_duration)}</td>
+          <td class="py-3 px-3 text-slate-200">${c.engagement_rate}%</td>
+          <td class="py-3 px-3 font-bold text-white">${c.key_events}</td>
+        </tr>
+      `).join('');
+
+      // Tabla 2: Keywords Compradas
+      const bidded = REPORT_DATA.ads_bidded_keywords || [];
+      document.getElementById('ads-bidded-tbody').innerHTML = bidded.map(b => `
+        <tr>
+          <td class="py-2.5 px-3 font-semibold text-emerald-300">[${b.keyword}]</td>
+          <td class="py-2.5 px-3 text-slate-300">${b.ad_group}</td>
+          <td class="py-2.5 px-3 text-slate-200">${b.impressions.toLocaleString('es-AR')}</td>
+          <td class="py-2.5 px-3 text-slate-200">${b.clicks}</td>
+          <td class="py-2.5 px-3 text-blue-400 font-semibold">${b.ctr_pct}%</td>
+          <td class="py-2.5 px-3 text-amber-400">$${b.cost.toFixed(2)}</td>
+          <td class="py-2.5 px-3 text-slate-300">$${b.cpc.toFixed(2)}</td>
+          <td class="py-2.5 px-3 text-slate-200">${b.sessions}</td>
+          <td class="py-2.5 px-3 font-medium ${b.avg_duration >= 120 ? 'text-emerald-400' : 'text-slate-300'}">${fmtDur(b.avg_duration)}</td>
+          <td class="py-2.5 px-3 text-slate-200">${b.engagement_rate}%</td>
+        </tr>
+      `).join('');
+
+      // Tabla 3: Creatives
+      document.getElementById('ads-creatives-tbody').innerHTML = (REPORT_DATA.ads_creatives || []).map(cr => {
+        const isPartner = cr.network.toLowerCase().includes('partner');
+        return `
+          <tr class="${isPartner ? 'bg-rose-950/30' : ''}">
+            <td class="py-2.5 px-2 font-mono text-xs text-white">#${cr.creative_id}</td>
+            <td class="py-2.5 px-2 text-xs text-slate-300">${cr.ad_group}</td>
+            <td class="py-2.5 px-2 text-xs ${isPartner ? 'text-rose-400 font-semibold' : 'text-emerald-400'}">${cr.network}</td>
+            <td class="py-2.5 px-2 text-slate-300">${cr.impressions}</td>
+            <td class="py-2.5 px-2 text-blue-400">${cr.ctr_pct}%</td>
+            <td class="py-2.5 px-2 text-amber-400">$${cr.cost.toFixed(2)}</td>
+            <td class="py-2.5 px-2 font-medium ${cr.avg_duration < 30 ? 'text-rose-400' : 'text-emerald-400'}">${fmtDur(cr.avg_duration)}</td>
+            <td class="py-2.5 px-2 text-slate-300">${cr.engagement_rate}%</td>
+          </tr>
+        `;
+      }).join('');
+
+      // Tabla 4: Queries
+      document.getElementById('ads-queries-tbody').innerHTML = (REPORT_DATA.ads_keywords || []).slice(0, 15).map(q => `
+        <tr>
+          <td class="py-2.5 px-2 font-medium text-white">"${q.query}"</td>
+          <td class="py-2.5 px-2 text-xs text-slate-400">${q.landing}</td>
+          <td class="py-2.5 px-2 text-slate-300">${q.sessions}</td>
+          <td class="py-2.5 px-2 text-emerald-400 font-semibold">${fmtDur(q.avg_duration)}</td>
+          <td class="py-2.5 px-2 text-blue-400">${q.engagement_rate.toFixed(0)}%</td>
+        </tr>
+      `).join('');
+
+      // Charts Ads
+      const topBidded = bidded.slice(0, 10);
+      new Chart(document.getElementById('adsKeywordsChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: topBidded.map(b => b.keyword),
+          datasets: [
+            {
+              label: 'Impresiones',
+              data: topBidded.map(b => b.impressions),
+              backgroundColor: 'rgba(59, 130, 246, 0.65)',
+              yAxisID: 'y'
+            },
+            {
+              label: 'CTR (%)',
+              data: topBidded.map(b => b.ctr_pct),
+              type: 'line',
+              borderColor: '#f59e0b',
+              backgroundColor: '#f59e0b',
+              borderWidth: 2,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1' } } },
+          scales: {
+            x: { ticks: { color: '#94a3b8', maxRotation: 35, minRotation: 25 } },
+            y: { position: 'left', ticks: { color: '#94a3b8' } },
+            y1: { position: 'right', ticks: { color: '#f59e0b' }, grid: { drawOnChartArea: false } }
+          }
+        }
+      });
+
+      const topDurBidded = [...bidded].sort((a, b) => b.avg_duration - a.avg_duration).slice(0, 10);
+      new Chart(document.getElementById('adsKeywordDurationChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: topDurBidded.map(b => b.keyword),
+          datasets: [{
+            label: 'Permanencia Media (Segundos)',
+            data: topDurBidded.map(b => Math.round(b.avg_duration)),
+            backgroundColor: 'rgba(16, 185, 129, 0.7)',
+            borderColor: '#10b981',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1' } } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' } },
+            y: { ticks: { color: '#e2e8f0' } }
+          }
+        }
+      });
+    }
+
+    function renderFunnelSection() {
+      const hab = REPORT_DATA.hablemos_audit || {};
+      document.getElementById('hablemos-alert-card').innerHTML = `
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h3 class="text-base font-bold text-rose-400">
+              ${hab.is_1to1_pageview_trigger ? '⚠️ Alerta de Paridad 1:1 en /hablemos/ (Pageview = Conversión)' : '✅ Auditoría de Embudo /hablemos/'}
+            </h3>
+            <p class="text-xs text-slate-300 mt-1">
+              En los últimos 90 días se registraron <b>${hab.hablemos_page_views_90d} vistas de página</b> en <code>/hablemos/</code> y exactamente
+              <b>${hab.hablemos_conversions_90d} disparos</b> del evento <code>ads_conversion_Solicitar_cotizaci_n_1</code>.
+              Además, <b>${hab.hablemos_session_starts_90d} visitas (${hab.direct_session_reset_pct}%)</b> iniciaron como sesión nueva Directa.
+            </p>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('hablemos-attr-tbody').innerHTML = (hab.conversion_attribution_breakdown || []).map(r => `
+        <tr>
+          <td class="py-2.5 px-3 font-semibold text-emerald-400">${r.first_user_source_medium}</td>
+          <td class="py-2.5 px-3 text-slate-300">${r.session_source_medium}</td>
+          <td class="py-2.5 px-3 text-slate-300">${r.sessions}</td>
+          <td class="py-2.5 px-3 font-bold text-amber-400">${r.key_events}</td>
+          <td class="py-2.5 px-3 text-slate-200">${fmtDur(r.avg_duration)}</td>
+        </tr>
+      `).join('');
+
+      const landings = REPORT_DATA.target_landings || {};
+      document.getElementById('landings-core-tbody').innerHTML = Object.entries(landings).map(([name, d]) => `
+        <tr>
+          <td class="py-2.5 px-3 font-semibold text-white">${name}</td>
+          <td class="py-2.5 px-3 text-slate-300">${d.users}</td>
+          <td class="py-2.5 px-3 text-slate-200">${d.sessions}</td>
+          <td class="py-2.5 px-3 text-emerald-400 font-semibold">${fmtDur(d.avg_duration)}</td>
+          <td class="py-2.5 px-3 text-blue-400">${d.engagement_rate.toFixed(1)}%</td>
+          <td class="py-2.5 px-3 font-bold text-amber-400">${d.key_events}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('content-pages-tbody').innerHTML = (REPORT_DATA.content_data || []).slice(0, 8).map(p => `
+        <tr>
+          <td class="py-2 px-2 text-xs font-mono text-slate-200">${p.path}</td>
+          <td class="py-2 px-2 text-slate-300">${p.sessions}</td>
+          <td class="py-2 px-2 text-slate-400">${p.views}</td>
+          <td class="py-2 px-2 text-emerald-400 font-medium">${fmtDur(p.avg_duration)}</td>
+          <td class="py-2 px-2 text-blue-400">${p.engagement_rate.toFixed(0)}%</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderDeviceAndGeoSection() {
+      const devMatrix = REPORT_DATA.device_matrix || {};
+      const segNames = Object.keys(devMatrix);
+
+      let devRows = '';
+      segNames.forEach(seg => {
+        ['desktop', 'mobile'].forEach(dev => {
+          const d = devMatrix[seg][dev];
+          devRows += `
+            <tr>
+              <td class="py-2.5 px-3 font-semibold text-white">${seg}</td>
+              <td class="py-2.5 px-3 text-slate-300">${dev === 'desktop' ? '💻 Desktop' : '📱 Mobile'}</td>
+              <td class="py-2.5 px-3 text-slate-200">${d.sessions}</td>
+              <td class="py-2.5 px-3 text-emerald-400 font-medium">${fmtDur(d.avg_duration)}</td>
+              <td class="py-2.5 px-3 text-blue-400">${d.engagement_rate}%</td>
+              <td class="py-2.5 px-3 font-bold text-amber-400">${d.key_events} <span class="text-xs text-slate-400">(${d.conv_rate}%)</span></td>
+            </tr>
+          `;
+        });
+      });
+      document.getElementById('device-tbody').innerHTML = devRows;
+
+      new Chart(document.getElementById('deviceChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: segNames,
+          datasets: [
+            {
+              label: '💻 Desktop (Segundos)',
+              data: segNames.map(s => Math.round(devMatrix[s].desktop.avg_duration)),
+              backgroundColor: 'rgba(16, 185, 129, 0.75)'
+            },
+            {
+              label: '📱 Mobile (Segundos)',
+              data: segNames.map(s => Math.round(devMatrix[s].mobile.avg_duration)),
+              backgroundColor: 'rgba(59, 130, 246, 0.75)'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1' } } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' } },
+            y: { ticks: { color: '#94a3b8' } }
+          }
+        }
+      });
+
+      const geo = REPORT_DATA.geo_summary || [];
+      document.getElementById('geo-tbody').innerHTML = geo.map(g => `
+        <tr>
+          <td class="py-2.5 px-3 font-semibold text-white">${g.province}</td>
+          <td class="py-2.5 px-3 text-slate-200">${g.sessions}</td>
+          <td class="py-2.5 px-3 text-emerald-400 font-medium">${fmtDur(g.avg_duration)}</td>
+          <td class="py-2.5 px-3 text-blue-400">${g.engagement_rate}%</td>
+          <td class="py-2.5 px-3 font-bold text-amber-400">${g.key_events}</td>
+          <td class="py-2.5 px-3 text-xs text-slate-400">${(g.top_segments || []).join(' · ')}</td>
+        </tr>
+      `).join('');
+
+      new Chart(document.getElementById('geoChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: geo.map(g => g.province),
+          datasets: [
+            {
+              label: 'Sesiones (90d)',
+              data: geo.map(g => g.sessions),
+              backgroundColor: 'rgba(59, 130, 246, 0.7)',
+              yAxisID: 'y'
+            },
+            {
+              label: 'Permanencia (Segundos)',
+              data: geo.map(g => Math.round(g.avg_duration)),
+              type: 'line',
+              borderColor: '#10b981',
+              backgroundColor: '#10b981',
+              borderWidth: 2,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1' } } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' } },
+            y: { position: 'left', ticks: { color: '#94a3b8' } },
+            y1: { position: 'right', ticks: { color: '#10b981' }, grid: { drawOnChartArea: false } }
+          }
+        }
+      });
+    }
+
+    function renderMemorySection() {
+      document.getElementById('gemini-insights-box').innerHTML = REPORT_DATA.gemini_insights_html || '';
+      document.getElementById('gemini-memory-box').innerHTML = REPORT_DATA.gemini_memory_html || '';
+
+      const actions = REPORT_DATA.memory_actions || [];
+      document.getElementById('actions-cards-list').innerHTML = actions.map(a => {
+        const isDone = a.status === 'completed';
+        return `
+          <div class="p-4 rounded-xl bg-slate-900/90 border ${isDone ? 'border-emerald-500/40' : 'border-amber-500/30'}">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 rounded ${isDone ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'}">
+                ${isDone ? '✅ COMPLETADA' : '⏳ PENDIENTE'} · ${a.id}
+              </span>
+              <span class="text-xs text-slate-400">Creada: ${a.created_at}</span>
+            </div>
+            <div class="text-xs font-semibold text-blue-400 uppercase tracking-wider">${a.topic}</div>
+            <h4 class="text-sm font-bold text-white mt-0.5">${a.title}</h4>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed">${a.description}</p>
+            ${a.target_metric ? `<div class="mt-3 text-xs text-emerald-400 bg-emerald-950/30 p-2 rounded border border-emerald-800/40">🎯 <b>Métrica Objetivo:</b> ${a.target_metric}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderQualityScoreMonitorSection() {
+      const nativeAds = REPORT_DATA.native_google_ads_v23 || {};
+      const kws = nativeAds.keywords_quality_score || [];
+      const qsSum = nativeAds.quality_score_summary || {};
+
+      const scored = kws.filter(k => k.quality_score !== null && k.quality_score !== undefined);
+      const crit = scored.filter(k => k.quality_score <= 3);
+      const regular = scored.filter(k => k.quality_score >= 4 && k.quality_score <= 6);
+      const good = scored.filter(k => k.quality_score >= 7);
+
+      document.getElementById('qs-kpi-summary-cards').innerHTML = `
+        <div class="glass-card p-5 border-l-4 border-amber-500">
+          <div class="text-xs text-slate-400">Quality Score Ponderado por Impresiones</div>
+          <div class="text-3xl font-bold text-amber-400 mt-1">${qsSum.weighted_avg_qs || '2.99'} <span class="text-sm font-normal text-slate-400">/ 10</span></div>
+          <p class="text-xs text-slate-300 mt-2">
+            El promedio general de la cuenta está por debajo de 5 puntos, lo que causa que Google aumente el costo por clic y limite apariciones.
+          </p>
+        </div>
+        <div class="glass-card p-5 border-l-4 border-rose-500">
+          <div class="text-xs text-slate-400">Palabras Clave en Alerta Crítica (1 a 3 / 10)</div>
+          <div class="text-3xl font-bold text-rose-400 mt-1">${crit.length} <span class="text-sm font-normal text-slate-400">de ${scored.length} palabras</span></div>
+          <p class="text-xs text-slate-300 mt-2">
+            Concentran más del 60% de las búsquedas de habilitaciones y huella ('gestión ambiental', 'informe de impacto', 'la huella de carbono').
+          </p>
+        </div>
+        <div class="glass-card p-5 border-l-4 border-blue-500">
+          <div class="text-xs text-slate-400">Diagnóstico Principal del Problema</div>
+          <div class="text-lg font-bold text-blue-300 mt-1">${qsSum.below_avg_landing_count || 22} de ${scored.length} en 'Inferior al Promedio'</div>
+          <p class="text-xs text-slate-300 mt-2">
+            El 85% de las notas bajas se debe a que la página de destino no tiene los términos exactos que busca el usuario.
+          </p>
+        </div>
+      `;
+
+      // Tabla Semáforo
+      document.getElementById('qs-monitor-table-body').innerHTML = scored.map(k => {
+        const qs = k.quality_score;
+        let statusBadge = '';
+        let rowClass = '';
+        let action = '';
+
+        if (qs <= 3) {
+          statusBadge = '<span class="px-2 py-0.5 rounded text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40">🔴 CRÍTICO</span>';
+          rowClass = 'bg-rose-950/20';
+          action = 'Poner este término textual en el título de la página de destino para subir la nota.';
+        } else if (qs <= 6) {
+          statusBadge = '<span class="px-2 py-0.5 rounded text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">🟡 REGULAR</span>';
+          action = 'Reforzar el término dentro de los párrafos y subtítulos de la página.';
+        } else {
+          statusBadge = '<span class="px-2 py-0.5 rounded text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">🟢 EXCELENTE</span>';
+          action = 'Mantener y proteger esta keyword; es de bajo costo y alta conversión.';
+        }
+
+        return `
+          <tr class="${rowClass}">
+            <td class="py-2.5 px-3">${statusBadge}</td>
+            <td class="py-2.5 px-3 font-semibold text-white">[${k.keyword}]</td>
+            <td class="py-2.5 px-3 text-xs text-slate-300">${k.ad_group}</td>
+            <td class="py-2.5 px-3 font-bold text-sm ${qs <= 3 ? 'text-rose-400' : (qs <= 6 ? 'text-amber-300' : 'text-emerald-400')}">${qs} / 10</td>
+            <td class="py-2.5 px-3">${fmtBadge(k.creative_quality)}</td>
+            <td class="py-2.5 px-3">${fmtBadge(k.expected_ctr)}</td>
+            <td class="py-2.5 px-3">${fmtBadge(k.landing_experience)}</td>
+            <td class="py-2.5 px-3 text-slate-200">${k.impressions_30d.toLocaleString('es-AR')}</td>
+            <td class="py-2.5 px-3 text-xs text-slate-300">${action}</td>
+          </tr>
+        `;
+      }).join('');
+
+      // Gráficos Quality Score
+      new Chart(document.getElementById('qsDistributionChart').getContext('2d'), {
+        type: 'pie',
+        data: {
+          labels: ['Críticas (1-3 pts)', 'Regulares (4-6 pts)', 'Saludables (7-10 pts)'],
+          datasets: [{
+            data: [crit.length, regular.length, good.length],
+            backgroundColor: ['#f43f5e', '#f59e0b', '#10b981'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom', labels: { color: '#cbd5e1' } } }
+        }
+      });
+
+      // Conteo de factores
+      let landingBelow = 0, creativeBelow = 0, ctrBelow = 0;
+      scored.forEach(k => {
+        if (k.landing_experience === 'BELOW_AVERAGE') landingBelow++;
+        if (k.creative_quality === 'BELOW_AVERAGE') creativeBelow++;
+        if (k.expected_ctr === 'BELOW_AVERAGE') ctrBelow++;
+      });
+
+      new Chart(document.getElementById('qsComponentsChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Página de Destino (Landing)', 'CTR Esperado', 'Relevancia Anuncio'],
+          datasets: [{
+            label: 'Keywords con calificación INFERIOR al promedio',
+            data: [landingBelow, ctrBelow, creativeBelow],
+            backgroundColor: ['rgba(244, 63, 94, 0.8)', 'rgba(245, 158, 11, 0.8)', 'rgba(59, 130, 246, 0.8)'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#cbd5e1' } } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' } },
+            y: { ticks: { color: '#94a3b8' } }
+          }
+        }
+      });
+    }
+
+    function renderPendingTasksSection() {
+      const actions = REPORT_DATA.memory_actions || [];
+      const pending = actions.filter(a => a.status === 'pending');
+
+      const buildCard = (a) => `
+        <div class="p-5 rounded-xl bg-slate-900/90 border border-amber-500/30 hover:border-amber-500/60 transition space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">
+              ⏳ ${a.id}
+            </span>
+            <span class="text-xs text-slate-400">Creada: ${a.created_at}</span>
+          </div>
+          <div>
+            <div class="text-[11px] font-semibold text-amber-400 uppercase tracking-wider">${a.topic}</div>
+            <h4 class="text-sm font-bold text-white mt-0.5">${a.title}</h4>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">${a.description}</p>
+          ${a.target_metric ? `<div class="text-xs text-emerald-400 bg-emerald-950/40 p-2.5 rounded-lg border border-emerald-800/40">🎯 <b>Beneficio / Meta:</b> ${a.target_metric}</div>` : ''}
+        </div>
+      `;
+
+      const cardsHtml = pending.length > 0 
+        ? pending.map(buildCard).join('')
+        : '<div class="text-xs text-slate-400 p-4">No hay tareas pendientes en este momento.</div>';
+
+      const dedicatedEl = document.getElementById('dedicated-pending-list');
+      if (dedicatedEl) dedicatedEl.innerHTML = cardsHtml;
+
+      const footerEl = document.getElementById('footer-pending-actions');
+      if (footerEl) footerEl.innerHTML = cardsHtml;
+    }
+
+    // Inicializar Dashboard
+    renderKPIs();
+    renderChannelsSection();
+    renderAdsSection();
+    renderQualityScoreMonitorSection();
+    renderFunnelSection();
+    renderDeviceAndGeoSection();
+    renderMemorySection();
+    renderPendingTasksSection();
+  </script>
+</body>
+</html>

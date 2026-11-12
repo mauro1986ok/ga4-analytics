@@ -1,0 +1,48 @@
+name: Reporte Semanal GA4 Dhartec a Google Chat & GitHub Pages
+
+on:
+  schedule:
+    # Ejecutar todos los viernes a las 12:00 UTC (09:00 AM hora de Argentina / ART UTC-3)
+    - cron: '0 12 * * 5'
+  workflow_dispatch: # Permite ejecutar manualmente desde GitHub con un clic
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  run-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generar Dashboard Web y enviar Insights a Google Chat
+        env:
+          GA4_CREDENTIALS_JSON: ${{ secrets.GA4_CREDENTIALS_JSON }}
+          GOOGLE_CHAT_WEBHOOK_URL: ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID || '291106508' }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL || '' }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python report_generator.py
+
+      - name: Publicar Dashboard en docs/ (GitHub Pages) y persistir Memoria
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add actions_memory.json docs/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: actualizar dashboard estadístico y memoria GA4 [skip ci]" && git push)
