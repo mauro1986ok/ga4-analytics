@@ -603,6 +603,7 @@ def generate_web_dashboard(output_dir: Path, report_bundle: dict) -> Path:
       const qsSum = nativeAds.quality_score_summary || {{}};
       const avgQs = qsSum.weighted_avg_qs !== undefined ? qsSum.weighted_avg_qs.toFixed(1) : 'S/D';
       const critCount = qsSum.critical_keywords_count || 0;
+      const hab = REPORT_DATA.hablemos_audit || {{}};
 
       document.getElementById('kpi-cards-container').innerHTML = `
         <div class="glass-card p-4">
@@ -1249,15 +1250,24 @@ def generate_web_dashboard(output_dir: Path, report_bundle: dict) -> Path:
       if (footerEl) footerEl.innerHTML = cardsHtml;
     }}
 
-    // Inicializar Dashboard
-    renderKPIs();
-    renderChannelsSection();
-    renderAdsSection();
-    renderQualityScoreMonitorSection();
-    renderFunnelSection();
-    renderDeviceAndGeoSection();
-    renderMemorySection();
-    renderPendingTasksSection();
+    // Inicializar Dashboard con ejecución aislada por bloque
+    const initSteps = [
+      ['KPIs', renderKPIs],
+      ['Canales', renderChannelsSection],
+      ['Google Ads', renderAdsSection],
+      ['Quality Score', renderQualityScoreMonitorSection],
+      ['Embudo', renderFunnelSection],
+      ['Dispositivos y Geo', renderDeviceAndGeoSection],
+      ['Memoria', renderMemorySection],
+      ['Tareas Pendientes', renderPendingTasksSection]
+    ];
+    initSteps.forEach(([name, fn]) => {{
+      try {{
+        fn();
+      }} catch (err) {{
+        console.error(`Error inicializando sección ${{name}}:`, err);
+      }}
+    }});
   </script>
 </body>
 </html>
