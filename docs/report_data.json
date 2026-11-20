@@ -1,133 +1,115 @@
 {
-  "generated_at": "13/11/2026 19:01",
+  "generated_at": "20/11/2026 19:30",
   "property_id": "291106508",
   "google_ads_customer_id": "3686832552",
   "data_7d": {
     "label": "Últimos 7 Días",
     "segments": {
       "Google Ads": {
-        "users": 85,
-        "sessions": 90,
-        "engagement_rate": 53.333333333333336,
-        "avg_duration": 85.85540200000001,
-        "pages_per_session": 1.3222222222222222,
+        "users": 67,
+        "sessions": 70,
+        "engagement_rate": 64.28571428571428,
+        "avg_duration": 100.20957924285715,
+        "pages_per_session": 1.3571428571428572,
         "key_events": 0,
         "top_sources": {
           "google / cpc": {
-            "sessions": 70,
-            "avg_duration": 110.02747825714286,
-            "engagement_rate": 64.28571428571429,
+            "sessions": 69,
+            "avg_duration": 101.44112484057972,
+            "engagement_rate": 63.76811594202898,
             "key_events": 0
           },
           "(data not available)": {
-            "sessions": 16,
-            "avg_duration": 1.566418875,
-            "engagement_rate": 18.75,
-            "key_events": 0
-          },
-          "adwords / ppc": {
-            "sessions": 4,
-            "avg_duration": 0.0,
-            "engagement_rate": 0.0,
+            "sessions": 1,
+            "avg_duration": 15.232933,
+            "engagement_rate": 100.0,
             "key_events": 0
           }
         }
       },
       "Meta Ads (IG/FB/AN)": {
-        "users": 527,
-        "sessions": 552,
-        "engagement_rate": 8.51449275362319,
-        "avg_duration": 16.47925007427536,
-        "pages_per_session": 1.1068840579710144,
-        "key_events": 2,
+        "users": 866,
+        "sessions": 885,
+        "engagement_rate": 8.248587570621469,
+        "avg_duration": 5.723815122033898,
+        "pages_per_session": 1.0937853107344633,
+        "key_events": 3,
         "top_sources": {
-          "fb / paid": {
-            "sessions": 284,
-            "avg_duration": 26.73343119014084,
-            "engagement_rate": 14.788732394366196,
-            "key_events": 0
-          },
           "ig / paid": {
-            "sessions": 255,
-            "avg_duration": 0.4911044470588235,
-            "engagement_rate": 1.1764705882352942,
+            "sessions": 473,
+            "avg_duration": 1.2206932050739958,
+            "engagement_rate": 4.651162790697675,
             "key_events": 0
           },
-          "instagram.com / referral": {
-            "sessions": 3,
-            "avg_duration": 0.0,
-            "engagement_rate": 0.0,
+          "fb / paid": {
+            "sessions": 380,
+            "avg_duration": 4.448866821052632,
+            "engagement_rate": 11.578947368421053,
             "key_events": 0
           },
-          "adsmanager.facebook.com / referral": {
-            "sessions": 3,
-            "avg_duration": 459.67331633333333,
-            "engagement_rate": 66.66666666666666,
-            "key_events": 2
+          "wa / paid": {
+            "sessions": 22,
+            "avg_duration": 0.8975983636363637,
+            "engagement_rate": 13.636363636363635,
+            "key_events": 0
+          },
+          "facebook.com / referral": {
+            "sessions": 6,
+            "avg_duration": 2.3260875,
+            "engagement_rate": 16.666666666666664,
+            "key_events": 0
           }
         }
       },
       "Google Orgánico": {
-        "users": 15,
-        "sessions": 19,
-        "engagement_rate": 73.68421052631578,
-        "avg_duration": 198.15117431578946,
-        "pages_per_session": 1.263157894736842,
-        "key_events": 1,
+        "users": 16,
+        "sessions": 18,
+        "engagement_rate": 66.66666666666666,
+        "avg_duration": 157.26201894444443,
+        "pages_per_session": 1.7222222222222223,
+        "key_events": 0,
         "top_sources": {
           "google / organic": {
-            "sessions": 19,
-            "avg_duration": 198.15117431578946,
-            "engagement_rate": 73.68421052631578,
-            "key_events": 1
+            "sessions": 18,
+            "avg_duration": 157.26201894444443,
+            "engagement_rate": 66.66666666666666,
+            "key_events": 0
           }
         }
       },
       "Directo": {
-        "users": 60,
-        "sessions": 66,
-        "engagement_rate": 30.303030303030305,
-        "avg_duration": 125.25158045454543,
-        "pages_per_session": 2.227272727272727,
-        "key_events": 7,
+        "users": 41,
+        "sessions": 49,
+        "engagement_rate": 36.734693877551024,
+        "avg_duration": 210.69547434693877,
+        "pages_per_session": 1.530612244897959,
+        "key_events": 6,
         "top_sources": {
           "(direct) / (none)": {
-            "sessions": 66,
-            "avg_duration": 125.25158045454543,
-            "engagement_rate": 30.303030303030305,
-            "key_events": 7
+            "sessions": 49,
+            "avg_duration": 210.69547434693877,
+            "engagement_rate": 36.734693877551024,
+            "key_events": 6
           }
         }
       },
       "IA & Otros": {
-        "users": 13,
-        "sessions": 15,
-        "engagement_rate": 20.0,
-        "avg_duration": 54.08648986666666,
-        "pages_per_session": 0.8666666666666667,
+        "users": 2,
+        "sessions": 8,
+        "engagement_rate": 37.5,
+        "avg_duration": 82.836210625,
+        "pages_per_session": 1.25,
         "key_events": 0,
         "top_sources": {
-          "(not set)": {
-            "sessions": 6,
-            "avg_duration": 4.721953833333333,
-            "engagement_rate": 0.0,
+          "localhost:8080 / referral": {
+            "sessions": 7,
+            "avg_duration": 90.88614271428573,
+            "engagement_rate": 28.57142857142857,
             "key_events": 0
           },
-          "aocr.org / referral": {
-            "sessions": 4,
-            "avg_duration": 0.0,
-            "engagement_rate": 0.0,
-            "key_events": 0
-          },
-          "integrations.funnels.top / referral": {
-            "sessions": 3,
-            "avg_duration": 232.18486366666664,
-            "engagement_rate": 66.66666666666666,
-            "key_events": 0
-          },
-          "ig / social": {
+          "bing / organic": {
             "sessions": 1,
-            "avg_duration": 86.411034,
+            "avg_duration": 26.486686,
             "engagement_rate": 100.0,
             "key_events": 0
           }
@@ -137,57 +119,57 @@
   },
   "wow_deltas": {
     "Google Ads": {
-      "sessions_delta": "+22%",
-      "duration_delta": "-27%",
-      "engagement_delta": "-19%",
+      "sessions_delta": "-5%",
+      "duration_delta": "-15%",
+      "engagement_delta": "+6%",
       "prev_sessions": 74
     },
     "Meta Ads (IG/FB/AN)": {
-      "sessions_delta": "-13%",
-      "duration_delta": "+95%",
-      "engagement_delta": "+2%",
-      "prev_sessions": 635
+      "sessions_delta": "+56%",
+      "duration_delta": "-66%",
+      "engagement_delta": "-8%",
+      "prev_sessions": 566
     },
     "Google Orgánico": {
-      "sessions_delta": "-32%",
-      "duration_delta": "-37%",
-      "engagement_delta": "+15%",
-      "prev_sessions": 28
+      "sessions_delta": "-10%",
+      "duration_delta": "-31%",
+      "engagement_delta": "-11%",
+      "prev_sessions": 20
     },
     "Directo": {
-      "sessions_delta": "-14%",
-      "duration_delta": "+338%",
-      "engagement_delta": "-40%",
-      "prev_sessions": 77
+      "sessions_delta": "-26%",
+      "duration_delta": "+68%",
+      "engagement_delta": "+21%",
+      "prev_sessions": 66
     },
     "IA & Otros": {
-      "sessions_delta": "+275%",
-      "duration_delta": "-54%",
-      "engagement_delta": "-73%",
-      "prev_sessions": 4
+      "sessions_delta": "-11%",
+      "duration_delta": "-70%",
+      "engagement_delta": "+13%",
+      "prev_sessions": 9
     }
   },
   "data_30d": {
     "label": "Últimos 30 Días",
     "segments": {
       "Google Ads": {
-        "users": 302,
-        "sessions": 330,
-        "engagement_rate": 64.24242424242425,
-        "avg_duration": 101.11950385151518,
-        "pages_per_session": 1.3484848484848484,
+        "users": 285,
+        "sessions": 314,
+        "engagement_rate": 64.96815286624204,
+        "avg_duration": 115.25698276751594,
+        "pages_per_session": 1.3535031847133758,
         "key_events": 1,
         "top_sources": {
           "google / cpc": {
             "sessions": 300,
-            "avg_duration": 109.69654576,
-            "engagement_rate": 68.0,
+            "avg_duration": 119.49498756000001,
+            "engagement_rate": 66.33333333333333,
             "key_events": 1
           },
           "(data not available)": {
-            "sessions": 23,
-            "avg_duration": 20.020545347826086,
-            "engagement_rate": 34.78260869565217,
+            "sessions": 7,
+            "avg_duration": 48.88518871428572,
+            "engagement_rate": 71.42857142857143,
             "key_events": 0
           },
           "adwords / ppc": {
@@ -199,90 +181,84 @@
         }
       },
       "Meta Ads (IG/FB/AN)": {
-        "users": 4850,
-        "sessions": 5955,
-        "engagement_rate": 15.197313182199832,
-        "avg_duration": 93.5925898339211,
-        "pages_per_session": 1.2272040302267002,
-        "key_events": 2,
+        "users": 3990,
+        "sessions": 4832,
+        "engagement_rate": 14.92135761589404,
+        "avg_duration": 85.77645195653974,
+        "pages_per_session": 1.2230960264900663,
+        "key_events": 5,
         "top_sources": {
           "ig / paid": {
-            "sessions": 2799,
-            "avg_duration": 2.5072208431582705,
-            "engagement_rate": 2.1436227224008575,
+            "sessions": 2244,
+            "avg_duration": 2.2896893057041,
+            "engagement_rate": 3.074866310160428,
             "key_events": 0
           },
           "an / paid": {
-            "sessions": 2270,
-            "avg_duration": 236.76642456123346,
-            "engagement_rate": 32.24669603524229,
+            "sessions": 1318,
+            "avg_duration": 297.48944725341426,
+            "engagement_rate": 37.025796661608496,
             "key_events": 0
           },
           "fb / paid": {
-            "sessions": 834,
-            "avg_duration": 12.66790129616307,
-            "engagement_rate": 12.709832134292565,
+            "sessions": 1205,
+            "avg_duration": 10.562995302074688,
+            "engagement_rate": 12.531120331950207,
             "key_events": 0
           },
-          "th / paid": {
+          "wa / paid": {
             "sessions": 22,
-            "avg_duration": 26.577943545454545,
-            "engagement_rate": 4.545454545454546,
+            "avg_duration": 0.8975983636363637,
+            "engagement_rate": 13.636363636363635,
             "key_events": 0
           }
         }
       },
       "Google Orgánico": {
-        "users": 75,
+        "users": 77,
         "sessions": 103,
-        "engagement_rate": 61.165048543689316,
-        "avg_duration": 198.66940740776698,
-        "pages_per_session": 1.2135922330097086,
-        "key_events": 5,
+        "engagement_rate": 62.13592233009708,
+        "avg_duration": 220.4071420485437,
+        "pages_per_session": 1.3009708737864079,
+        "key_events": 2,
         "top_sources": {
           "google / organic": {
             "sessions": 103,
-            "avg_duration": 198.66940740776698,
-            "engagement_rate": 61.165048543689316,
-            "key_events": 5
+            "avg_duration": 220.4071420485437,
+            "engagement_rate": 62.13592233009708,
+            "key_events": 2
           }
         }
       },
       "Directo": {
-        "users": 289,
-        "sessions": 301,
-        "engagement_rate": 36.21262458471761,
-        "avg_duration": 42.866813,
-        "pages_per_session": 1.4019933554817277,
-        "key_events": 77,
+        "users": 294,
+        "sessions": 315,
+        "engagement_rate": 38.095238095238095,
+        "avg_duration": 71.79485333650793,
+        "pages_per_session": 1.4190476190476191,
+        "key_events": 78,
         "top_sources": {
           "(direct) / (none)": {
-            "sessions": 301,
-            "avg_duration": 42.866813,
-            "engagement_rate": 36.21262458471761,
-            "key_events": 77
+            "sessions": 315,
+            "avg_duration": 71.79485333650793,
+            "engagement_rate": 38.095238095238095,
+            "key_events": 78
           }
         }
       },
       "IA & Otros": {
-        "users": 29,
-        "sessions": 32,
-        "engagement_rate": 37.5,
-        "avg_duration": 126.0944171875,
-        "pages_per_session": 1.3125,
-        "key_events": 2,
+        "users": 19,
+        "sessions": 27,
+        "engagement_rate": 40.74074074074074,
+        "avg_duration": 159.9428481111111,
+        "pages_per_session": 1.4814814814814814,
+        "key_events": 0,
         "top_sources": {
-          "(not set)": {
-            "sessions": 10,
-            "avg_duration": 66.083695,
-            "engagement_rate": 0.0,
+          "localhost:8080 / referral": {
+            "sessions": 7,
+            "avg_duration": 90.88614271428573,
+            "engagement_rate": 28.57142857142857,
             "key_events": 0
-          },
-          "bing / organic": {
-            "sessions": 4,
-            "avg_duration": 105.9604085,
-            "engagement_rate": 100.0,
-            "key_events": 1
           },
           "aocr.org / referral": {
             "sessions": 4,
@@ -290,10 +266,16 @@
             "engagement_rate": 0.0,
             "key_events": 0
           },
-          "l.wl.co / referral": {
+          "(not set)": {
+            "sessions": 4,
+            "avg_duration": 158.12630675,
+            "engagement_rate": 0.0,
+            "key_events": 0
+          },
+          "bing / organic": {
             "sessions": 3,
-            "avg_duration": 13.302733666666667,
-            "engagement_rate": 33.33333333333333,
+            "avg_duration": 65.694215,
+            "engagement_rate": 100.0,
             "key_events": 0
           }
         }
@@ -304,27 +286,27 @@
     "label": "Últimos 90 Días",
     "segments": {
       "Google Ads": {
-        "users": 807,
-        "sessions": 902,
-        "engagement_rate": 61.86252771618626,
-        "avg_duration": 109.64671327494456,
-        "pages_per_session": 1.3314855875831486,
+        "users": 810,
+        "sessions": 904,
+        "engagement_rate": 62.942477876106196,
+        "avg_duration": 113.55319594690266,
+        "pages_per_session": 1.345132743362832,
         "key_events": 3,
         "top_sources": {
           "google / cpc": {
-            "sessions": 855,
-            "avg_duration": 113.55449518362572,
-            "engagement_rate": 63.62573099415205,
+            "sessions": 874,
+            "avg_duration": 115.38864635354692,
+            "engagement_rate": 63.7299771167048,
             "key_events": 2
           },
           "(data not available)": {
-            "sessions": 32,
-            "avg_duration": 56.63256225,
-            "engagement_rate": 43.75,
+            "sessions": 16,
+            "avg_duration": 112.6507639375,
+            "engagement_rate": 75.0,
             "key_events": 1
           },
           "adwords / ppc": {
-            "sessions": 15,
+            "sessions": 14,
             "avg_duration": 0.0,
             "engagement_rate": 0.0,
             "key_events": 0
@@ -332,29 +314,29 @@
         }
       },
       "Meta Ads (IG/FB/AN)": {
-        "users": 6701,
-        "sessions": 8105,
-        "engagement_rate": 16.804441702652685,
-        "avg_duration": 106.35701049475632,
-        "pages_per_session": 1.254780999383097,
-        "key_events": 3,
+        "users": 7580,
+        "sessions": 9009,
+        "engagement_rate": 15.972915972915974,
+        "avg_duration": 96.30327934210236,
+        "pages_per_session": 1.2380952380952381,
+        "key_events": 6,
         "top_sources": {
+          "ig / paid": {
+            "sessions": 3897,
+            "avg_duration": 2.0895690672312033,
+            "engagement_rate": 2.4890941750064153,
+            "key_events": 0
+          },
           "an / paid": {
             "sessions": 3707,
             "avg_duration": 226.27267803075264,
             "engagement_rate": 30.995414081467494,
             "key_events": 0
           },
-          "ig / paid": {
-            "sessions": 3418,
-            "avg_duration": 2.211517277647747,
-            "engagement_rate": 2.1650087770626096,
-            "key_events": 0
-          },
           "fb / paid": {
-            "sessions": 906,
-            "avg_duration": 12.970299956953642,
-            "engagement_rate": 13.35540838852097,
+            "sessions": 1300,
+            "avg_duration": 10.72466276076923,
+            "engagement_rate": 12.923076923076923,
             "key_events": 0
           },
           "th / paid": {
@@ -366,54 +348,54 @@
         }
       },
       "Google Orgánico": {
-        "users": 287,
-        "sessions": 378,
-        "engagement_rate": 60.05291005291006,
-        "avg_duration": 204.92520257142857,
-        "pages_per_session": 1.3253968253968254,
-        "key_events": 20,
+        "users": 280,
+        "sessions": 367,
+        "engagement_rate": 60.49046321525886,
+        "avg_duration": 211.64215389918257,
+        "pages_per_session": 1.3514986376021798,
+        "key_events": 19,
         "top_sources": {
           "google / organic": {
-            "sessions": 378,
-            "avg_duration": 204.92520257142857,
-            "engagement_rate": 60.05291005291006,
-            "key_events": 20
+            "sessions": 367,
+            "avg_duration": 211.64215389918257,
+            "engagement_rate": 60.49046321525886,
+            "key_events": 19
           }
         }
       },
       "Directo": {
-        "users": 665,
-        "sessions": 710,
-        "engagement_rate": 31.83098591549296,
-        "avg_duration": 68.20124947605633,
-        "pages_per_session": 1.3225352112676056,
-        "key_events": 108,
+        "users": 671,
+        "sessions": 718,
+        "engagement_rate": 32.45125348189415,
+        "avg_duration": 77.76996096657382,
+        "pages_per_session": 1.3454038997214484,
+        "key_events": 109,
         "top_sources": {
           "(direct) / (none)": {
-            "sessions": 710,
-            "avg_duration": 68.20124947605633,
-            "engagement_rate": 31.83098591549296,
-            "key_events": 108
+            "sessions": 718,
+            "avg_duration": 77.76996096657382,
+            "engagement_rate": 32.45125348189415,
+            "key_events": 109
           }
         }
       },
       "IA & Otros": {
-        "users": 88,
-        "sessions": 105,
-        "engagement_rate": 43.80952380952381,
-        "avg_duration": 132.43917455238093,
-        "pages_per_session": 1.161904761904762,
-        "key_events": 8,
+        "users": 76,
+        "sessions": 97,
+        "engagement_rate": 48.45360824742268,
+        "avg_duration": 159.79302039175255,
+        "pages_per_session": 1.2577319587628866,
+        "key_events": 7,
         "top_sources": {
           "bing / organic": {
-            "sessions": 39,
-            "avg_duration": 178.3889875128205,
-            "engagement_rate": 64.1025641025641,
+            "sessions": 35,
+            "avg_duration": 198.9199816,
+            "engagement_rate": 71.42857142857143,
             "key_events": 1
           },
           "(not set)": {
-            "sessions": 21,
-            "avg_duration": 31.469238666666666,
+            "sessions": 13,
+            "avg_duration": 48.655481384615385,
             "engagement_rate": 0.0,
             "key_events": 0
           },
@@ -423,11 +405,11 @@
             "engagement_rate": 50.0,
             "key_events": 1
           },
-          "chatgpt.com / ai-assistant": {
-            "sessions": 6,
-            "avg_duration": 485.0515706666667,
-            "engagement_rate": 100.0,
-            "key_events": 6
+          "localhost:8080 / referral": {
+            "sessions": 7,
+            "avg_duration": 90.88614271428573,
+            "engagement_rate": 28.57142857142857,
+            "key_events": 0
           }
         }
       }
@@ -437,46 +419,46 @@
     {
       "campaign": "CAMPAÑA-UNI-HUELLA-EXT.AR #2",
       "ad_group": "Grupo Huella",
-      "impressions": 11382,
-      "clicks": 430,
-      "ctr_pct": 3.78,
-      "sessions": 364,
-      "click_retention_pct": 84.7,
-      "cost": 233.27,
-      "cpc": 0.54,
-      "cost_per_engaged_session": 0.99,
-      "engagement_rate": 64.6,
-      "avg_duration": 92.07641876648351,
+      "impressions": 11711,
+      "clicks": 453,
+      "ctr_pct": 3.87,
+      "sessions": 387,
+      "click_retention_pct": 85.4,
+      "cost": 239.2,
+      "cpc": 0.53,
+      "cost_per_engaged_session": 0.95,
+      "engagement_rate": 64.9,
+      "avg_duration": 93.45542181653745,
       "key_events": 0
     },
     {
       "campaign": "CAMPAÑA-UNI-HAB.AR",
       "ad_group": "Ingenieria / Gestión",
-      "impressions": 9370,
-      "clicks": 290,
-      "ctr_pct": 3.09,
+      "impressions": 9217,
+      "clicks": 302,
+      "ctr_pct": 3.28,
       "sessions": 250,
-      "click_retention_pct": 86.2,
-      "cost": 155.32,
-      "cpc": 0.54,
-      "cost_per_engaged_session": 1.0,
-      "engagement_rate": 62.0,
-      "avg_duration": 98.394931236,
+      "click_retention_pct": 82.8,
+      "cost": 160.21,
+      "cpc": 0.53,
+      "cost_per_engaged_session": 1.05,
+      "engagement_rate": 61.2,
+      "avg_duration": 95.855790068,
       "key_events": 0
     },
     {
       "campaign": "CAMPAÑA-UNI-HAB.AR",
       "ad_group": "Consultoría - Habilitaciones",
-      "impressions": 7119,
-      "clicks": 256,
-      "ctr_pct": 3.6,
-      "sessions": 217,
-      "click_retention_pct": 84.8,
-      "cost": 155.25,
+      "impressions": 7155,
+      "clicks": 252,
+      "ctr_pct": 3.52,
+      "sessions": 214,
+      "click_retention_pct": 84.9,
+      "cost": 153.78,
       "cpc": 0.61,
-      "cost_per_engaged_session": 1.0,
-      "engagement_rate": 71.4,
-      "avg_duration": 179.60619420276498,
+      "cost_per_engaged_session": 1.01,
+      "engagement_rate": 71.5,
+      "avg_duration": 190.27327641588786,
       "key_events": 2
     },
     {
@@ -499,10 +481,10 @@
     {
       "ad_group": "Grupo Huella",
       "keyword": "la huella de carbono",
-      "impressions": 3523,
+      "impressions": 3504,
       "clicks": 79,
-      "ctr_pct": 2.24,
-      "cost": 37.28,
+      "ctr_pct": 2.25,
+      "cost": 37.27,
       "cpc": 0.47,
       "sessions": 62,
       "avg_duration": 90.7,
@@ -511,9 +493,9 @@
     {
       "ad_group": "Grupo Huella",
       "keyword": "tu huella de carbono",
-      "impressions": 2806,
+      "impressions": 2777,
       "clicks": 76,
-      "ctr_pct": 2.71,
+      "ctr_pct": 2.74,
       "cost": 26.55,
       "cpc": 0.35,
       "sessions": 60,
@@ -523,130 +505,142 @@
     {
       "ad_group": "Ingenieria / Gestión",
       "keyword": "gestión medioambiental",
-      "impressions": 2688,
-      "clicks": 72,
-      "ctr_pct": 2.68,
-      "cost": 39.44,
-      "cpc": 0.55,
-      "sessions": 53,
-      "avg_duration": 95.0,
-      "engagement_rate": 60.4
+      "impressions": 2712,
+      "clicks": 80,
+      "ctr_pct": 2.95,
+      "cost": 43.39,
+      "cpc": 0.54,
+      "sessions": 56,
+      "avg_duration": 90.8,
+      "engagement_rate": 58.9
     },
     {
       "ad_group": "Ingenieria / Gestión",
       "keyword": "gestión ambiental",
-      "impressions": 2579,
-      "clicks": 82,
-      "ctr_pct": 3.18,
-      "cost": 42.36,
+      "impressions": 2589,
+      "clicks": 89,
+      "ctr_pct": 3.44,
+      "cost": 46.62,
       "cpc": 0.52,
-      "sessions": 65,
-      "avg_duration": 105.5,
-      "engagement_rate": 63.1
+      "sessions": 68,
+      "avg_duration": 87.5,
+      "engagement_rate": 60.3
     },
     {
       "ad_group": "Ingenieria / Gestión",
       "keyword": "informe de impacto ambiental",
-      "impressions": 1363,
-      "clicks": 36,
-      "ctr_pct": 2.64,
-      "cost": 25.72,
-      "cpc": 0.71,
-      "sessions": 38,
-      "avg_duration": 103.9,
-      "engagement_rate": 57.9
-    },
-    {
-      "ad_group": "Ingenieria / Gestión",
-      "keyword": "certificado de aptitud ambiental",
-      "impressions": 1207,
-      "clicks": 30,
-      "ctr_pct": 2.49,
-      "cost": 25.4,
-      "cpc": 0.85,
-      "sessions": 25,
-      "avg_duration": 97.1,
-      "engagement_rate": 48.0
+      "impressions": 1307,
+      "clicks": 32,
+      "ctr_pct": 2.45,
+      "cost": 20.17,
+      "cpc": 0.63,
+      "sessions": 32,
+      "avg_duration": 120.1,
+      "engagement_rate": 59.4
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
       "keyword": "consultora medio ambiente",
-      "impressions": 1184,
-      "clicks": 40,
-      "ctr_pct": 3.38,
-      "cost": 25.32,
-      "cpc": 0.63,
-      "sessions": 46,
-      "avg_duration": 146.5,
-      "engagement_rate": 71.7
+      "impressions": 1162,
+      "clicks": 42,
+      "ctr_pct": 3.61,
+      "cost": 25.73,
+      "cpc": 0.61,
+      "sessions": 47,
+      "avg_duration": 143.0,
+      "engagement_rate": 70.2
     },
     {
       "ad_group": "Ingenieria / Gestión",
-      "keyword": "ingeniero en ambiental",
-      "impressions": 933,
-      "clicks": 49,
-      "ctr_pct": 5.25,
-      "cost": 16.02,
-      "cpc": 0.33,
-      "sessions": 54,
-      "avg_duration": 106.1,
-      "engagement_rate": 66.7
+      "keyword": "certificado de aptitud ambiental",
+      "impressions": 1146,
+      "clicks": 27,
+      "ctr_pct": 2.36,
+      "cost": 23.87,
+      "cpc": 0.88,
+      "sessions": 23,
+      "avg_duration": 64.1,
+      "engagement_rate": 43.5
     },
     {
       "ad_group": "Grupo Huella",
       "keyword": "reducir la huella de carbono",
-      "impressions": 899,
-      "clicks": 13,
-      "ctr_pct": 1.45,
-      "cost": 6.09,
-      "cpc": 0.47,
-      "sessions": 12,
-      "avg_duration": 55.8,
-      "engagement_rate": 50.0
+      "impressions": 983,
+      "clicks": 14,
+      "ctr_pct": 1.42,
+      "cost": 5.76,
+      "cpc": 0.41,
+      "sessions": 13,
+      "avg_duration": 56.4,
+      "engagement_rate": 61.5
+    },
+    {
+      "ad_group": "Ingenieria / Gestión",
+      "keyword": "ingeniero en ambiental",
+      "impressions": 890,
+      "clicks": 51,
+      "ctr_pct": 5.73,
+      "cost": 16.81,
+      "cpc": 0.33,
+      "sessions": 55,
+      "avg_duration": 126.2,
+      "engagement_rate": 67.3
     },
     {
       "ad_group": "Grupo Huella",
       "keyword": "medir huella de carbono",
-      "impressions": 809,
-      "clicks": 38,
-      "ctr_pct": 4.7,
-      "cost": 23.76,
-      "cpc": 0.63,
-      "sessions": 32,
-      "avg_duration": 45.6,
-      "engagement_rate": 62.5
-    },
-    {
-      "ad_group": "Grupo Huella",
-      "keyword": "calcular huella de carbono",
-      "impressions": 775,
-      "clicks": 58,
-      "ctr_pct": 7.48,
-      "cost": 23.15,
-      "cpc": 0.4,
-      "sessions": 51,
-      "avg_duration": 82.1,
-      "engagement_rate": 66.7
+      "impressions": 837,
+      "clicks": 35,
+      "ctr_pct": 4.18,
+      "cost": 17.67,
+      "cpc": 0.5,
+      "sessions": 29,
+      "avg_duration": 46.8,
+      "engagement_rate": 65.5
     },
     {
       "ad_group": "Grupo Huella",
       "keyword": "calcula tu huella de carbono",
-      "impressions": 685,
-      "clicks": 52,
-      "ctr_pct": 7.59,
-      "cost": 26.67,
-      "cpc": 0.51,
-      "sessions": 47,
-      "avg_duration": 88.7,
-      "engagement_rate": 63.8
+      "impressions": 722,
+      "clicks": 53,
+      "ctr_pct": 7.34,
+      "cost": 26.61,
+      "cpc": 0.5,
+      "sessions": 48,
+      "avg_duration": 87.3,
+      "engagement_rate": 64.6
+    },
+    {
+      "ad_group": "Grupo Huella",
+      "keyword": "calcular huella de carbono",
+      "impressions": 719,
+      "clicks": 54,
+      "ctr_pct": 7.51,
+      "cost": 20.6,
+      "cpc": 0.38,
+      "sessions": 49,
+      "avg_duration": 84.9,
+      "engagement_rate": 67.3
+    },
+    {
+      "ad_group": "Consultoría - Habilitaciones",
+      "keyword": "permisos ambientales",
+      "impressions": 651,
+      "clicks": 17,
+      "ctr_pct": 2.61,
+      "cost": 6.76,
+      "cpc": 0.4,
+      "sessions": 19,
+      "avg_duration": 91.8,
+      "engagement_rate": 68.4
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
       "keyword": "asesoría medioambiental",
-      "impressions": 638,
+      "impressions": 647,
       "clicks": 25,
-      "ctr_pct": 3.92,
-      "cost": 15.4,
+      "ctr_pct": 3.86,
+      "cost": 15.39,
       "cpc": 0.62,
       "sessions": 18,
       "avg_duration": 169.6,
@@ -654,82 +648,70 @@
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
-      "keyword": "permisos ambientales",
-      "impressions": 626,
-      "clicks": 17,
-      "ctr_pct": 2.72,
-      "cost": 7.22,
-      "cpc": 0.42,
-      "sessions": 18,
-      "avg_duration": 68.8,
-      "engagement_rate": 61.1
-    },
-    {
-      "ad_group": "Consultoría - Habilitaciones",
       "keyword": "gestoria medioambiental",
-      "impressions": 622,
-      "clicks": 25,
-      "ctr_pct": 4.02,
-      "cost": 17.88,
-      "cpc": 0.72,
+      "impressions": 630,
+      "clicks": 22,
+      "ctr_pct": 3.49,
+      "cost": 16.66,
+      "cpc": 0.76,
       "sessions": 16,
-      "avg_duration": 397.0,
+      "avg_duration": 422.8,
       "engagement_rate": 93.8
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
       "keyword": "consultora de gestion ambiental",
-      "impressions": 545,
-      "clicks": 14,
-      "ctr_pct": 2.57,
-      "cost": 12.0,
-      "cpc": 0.86,
-      "sessions": 12,
-      "avg_duration": 189.4,
-      "engagement_rate": 75.0
+      "impressions": 598,
+      "clicks": 15,
+      "ctr_pct": 2.51,
+      "cost": 12.77,
+      "cpc": 0.85,
+      "sessions": 13,
+      "avg_duration": 241.3,
+      "engagement_rate": 76.9
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
       "keyword": "consultoras de medio ambiente",
-      "impressions": 539,
-      "clicks": 24,
-      "ctr_pct": 4.45,
-      "cost": 14.25,
-      "cpc": 0.59,
+      "impressions": 536,
+      "clicks": 23,
+      "ctr_pct": 4.29,
+      "cost": 12.29,
+      "cpc": 0.53,
       "sessions": 19,
       "avg_duration": 121.9,
       "engagement_rate": 78.9
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
-      "keyword": "consultoria medioambiental",
-      "impressions": 485,
-      "clicks": 13,
-      "ctr_pct": 2.68,
-      "cost": 4.72,
-      "cpc": 0.36,
-      "sessions": 10,
-      "avg_duration": 139.0,
-      "engagement_rate": 90.0
+      "keyword": "consultor ambiental",
+      "impressions": 462,
+      "clicks": 17,
+      "ctr_pct": 3.68,
+      "cost": 16.56,
+      "cpc": 0.97,
+      "sessions": 7,
+      "avg_duration": 546.8,
+      "engagement_rate": 71.4
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
-      "keyword": "consultor ambiental",
-      "impressions": 459,
-      "clicks": 16,
-      "ctr_pct": 3.49,
-      "cost": 15.47,
-      "cpc": 0.97,
-      "sessions": 6,
-      "avg_duration": 525.0,
-      "engagement_rate": 66.7
+      "keyword": "consultoria medioambiental",
+      "impressions": 434,
+      "clicks": 11,
+      "ctr_pct": 2.53,
+      "cost": 3.67,
+      "cpc": 0.33,
+      "sessions": 9,
+      "avg_duration": 140.9,
+      "engagement_rate": 88.9
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
       "keyword": "servicios de consultoria ambiental",
-      "impressions": 406,
+      "impressions": 425,
       "clicks": 18,
-      "ctr_pct": 4.43,
+      "ctr_pct": 4.24,
       "cost": 8.5,
       "cpc": 0.47,
       "sessions": 15,
@@ -737,124 +719,124 @@
       "engagement_rate": 73.3
     },
     {
+      "ad_group": "Grupo Huella",
+      "keyword": "huella de carbono calcular",
+      "impressions": 420,
+      "clicks": 40,
+      "ctr_pct": 9.52,
+      "cost": 19.7,
+      "cpc": 0.49,
+      "sessions": 33,
+      "avg_duration": 67.7,
+      "engagement_rate": 66.7
+    },
+    {
+      "ad_group": "Grupo Huella",
+      "keyword": "mide tu huella de carbono",
+      "impressions": 410,
+      "clicks": 26,
+      "ctr_pct": 6.34,
+      "cost": 18.65,
+      "cpc": 0.72,
+      "sessions": 22,
+      "avg_duration": 178.2,
+      "engagement_rate": 81.8
+    },
+    {
+      "ad_group": "Consultoría - Habilitaciones",
+      "keyword": "empresas de asesoria ambiental",
+      "impressions": 384,
+      "clicks": 14,
+      "ctr_pct": 3.65,
+      "cost": 8.01,
+      "cpc": 0.57,
+      "sessions": 7,
+      "avg_duration": 103.3,
+      "engagement_rate": 57.1
+    },
+    {
       "ad_group": "Ingenieria / Gestión",
       "keyword": "ingenieria ambiental",
-      "impressions": 386,
-      "clicks": 14,
-      "ctr_pct": 3.63,
-      "cost": 4.34,
-      "cpc": 0.31,
+      "impressions": 371,
+      "clicks": 15,
+      "ctr_pct": 4.04,
+      "cost": 7.15,
+      "cpc": 0.48,
       "sessions": 10,
       "avg_duration": 28.0,
       "engagement_rate": 80.0
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
-      "keyword": "empresas de asesoria ambiental",
-      "impressions": 371,
-      "clicks": 14,
-      "ctr_pct": 3.77,
-      "cost": 7.55,
-      "cpc": 0.54,
-      "sessions": 8,
-      "avg_duration": 145.3,
-      "engagement_rate": 62.5
-    },
-    {
-      "ad_group": "Consultoría - Habilitaciones",
       "keyword": "asesoría ambiental",
-      "impressions": 365,
+      "impressions": 359,
       "clicks": 23,
-      "ctr_pct": 6.3,
-      "cost": 8.63,
-      "cpc": 0.38,
-      "sessions": 23,
-      "avg_duration": 116.0,
-      "engagement_rate": 60.9
+      "ctr_pct": 6.41,
+      "cost": 8.89,
+      "cpc": 0.39,
+      "sessions": 22,
+      "avg_duration": 117.2,
+      "engagement_rate": 59.1
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
       "keyword": "consultoria ambiental",
-      "impressions": 359,
+      "impressions": 357,
       "clicks": 7,
-      "ctr_pct": 1.95,
-      "cost": 4.64,
-      "cpc": 0.66,
-      "sessions": 8,
-      "avg_duration": 141.3,
-      "engagement_rate": 50.0
-    },
-    {
-      "ad_group": "Grupo Huella",
-      "keyword": "huella de carbono calcular",
-      "impressions": 327,
-      "clicks": 27,
-      "ctr_pct": 8.26,
-      "cost": 15.74,
-      "cpc": 0.58,
-      "sessions": 21,
-      "avg_duration": 31.1,
-      "engagement_rate": 71.4
+      "ctr_pct": 1.96,
+      "cost": 5.32,
+      "cpc": 0.76,
+      "sessions": 7,
+      "avg_duration": 159.7,
+      "engagement_rate": 42.9
     },
     {
       "ad_group": "Grupo Huella",
       "keyword": "certificacion huella de carbono",
-      "impressions": 319,
-      "clicks": 20,
-      "ctr_pct": 6.27,
-      "cost": 22.82,
-      "cpc": 1.14,
-      "sessions": 18,
-      "avg_duration": 113.9,
-      "engagement_rate": 44.4
+      "impressions": 271,
+      "clicks": 18,
+      "ctr_pct": 6.64,
+      "cost": 18.23,
+      "cpc": 1.01,
+      "sessions": 17,
+      "avg_duration": 119.2,
+      "engagement_rate": 41.2
     },
     {
       "ad_group": "Grupo Huella",
-      "keyword": "mide tu huella de carbono",
-      "impressions": 288,
-      "clicks": 17,
-      "ctr_pct": 5.9,
-      "cost": 10.59,
-      "cpc": 0.62,
-      "sessions": 14,
-      "avg_duration": 187.1,
-      "engagement_rate": 78.6
+      "keyword": "huella de carbono empresas",
+      "impressions": 262,
+      "clicks": 10,
+      "ctr_pct": 3.82,
+      "cost": 10.8,
+      "cpc": 1.08,
+      "sessions": 10,
+      "avg_duration": 268.5,
+      "engagement_rate": 80.0
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
       "keyword": "consultoria de impacto ambiental",
       "impressions": 208,
-      "clicks": 7,
-      "ctr_pct": 3.37,
-      "cost": 7.18,
+      "clicks": 6,
+      "ctr_pct": 2.88,
+      "cost": 6.18,
       "cpc": 1.03,
-      "sessions": 7,
-      "avg_duration": 220.7,
-      "engagement_rate": 71.4
+      "sessions": 6,
+      "avg_duration": 257.5,
+      "engagement_rate": 83.3
     },
     {
       "ad_group": "Ingenieria / Gestión",
       "keyword": "ingenieria del ambiente",
-      "impressions": 205,
-      "clicks": 6,
-      "ctr_pct": 2.93,
-      "cost": 1.44,
-      "cpc": 0.24,
-      "sessions": 4,
-      "avg_duration": 80.9,
+      "impressions": 193,
+      "clicks": 7,
+      "ctr_pct": 3.63,
+      "cost": 1.62,
+      "cpc": 0.23,
+      "sessions": 5,
+      "avg_duration": 77.9,
       "engagement_rate": 100.0
-    },
-    {
-      "ad_group": "Grupo Huella",
-      "keyword": "huella de carbono empresas",
-      "impressions": 195,
-      "clicks": 8,
-      "ctr_pct": 4.1,
-      "cost": 7.24,
-      "cpc": 0.91,
-      "sessions": 7,
-      "avg_duration": 375.5,
-      "engagement_rate": 85.7
     }
   ],
   "ads_creatives": [
@@ -862,85 +844,85 @@
       "ad_group": "Grupo Huella",
       "creative_id": "809591338682",
       "network": "Google search",
-      "impressions": 7650,
-      "clicks": 278,
-      "ctr_pct": 3.63,
-      "cost": 148.55,
-      "sessions": 245,
-      "avg_duration": 81.0,
-      "engagement_rate": 65.3
+      "impressions": 7899,
+      "clicks": 298,
+      "ctr_pct": 3.77,
+      "cost": 158.36,
+      "sessions": 263,
+      "avg_duration": 81.8,
+      "engagement_rate": 65.8
     },
     {
       "ad_group": "Ingenieria / Gestión",
       "creative_id": "791550456360",
       "network": "Google search",
-      "impressions": 7170,
-      "clicks": 229,
-      "ctr_pct": 3.19,
-      "cost": 124.11,
-      "sessions": 195,
-      "avg_duration": 107.9,
-      "engagement_rate": 61.0
+      "impressions": 7090,
+      "clicks": 231,
+      "ctr_pct": 3.26,
+      "cost": 125.51,
+      "sessions": 192,
+      "avg_duration": 100.5,
+      "engagement_rate": 59.9
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
       "creative_id": "824408151755",
       "network": "Google search",
-      "impressions": 3572,
-      "clicks": 128,
-      "ctr_pct": 3.58,
-      "cost": 76.67,
-      "sessions": 114,
-      "avg_duration": 176.8,
-      "engagement_rate": 74.6
-    },
-    {
-      "ad_group": "Grupo Huella",
-      "creative_id": "801631969635",
-      "network": "Google search",
-      "impressions": 2171,
-      "clicks": 101,
-      "ctr_pct": 4.65,
-      "cost": 65.71,
-      "sessions": 81,
-      "avg_duration": 118.3,
-      "engagement_rate": 64.2
+      "impressions": 4035,
+      "clicks": 140,
+      "ctr_pct": 3.47,
+      "cost": 85.06,
+      "sessions": 122,
+      "avg_duration": 186.4,
+      "engagement_rate": 73.8
     },
     {
       "ad_group": "Consultoría - Habilitaciones",
       "creative_id": "818187212112",
       "network": "Google search",
-      "impressions": 2663,
-      "clicks": 88,
+      "impressions": 2514,
+      "clicks": 83,
       "ctr_pct": 3.3,
-      "cost": 61.23,
-      "sessions": 69,
-      "avg_duration": 179.0,
-      "engagement_rate": 71.0
+      "cost": 56.86,
+      "sessions": 66,
+      "avg_duration": 180.0,
+      "engagement_rate": 71.2
     },
     {
-      "ad_group": "Consultoría - Habilitaciones",
-      "creative_id": "810491087683",
+      "ad_group": "Grupo Huella",
+      "creative_id": "801631969635",
       "network": "Google search",
-      "impressions": 739,
-      "clicks": 30,
-      "ctr_pct": 4.06,
-      "cost": 15.09,
-      "sessions": 27,
-      "avg_duration": 238.0,
-      "engagement_rate": 66.7
+      "impressions": 1930,
+      "clicks": 91,
+      "ctr_pct": 4.72,
+      "cost": 54.25,
+      "sessions": 73,
+      "avg_duration": 125.3,
+      "engagement_rate": 63.0
     },
     {
       "ad_group": "Grupo Huella",
       "creative_id": "829275931174",
       "network": "Google search",
+      "impressions": 1186,
+      "clicks": 46,
+      "ctr_pct": 3.88,
+      "cost": 22.44,
+      "sessions": 39,
+      "avg_duration": 127.1,
+      "engagement_rate": 71.8
+    },
+    {
+      "ad_group": "Ingenieria / Gestión",
+      "creative_id": "818191502823",
+      "network": "Google search",
       "impressions": 886,
-      "clicks": 34,
-      "ctr_pct": 3.84,
-      "cost": 14.88,
-      "sessions": 27,
-      "avg_duration": 132.0,
-      "engagement_rate": 70.4
+      "clicks": 53,
+      "ctr_pct": 5.98,
+      "cost": 20.26,
+      "sessions": 43,
+      "avg_duration": 96.3,
+      "engagement_rate": 62.8
     },
     {
       "ad_group": "Ingenieria / Gestión",
@@ -955,36 +937,24 @@
       "engagement_rate": 69.2
     },
     {
-      "ad_group": "Ingenieria / Gestión",
-      "creative_id": "818191502823",
+      "ad_group": "Consultoría - Habilitaciones",
+      "creative_id": "810491087683",
       "network": "Google search",
-      "impressions": 689,
-      "clicks": 36,
-      "ctr_pct": 5.22,
-      "cost": 13.43,
-      "sessions": 34,
-      "avg_duration": 76.3,
-      "engagement_rate": 58.8
-    },
-    {
-      "ad_group": "Ingenieria / Gestión",
-      "creative_id": "735553391229",
-      "network": "Google search",
-      "impressions": 252,
-      "clicks": 7,
-      "ctr_pct": 2.78,
-      "cost": 3.35,
-      "sessions": 6,
-      "avg_duration": 73.0,
-      "engagement_rate": 83.3
+      "impressions": 458,
+      "clicks": 19,
+      "ctr_pct": 4.15,
+      "cost": 9.6,
+      "sessions": 19,
+      "avg_duration": 318.3,
+      "engagement_rate": 68.4
     },
     {
       "ad_group": "Grupo Huella",
       "creative_id": "809591338682",
       "network": "Search partners",
-      "impressions": 463,
+      "impressions": 478,
       "clicks": 12,
-      "ctr_pct": 2.59,
+      "ctr_pct": 2.51,
       "cost": 3.27,
       "sessions": 9,
       "avg_duration": 59.4,
@@ -994,10 +964,10 @@
       "ad_group": "Consultoría - Habilitaciones",
       "creative_id": "824408151755",
       "network": "Search partners",
-      "impressions": 80,
+      "impressions": 88,
       "clicks": 9,
-      "ctr_pct": 11.25,
-      "cost": 2.24,
+      "ctr_pct": 10.23,
+      "cost": 2.23,
       "sessions": 7,
       "avg_duration": 6.9,
       "engagement_rate": 42.9
@@ -1006,10 +976,22 @@
       "ad_group": "Grupo Huella",
       "creative_id": "801631969635",
       "network": "Search partners",
-      "impressions": 142,
+      "impressions": 129,
       "clicks": 1,
-      "ctr_pct": 0.7,
+      "ctr_pct": 0.78,
       "cost": 0.51,
+      "sessions": 1,
+      "avg_duration": 0.0,
+      "engagement_rate": 0.0
+    },
+    {
+      "ad_group": "Grupo Huella",
+      "creative_id": "829275931174",
+      "network": "Search partners",
+      "impressions": 89,
+      "clicks": 5,
+      "ctr_pct": 5.62,
+      "cost": 0.38,
       "sessions": 1,
       "avg_duration": 0.0,
       "engagement_rate": 0.0
@@ -1018,9 +1000,9 @@
       "ad_group": "Ingenieria / Gestión",
       "creative_id": "791550456360",
       "network": "Search partners",
-      "impressions": 280,
+      "impressions": 271,
       "clicks": 2,
-      "ctr_pct": 0.71,
+      "ctr_pct": 0.74,
       "cost": 0.28,
       "sessions": 2,
       "avg_duration": 51.3,
@@ -1065,6 +1047,15 @@
       "key_events": 0
     },
     {
+      "landing": "(not set)",
+      "query": "medicion huella de carbono",
+      "users": 1,
+      "sessions": 1,
+      "avg_duration": 501.068552,
+      "engagement_rate": 100.0,
+      "key_events": 0
+    },
+    {
       "landing": "/habilitaciones-permisos",
       "query": "consultora ambiental buenos aires",
       "users": 2,
@@ -1093,10 +1084,10 @@
     },
     {
       "landing": "/habilitaciones-permisos",
-      "query": "consultoras ambientales mendoza",
-      "users": 2,
-      "sessions": 2,
-      "avg_duration": 346.352892,
+      "query": "gestión ambiental",
+      "users": 4,
+      "sessions": 4,
+      "avg_duration": 343.778231,
       "engagement_rate": 100.0,
       "key_events": 0
     },
@@ -1107,24 +1098,6 @@
       "sessions": 3,
       "avg_duration": 280.21451233333335,
       "engagement_rate": 100.0,
-      "key_events": 0
-    },
-    {
-      "landing": "/huella-de-carbono",
-      "query": "la huella de carbono",
-      "users": 4,
-      "sessions": 4,
-      "avg_duration": 252.5773205,
-      "engagement_rate": 100.0,
-      "key_events": 0
-    },
-    {
-      "landing": "/habilitaciones-permisos",
-      "query": "gestión ambiental",
-      "users": 5,
-      "sessions": 6,
-      "avg_duration": 229.18548733333333,
-      "engagement_rate": 66.66666666666666,
       "key_events": 0
     },
     {
@@ -1143,6 +1116,24 @@
       "sessions": 4,
       "avg_duration": 205.8147165,
       "engagement_rate": 50.0,
+      "key_events": 0
+    },
+    {
+      "landing": "/huella-de-carbono",
+      "query": "la huella de carbono",
+      "users": 5,
+      "sessions": 5,
+      "avg_duration": 202.403719,
+      "engagement_rate": 80.0,
+      "key_events": 0
+    },
+    {
+      "landing": "/huella-de-carbono",
+      "query": "calcular la huella de carbono",
+      "users": 6,
+      "sessions": 6,
+      "avg_duration": 186.51738633333335,
+      "engagement_rate": 66.66666666666666,
       "key_events": 0
     },
     {
@@ -1174,6 +1165,15 @@
     },
     {
       "landing": "/huella-de-carbono",
+      "query": "huella de carbono calcular",
+      "users": 10,
+      "sessions": 10,
+      "avg_duration": 87.8238613,
+      "engagement_rate": 80.0,
+      "key_events": 0
+    },
+    {
+      "landing": "/huella-de-carbono",
       "query": "huella de carbono argentina",
       "users": 3,
       "sessions": 3,
@@ -1184,28 +1184,28 @@
     {
       "landing": "/huella-de-carbono",
       "query": "calcular huella de carbono",
-      "users": 13,
-      "sessions": 13,
-      "avg_duration": 79.78008607692308,
-      "engagement_rate": 61.53846153846154,
+      "users": 16,
+      "sessions": 16,
+      "avg_duration": 67.4091803125,
+      "engagement_rate": 62.5,
       "key_events": 0
     },
     {
       "landing": "/huella-de-carbono",
       "query": "huella de carbono",
-      "users": 65,
-      "sessions": 69,
-      "avg_duration": 65.61130913043479,
-      "engagement_rate": 60.86956521739131,
+      "users": 67,
+      "sessions": 71,
+      "avg_duration": 64.54179371830986,
+      "engagement_rate": 60.56338028169014,
       "key_events": 0
     },
     {
       "landing": "/habilitaciones-permisos",
       "query": "consultora ambiental",
-      "users": 9,
-      "sessions": 11,
-      "avg_duration": 57.474235454545465,
-      "engagement_rate": 72.72727272727273,
+      "users": 8,
+      "sessions": 10,
+      "avg_duration": 61.98397090000001,
+      "engagement_rate": 70.0,
       "key_events": 0
     },
     {
@@ -1237,11 +1237,29 @@
     },
     {
       "landing": "/huella-de-carbono",
+      "query": "calcular tu huella de carbono",
+      "users": 2,
+      "sessions": 2,
+      "avg_duration": 34.040015,
+      "engagement_rate": 100.0,
+      "key_events": 0
+    },
+    {
+      "landing": "/huella-de-carbono",
       "query": "como calcular la huella de carbono de una empresa",
       "users": 2,
       "sessions": 2,
       "avg_duration": 32.261266,
       "engagement_rate": 50.0,
+      "key_events": 0
+    },
+    {
+      "landing": "/huella-de-carbono",
+      "query": "medicion huella de carbono",
+      "users": 3,
+      "sessions": 3,
+      "avg_duration": 31.226228333333335,
+      "engagement_rate": 66.66666666666666,
       "key_events": 0
     },
     {
@@ -1254,39 +1272,12 @@
       "key_events": 0
     },
     {
-      "landing": "/huella-de-carbono",
-      "query": "huella de carbono medicion",
-      "users": 2,
-      "sessions": 2,
-      "avg_duration": 29.7616005,
-      "engagement_rate": 100.0,
-      "key_events": 0
-    },
-    {
       "landing": "/habilitaciones-permisos",
       "query": "informes de impacto ambiental",
       "users": 2,
       "sessions": 2,
       "avg_duration": 29.7316985,
       "engagement_rate": 50.0,
-      "key_events": 0
-    },
-    {
-      "landing": "/huella-de-carbono",
-      "query": "medir huella de carbono",
-      "users": 2,
-      "sessions": 2,
-      "avg_duration": 29.3587115,
-      "engagement_rate": 100.0,
-      "key_events": 0
-    },
-    {
-      "landing": "/huella-de-carbono",
-      "query": "huella de carbono calcular",
-      "users": 7,
-      "sessions": 7,
-      "avg_duration": 29.029074857142856,
-      "engagement_rate": 85.71428571428571,
       "key_events": 0
     },
     {
@@ -1309,15 +1300,6 @@
     },
     {
       "landing": "/huella-de-carbono",
-      "query": "como calcular la huella de carbono",
-      "users": 3,
-      "sessions": 3,
-      "avg_duration": 23.118459666666666,
-      "engagement_rate": 66.66666666666666,
-      "key_events": 0
-    },
-    {
-      "landing": "/huella-de-carbono",
       "query": "calculo de huella de carbono",
       "users": 9,
       "sessions": 10,
@@ -1326,21 +1308,21 @@
       "key_events": 0
     },
     {
-      "landing": "/habilitaciones-permisos",
-      "query": "gestor ambiental",
-      "users": 2,
-      "sessions": 2,
-      "avg_duration": 20.179803,
-      "engagement_rate": 50.0,
+      "landing": "/huella-de-carbono",
+      "query": "medir huella de carbono",
+      "users": 3,
+      "sessions": 3,
+      "avg_duration": 21.46300666666667,
+      "engagement_rate": 66.66666666666666,
       "key_events": 0
     },
     {
-      "landing": "/habilitaciones-permisos",
-      "query": "ambiental planet rosario",
-      "users": 1,
-      "sessions": 1,
-      "avg_duration": 19.124496,
-      "engagement_rate": 100.0,
+      "landing": "/huella-de-carbono",
+      "query": "como calcular la huella de carbono",
+      "users": 4,
+      "sessions": 4,
+      "avg_duration": 17.33884475,
+      "engagement_rate": 50.0,
       "key_events": 0
     },
     {
@@ -1381,29 +1363,11 @@
     },
     {
       "landing": "/huella-de-carbono",
-      "query": "medicion huella de carbono",
-      "users": 2,
-      "sessions": 2,
-      "avg_duration": 13.557727,
-      "engagement_rate": 100.0,
-      "key_events": 0
-    },
-    {
-      "landing": "/huella-de-carbono",
       "query": "huella de carbono medir",
       "users": 2,
       "sessions": 2,
       "avg_duration": 12.287523,
       "engagement_rate": 50.0,
-      "key_events": 0
-    },
-    {
-      "landing": "/huella-de-carbono",
-      "query": "calcular la huella de carbono",
-      "users": 3,
-      "sessions": 3,
-      "avg_duration": 12.264769000000001,
-      "engagement_rate": 66.66666666666666,
       "key_events": 0
     },
     {
@@ -1413,6 +1377,15 @@
       "sessions": 2,
       "avg_duration": 11.6354295,
       "engagement_rate": 50.0,
+      "key_events": 0
+    },
+    {
+      "landing": "/",
+      "query": "hábitat ecológico s a",
+      "users": 1,
+      "sessions": 1,
+      "avg_duration": 8.222526,
+      "engagement_rate": 0.0,
       "key_events": 0
     },
     {
@@ -1477,6 +1450,15 @@
       "avg_duration": 0.0,
       "engagement_rate": 0.0,
       "key_events": 0
+    },
+    {
+      "landing": "(not set)",
+      "query": "servicios ambientales del neuquen",
+      "users": 1,
+      "sessions": 1,
+      "avg_duration": 0.0,
+      "engagement_rate": 0.0,
+      "key_events": 0
     }
   ],
   "native_google_ads_v23": {
@@ -1486,23 +1468,23 @@
         "campaign": "CAMPAÑA-UNI-HAB.AR",
         "status": "ENABLED",
         "daily_budget": 5400.0,
-        "impressions_30d": 5889,
-        "clicks_30d": 203,
-        "cost_30d": 164719.94,
-        "search_impression_share_pct": 32.6,
-        "lost_is_budget_pct": 0.8,
-        "lost_is_rank_pct": 66.6
+        "impressions_30d": 5660,
+        "clicks_30d": 218,
+        "cost_30d": 179023.32,
+        "search_impression_share_pct": 30.5,
+        "lost_is_budget_pct": 10.2,
+        "lost_is_rank_pct": 59.4
       },
       {
         "campaign": "CAMPAÑA-UNI-HUELLA-EXT.AR #2",
         "status": "ENABLED",
         "daily_budget": 4000.0,
-        "impressions_30d": 3811,
-        "clicks_30d": 156,
-        "cost_30d": 116198.42,
-        "search_impression_share_pct": 38.9,
+        "impressions_30d": 3480,
+        "clicks_30d": 147,
+        "cost_30d": 115629.74,
+        "search_impression_share_pct": 39.4,
         "lost_is_budget_pct": 28.5,
-        "lost_is_rank_pct": 32.6
+        "lost_is_rank_pct": 32.1
       }
     ],
     "keywords_quality_score": [
@@ -1514,9 +1496,9 @@
         "creative_quality": "ABOVE_AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 1277,
-        "clicks_30d": 26,
-        "cost_30d": 19500.6
+        "impressions_30d": 1027,
+        "clicks_30d": 20,
+        "cost_30d": 15816.37
       },
       {
         "ad_group": "Ingenieria / Gestión",
@@ -1526,9 +1508,9 @@
         "creative_quality": "N/A",
         "landing_experience": "N/A",
         "expected_ctr": "N/A",
-        "impressions_30d": 958,
-        "clicks_30d": 30,
-        "cost_30d": 20392.87
+        "impressions_30d": 996,
+        "clicks_30d": 39,
+        "cost_30d": 28576.49
       },
       {
         "ad_group": "Ingenieria / Gestión",
@@ -1538,9 +1520,9 @@
         "creative_quality": "BELOW_AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 922,
-        "clicks_30d": 36,
-        "cost_30d": 26044.51
+        "impressions_30d": 939,
+        "clicks_30d": 46,
+        "cost_30d": 35535.97
       },
       {
         "ad_group": "Grupo Huella",
@@ -1550,21 +1532,9 @@
         "creative_quality": "N/A",
         "landing_experience": "N/A",
         "expected_ctr": "N/A",
-        "impressions_30d": 899,
-        "clicks_30d": 30,
-        "cost_30d": 15366.54
-      },
-      {
-        "ad_group": "Ingenieria / Gestión",
-        "keyword": "informe de impacto ambiental",
-        "match_type": "PHRASE",
-        "quality_score": 2,
-        "creative_quality": "AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 467,
-        "clicks_30d": 8,
-        "cost_30d": 6609.7
+        "impressions_30d": 538,
+        "clicks_30d": 15,
+        "cost_30d": 8491.25
       },
       {
         "ad_group": "Consultoría - Habilitaciones",
@@ -1574,81 +1544,21 @@
         "creative_quality": "N/A",
         "landing_experience": "N/A",
         "expected_ctr": "N/A",
-        "impressions_30d": 428,
-        "clicks_30d": 13,
-        "cost_30d": 17174.96
-      },
-      {
-        "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "asesoría medioambiental",
-        "match_type": "PHRASE",
-        "quality_score": null,
-        "creative_quality": "N/A",
-        "landing_experience": "N/A",
-        "expected_ctr": "N/A",
-        "impressions_30d": 347,
-        "clicks_30d": 9,
-        "cost_30d": 3372.21
+        "impressions_30d": 453,
+        "clicks_30d": 12,
+        "cost_30d": 14329.67
       },
       {
         "ad_group": "Ingenieria / Gestión",
-        "keyword": "certificado de aptitud ambiental",
+        "keyword": "informe de impacto ambiental",
         "match_type": "PHRASE",
         "quality_score": 2,
         "creative_quality": "AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 319,
-        "clicks_30d": 5,
-        "cost_30d": 9035.05
-      },
-      {
-        "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "permisos ambientales",
-        "match_type": "PHRASE",
-        "quality_score": 3,
-        "creative_quality": "ABOVE_AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 309,
-        "clicks_30d": 11,
-        "cost_30d": 7195.31
-      },
-      {
-        "ad_group": "Ingenieria / Gestión",
-        "keyword": "ingeniero en ambiental",
-        "match_type": "PHRASE",
-        "quality_score": null,
-        "creative_quality": "N/A",
-        "landing_experience": "N/A",
-        "expected_ctr": "N/A",
-        "impressions_30d": 309,
-        "clicks_30d": 14,
-        "cost_30d": 7384.54
-      },
-      {
-        "ad_group": "Grupo Huella",
-        "keyword": "calcular huella de carbono",
-        "match_type": "PHRASE",
-        "quality_score": 6,
-        "creative_quality": "AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "ABOVE_AVERAGE",
-        "impressions_30d": 284,
-        "clicks_30d": 34,
-        "cost_30d": 22204.91
-      },
-      {
-        "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "consultora medio ambiente",
-        "match_type": "PHRASE",
-        "quality_score": 5,
-        "creative_quality": "ABOVE_AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "AVERAGE",
-        "impressions_30d": 281,
-        "clicks_30d": 13,
-        "cost_30d": 11388.31
+        "impressions_30d": 394,
+        "clicks_30d": 10,
+        "cost_30d": 5675.13
       },
       {
         "ad_group": "Grupo Huella",
@@ -1658,33 +1568,69 @@
         "creative_quality": "BELOW_AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 277,
-        "clicks_30d": 5,
-        "cost_30d": 5394.32
-      },
-      {
-        "ad_group": "Grupo Huella",
-        "keyword": "calcula tu huella de carbono",
-        "match_type": "PHRASE",
-        "quality_score": null,
-        "creative_quality": "N/A",
-        "landing_experience": "N/A",
-        "expected_ctr": "N/A",
-        "impressions_30d": 234,
-        "clicks_30d": 16,
-        "cost_30d": 15168.21
+        "impressions_30d": 342,
+        "clicks_30d": 8,
+        "cost_30d": 5825.57
       },
       {
         "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "gestoria medioambiental",
+        "keyword": "consultora medio ambiente",
+        "match_type": "PHRASE",
+        "quality_score": 5,
+        "creative_quality": "ABOVE_AVERAGE",
+        "landing_experience": "BELOW_AVERAGE",
+        "expected_ctr": "AVERAGE",
+        "impressions_30d": 332,
+        "clicks_30d": 17,
+        "cost_30d": 13687.44
+      },
+      {
+        "ad_group": "Consultoría - Habilitaciones",
+        "keyword": "permisos ambientales",
+        "match_type": "PHRASE",
+        "quality_score": 3,
+        "creative_quality": "ABOVE_AVERAGE",
+        "landing_experience": "BELOW_AVERAGE",
+        "expected_ctr": "BELOW_AVERAGE",
+        "impressions_30d": 317,
+        "clicks_30d": 9,
+        "cost_30d": 7669.86
+      },
+      {
+        "ad_group": "Consultoría - Habilitaciones",
+        "keyword": "asesoría medioambiental",
         "match_type": "PHRASE",
         "quality_score": null,
         "creative_quality": "N/A",
         "landing_experience": "N/A",
         "expected_ctr": "N/A",
-        "impressions_30d": 220,
-        "clicks_30d": 8,
-        "cost_30d": 8039.64
+        "impressions_30d": 270,
+        "clicks_30d": 6,
+        "cost_30d": 2651.01
+      },
+      {
+        "ad_group": "Ingenieria / Gestión",
+        "keyword": "ingeniero en ambiental",
+        "match_type": "PHRASE",
+        "quality_score": null,
+        "creative_quality": "N/A",
+        "landing_experience": "N/A",
+        "expected_ctr": "N/A",
+        "impressions_30d": 264,
+        "clicks_30d": 14,
+        "cost_30d": 6916.57
+      },
+      {
+        "ad_group": "Ingenieria / Gestión",
+        "keyword": "certificado de aptitud ambiental",
+        "match_type": "PHRASE",
+        "quality_score": 2,
+        "creative_quality": "AVERAGE",
+        "landing_experience": "BELOW_AVERAGE",
+        "expected_ctr": "BELOW_AVERAGE",
+        "impressions_30d": 250,
+        "clicks_30d": 4,
+        "cost_30d": 6868.95
       },
       {
         "ad_group": "Grupo Huella",
@@ -1694,33 +1640,21 @@
         "creative_quality": "AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "ABOVE_AVERAGE",
-        "impressions_30d": 212,
-        "clicks_30d": 12,
-        "cost_30d": 13092.88
+        "impressions_30d": 244,
+        "clicks_30d": 9,
+        "cost_30d": 8198.84
       },
       {
         "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "servicios de consultoria ambiental",
+        "keyword": "gestoria medioambiental",
         "match_type": "PHRASE",
         "quality_score": null,
         "creative_quality": "N/A",
         "landing_experience": "N/A",
         "expected_ctr": "N/A",
-        "impressions_30d": 198,
-        "clicks_30d": 12,
-        "cost_30d": 7342.49
-      },
-      {
-        "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "asesoría ambiental",
-        "match_type": "PHRASE",
-        "quality_score": 3,
-        "creative_quality": "ABOVE_AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 198,
-        "clicks_30d": 11,
-        "cost_30d": 5733.68
+        "impressions_30d": 238,
+        "clicks_30d": 6,
+        "cost_30d": 5945.22
       },
       {
         "ad_group": "Grupo Huella",
@@ -1730,45 +1664,9 @@
         "creative_quality": "AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "AVERAGE",
-        "impressions_30d": 177,
-        "clicks_30d": 6,
-        "cost_30d": 4201.83
-      },
-      {
-        "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "consultoras de medio ambiente",
-        "match_type": "PHRASE",
-        "quality_score": 1,
-        "creative_quality": "BELOW_AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 162,
-        "clicks_30d": 10,
-        "cost_30d": 10295.65
-      },
-      {
-        "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "consultor ambiental",
-        "match_type": "PHRASE",
-        "quality_score": 2,
-        "creative_quality": "AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 158,
-        "clicks_30d": 5,
-        "cost_30d": 4358.86
-      },
-      {
-        "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "consultoria ambiental",
-        "match_type": "PHRASE",
-        "quality_score": 6,
-        "creative_quality": "AVERAGE",
-        "landing_experience": "AVERAGE",
-        "expected_ctr": "AVERAGE",
-        "impressions_30d": 141,
-        "clicks_30d": 3,
-        "cost_30d": 4369.01
+        "impressions_30d": 233,
+        "clicks_30d": 7,
+        "cost_30d": 9739.65
       },
       {
         "ad_group": "Grupo Huella",
@@ -1778,45 +1676,69 @@
         "creative_quality": "BELOW_AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "ABOVE_AVERAGE",
-        "impressions_30d": 136,
-        "clicks_30d": 6,
-        "cost_30d": 4243.69
+        "impressions_30d": 228,
+        "clicks_30d": 13,
+        "cost_30d": 16440.46
+      },
+      {
+        "ad_group": "Grupo Huella",
+        "keyword": "calcula tu huella de carbono",
+        "match_type": "PHRASE",
+        "quality_score": null,
+        "creative_quality": "N/A",
+        "landing_experience": "N/A",
+        "expected_ctr": "N/A",
+        "impressions_30d": 219,
+        "clicks_30d": 14,
+        "cost_30d": 10042.46
       },
       {
         "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "empresas de asesoria ambiental",
+        "keyword": "servicios de consultoria ambiental",
         "match_type": "PHRASE",
         "quality_score": null,
         "creative_quality": "N/A",
         "landing_experience": "N/A",
         "expected_ctr": "N/A",
-        "impressions_30d": 95,
-        "clicks_30d": 6,
-        "cost_30d": 4621.27
+        "impressions_30d": 203,
+        "clicks_30d": 10,
+        "cost_30d": 4854.12
       },
       {
-        "ad_group": "Ingenieria / Gestión",
-        "keyword": "ingenieria del ambiente",
+        "ad_group": "Grupo Huella",
+        "keyword": "calcular huella de carbono",
         "match_type": "PHRASE",
-        "quality_score": null,
-        "creative_quality": "N/A",
-        "landing_experience": "N/A",
-        "expected_ctr": "N/A",
-        "impressions_30d": 88,
-        "clicks_30d": 2,
-        "cost_30d": 1188.58
+        "quality_score": 6,
+        "creative_quality": "AVERAGE",
+        "landing_experience": "BELOW_AVERAGE",
+        "expected_ctr": "ABOVE_AVERAGE",
+        "impressions_30d": 186,
+        "clicks_30d": 23,
+        "cost_30d": 14951.7
       },
       {
-        "ad_group": "Ingenieria / Gestión",
-        "keyword": "ingenieria ambiental",
+        "ad_group": "Consultoría - Habilitaciones",
+        "keyword": "asesoría ambiental",
         "match_type": "PHRASE",
-        "quality_score": null,
-        "creative_quality": "N/A",
-        "landing_experience": "N/A",
-        "expected_ctr": "N/A",
-        "impressions_30d": 85,
-        "clicks_30d": 2,
-        "cost_30d": 1407.62
+        "quality_score": 3,
+        "creative_quality": "ABOVE_AVERAGE",
+        "landing_experience": "BELOW_AVERAGE",
+        "expected_ctr": "BELOW_AVERAGE",
+        "impressions_30d": 170,
+        "clicks_30d": 8,
+        "cost_30d": 4290.54
+      },
+      {
+        "ad_group": "Consultoría - Habilitaciones",
+        "keyword": "consultoras de medio ambiente",
+        "match_type": "PHRASE",
+        "quality_score": 1,
+        "creative_quality": "BELOW_AVERAGE",
+        "landing_experience": "BELOW_AVERAGE",
+        "expected_ctr": "BELOW_AVERAGE",
+        "impressions_30d": 156,
+        "clicks_30d": 9,
+        "cost_30d": 9872.47
       },
       {
         "ad_group": "Grupo Huella",
@@ -1826,9 +1748,81 @@
         "creative_quality": "AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "ABOVE_AVERAGE",
-        "impressions_30d": 81,
+        "impressions_30d": 156,
+        "clicks_30d": 19,
+        "cost_30d": 9032.3
+      },
+      {
+        "ad_group": "Consultoría - Habilitaciones",
+        "keyword": "consultor ambiental",
+        "match_type": "PHRASE",
+        "quality_score": 2,
+        "creative_quality": "AVERAGE",
+        "landing_experience": "BELOW_AVERAGE",
+        "expected_ctr": "BELOW_AVERAGE",
+        "impressions_30d": 137,
+        "clicks_30d": 6,
+        "cost_30d": 5934.74
+      },
+      {
+        "ad_group": "Consultoría - Habilitaciones",
+        "keyword": "consultoria ambiental",
+        "match_type": "PHRASE",
+        "quality_score": 6,
+        "creative_quality": "AVERAGE",
+        "landing_experience": "AVERAGE",
+        "expected_ctr": "AVERAGE",
+        "impressions_30d": 125,
+        "clicks_30d": 4,
+        "cost_30d": 6133.51
+      },
+      {
+        "ad_group": "Consultoría - Habilitaciones",
+        "keyword": "empresas de asesoria ambiental",
+        "match_type": "PHRASE",
+        "quality_score": null,
+        "creative_quality": "N/A",
+        "landing_experience": "N/A",
+        "expected_ctr": "N/A",
+        "impressions_30d": 104,
         "clicks_30d": 7,
-        "cost_30d": 3509.52
+        "cost_30d": 5426.13
+      },
+      {
+        "ad_group": "Ingenieria / Gestión",
+        "keyword": "ingenieria ambiental",
+        "match_type": "PHRASE",
+        "quality_score": null,
+        "creative_quality": "N/A",
+        "landing_experience": "N/A",
+        "expected_ctr": "N/A",
+        "impressions_30d": 84,
+        "clicks_30d": 3,
+        "cost_30d": 5751.6
+      },
+      {
+        "ad_group": "Grupo Huella",
+        "keyword": "como calcular la huella de carbono",
+        "match_type": "PHRASE",
+        "quality_score": 3,
+        "creative_quality": "BELOW_AVERAGE",
+        "landing_experience": "BELOW_AVERAGE",
+        "expected_ctr": "AVERAGE",
+        "impressions_30d": 83,
+        "clicks_30d": 10,
+        "cost_30d": 5873.93
+      },
+      {
+        "ad_group": "Ingenieria / Gestión",
+        "keyword": "ingenieria del ambiente",
+        "match_type": "PHRASE",
+        "quality_score": null,
+        "creative_quality": "N/A",
+        "landing_experience": "N/A",
+        "expected_ctr": "N/A",
+        "impressions_30d": 70,
+        "clicks_30d": 3,
+        "cost_30d": 1459.13
       },
       {
         "ad_group": "Consultoría - Habilitaciones",
@@ -1838,33 +1832,9 @@
         "creative_quality": "ABOVE_AVERAGE",
         "landing_experience": "AVERAGE",
         "expected_ctr": "AVERAGE",
-        "impressions_30d": 75,
-        "clicks_30d": 3,
-        "cost_30d": 6299.03
-      },
-      {
-        "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "consultoria medio ambiente",
-        "match_type": "PHRASE",
-        "quality_score": null,
-        "creative_quality": "N/A",
-        "landing_experience": "N/A",
-        "expected_ctr": "N/A",
-        "impressions_30d": 72,
-        "clicks_30d": 0,
-        "cost_30d": 0.0
-      },
-      {
-        "ad_group": "Grupo Huella",
-        "keyword": "como calcular la huella de carbono",
-        "match_type": "PHRASE",
-        "quality_score": 1,
-        "creative_quality": "BELOW_AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 60,
-        "clicks_30d": 7,
-        "cost_30d": 3170.12
+        "impressions_30d": 61,
+        "clicks_30d": 2,
+        "cost_30d": 2443.21
       },
       {
         "ad_group": "Grupo Huella",
@@ -1874,21 +1844,33 @@
         "creative_quality": "N/A",
         "landing_experience": "N/A",
         "expected_ctr": "N/A",
-        "impressions_30d": 42,
-        "clicks_30d": 1,
-        "cost_30d": 908.52
+        "impressions_30d": 52,
+        "clicks_30d": 2,
+        "cost_30d": 2613.57
       },
       {
         "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "permiso de impacto ambiental",
+        "keyword": "consultoria medio ambiente",
         "match_type": "PHRASE",
         "quality_score": null,
         "creative_quality": "N/A",
         "landing_experience": "N/A",
         "expected_ctr": "N/A",
-        "impressions_30d": 37,
+        "impressions_30d": 50,
         "clicks_30d": 1,
-        "cost_30d": 2262.02
+        "cost_30d": 2534.89
+      },
+      {
+        "ad_group": "Grupo Huella",
+        "keyword": "inventario de gases de efecto invernadero",
+        "match_type": "PHRASE",
+        "quality_score": 1,
+        "creative_quality": "BELOW_AVERAGE",
+        "landing_experience": "BELOW_AVERAGE",
+        "expected_ctr": "BELOW_AVERAGE",
+        "impressions_30d": 46,
+        "clicks_30d": 1,
+        "cost_30d": 232.65
       },
       {
         "ad_group": "Grupo Huella",
@@ -1898,21 +1880,21 @@
         "creative_quality": "ABOVE_AVERAGE",
         "landing_experience": "AVERAGE",
         "expected_ctr": "ABOVE_AVERAGE",
-        "impressions_30d": 35,
-        "clicks_30d": 4,
-        "cost_30d": 6109.46
+        "impressions_30d": 39,
+        "clicks_30d": 3,
+        "cost_30d": 4694.06
       },
       {
-        "ad_group": "Grupo Huella",
-        "keyword": "calculos de huella de carbono",
+        "ad_group": "Consultoría - Habilitaciones",
+        "keyword": "permiso de impacto ambiental",
         "match_type": "PHRASE",
-        "quality_score": 3,
-        "creative_quality": "BELOW_AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "AVERAGE",
-        "impressions_30d": 31,
+        "quality_score": null,
+        "creative_quality": "N/A",
+        "landing_experience": "N/A",
+        "expected_ctr": "N/A",
+        "impressions_30d": 36,
         "clicks_30d": 1,
-        "cost_30d": 305.42
+        "cost_30d": 2262.02
       },
       {
         "ad_group": "Grupo Huella",
@@ -1922,9 +1904,9 @@
         "creative_quality": "AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "ABOVE_AVERAGE",
-        "impressions_30d": 17,
-        "clicks_30d": 1,
-        "cost_30d": 3022.41
+        "impressions_30d": 32,
+        "clicks_30d": 2,
+        "cost_30d": 3425.62
       },
       {
         "ad_group": "Grupo Huella",
@@ -1934,7 +1916,19 @@
         "creative_quality": "N/A",
         "landing_experience": "N/A",
         "expected_ctr": "N/A",
-        "impressions_30d": 16,
+        "impressions_30d": 19,
+        "clicks_30d": 1,
+        "cost_30d": 251.3
+      },
+      {
+        "ad_group": "Grupo Huella",
+        "keyword": "calculos de huella de carbono",
+        "match_type": "PHRASE",
+        "quality_score": null,
+        "creative_quality": "N/A",
+        "landing_experience": "N/A",
+        "expected_ctr": "N/A",
+        "impressions_30d": 14,
         "clicks_30d": 0,
         "cost_30d": 0.0
       },
@@ -1946,31 +1940,7 @@
         "creative_quality": "AVERAGE",
         "landing_experience": "BELOW_AVERAGE",
         "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 14,
-        "clicks_30d": 0,
-        "cost_30d": 0.0
-      },
-      {
-        "ad_group": "Consultoría - Habilitaciones",
-        "keyword": "empresa de consultoria ambiental",
-        "match_type": "PHRASE",
-        "quality_score": 7,
-        "creative_quality": "ABOVE_AVERAGE",
-        "landing_experience": "AVERAGE",
-        "expected_ctr": "AVERAGE",
-        "impressions_30d": 11,
-        "clicks_30d": 1,
-        "cost_30d": 204.65
-      },
-      {
-        "ad_group": "Grupo Huella",
-        "keyword": "inventario de gases de efecto invernadero",
-        "match_type": "PHRASE",
-        "quality_score": 1,
-        "creative_quality": "BELOW_AVERAGE",
-        "landing_experience": "BELOW_AVERAGE",
-        "expected_ctr": "BELOW_AVERAGE",
-        "impressions_30d": 8,
+        "impressions_30d": 9,
         "clicks_30d": 0,
         "cost_30d": 0.0
       },
@@ -1985,39 +1955,28 @@
         "impressions_30d": 7,
         "clicks_30d": 0,
         "cost_30d": 0.0
+      },
+      {
+        "ad_group": "Consultoría - Habilitaciones",
+        "keyword": "empresa de consultoria ambiental",
+        "match_type": "PHRASE",
+        "quality_score": 7,
+        "creative_quality": "ABOVE_AVERAGE",
+        "landing_experience": "AVERAGE",
+        "expected_ctr": "AVERAGE",
+        "impressions_30d": 6,
+        "clicks_30d": 1,
+        "cost_30d": 204.65
       }
     ],
     "quality_score_summary": {
-      "weighted_avg_qs": 2.98,
-      "total_scored_keywords": 25,
-      "critical_keywords_count": 14,
-      "below_avg_landing_count": 21,
-      "total_cost_30d": 176288.92
+      "weighted_avg_qs": 3.05,
+      "total_scored_keywords": 24,
+      "critical_keywords_count": 13,
+      "below_avg_landing_count": 20,
+      "total_cost_30d": 192547.62
     },
     "rsa_ads": [
-      {
-        "ad_id": "809591338682",
-        "ad_group": "Grupo Huella",
-        "ad_strength": "GOOD",
-        "final_url": "https://www.dhartec.com/huella-de-carbono/",
-        "headlines": [
-          "Huella de Carbono Corporativa",
-          "Gana Nuevos Mercados Hoy",
-          "Dhartec: Consultoría B2B",
-          "Huella de Carbono: Industrial",
-          "Exportá Sin Barreras Verdes",
-          "Reducir la Huella de Carbono"
-        ],
-        "descriptions": [
-          "Certifica tu Huella y Exporta sin trabas",
-          "Que las normativas ambientales no frenen tu negocio",
-          "Mide el impacto de tu organización. Cumple normativas internacionales y Gana clientes"
-        ],
-        "impressions_30d": 2855,
-        "clicks_30d": 118,
-        "ctr_30d": 4.13,
-        "cost_30d": 92784.38
-      },
       {
         "ad_id": "824408151755",
         "ad_group": "Consultoría - Habilitaciones",
@@ -2036,10 +1995,33 @@
           "Gestión integral ante ACUMAR, OPDS, APRA, Nacion, Autoridad del Agua y Municipios.",
           "Simplificá tus trámites ambientales. Ingresá y Agendá una Reunión"
         ],
-        "impressions_30d": 2470,
-        "clicks_30d": 101,
-        "ctr_30d": 4.09,
-        "cost_30d": 83866.55
+        "impressions_30d": 2590,
+        "clicks_30d": 96,
+        "ctr_30d": 3.71,
+        "cost_30d": 85153.42
+      },
+      {
+        "ad_id": "809591338682",
+        "ad_group": "Grupo Huella",
+        "ad_strength": "GOOD",
+        "final_url": "https://www.dhartec.com/huella-de-carbono/",
+        "headlines": [
+          "Huella de Carbono Corporativa",
+          "Gana Nuevos Mercados Hoy",
+          "Dhartec: Consultoría B2B",
+          "Huella de Carbono: Industrial",
+          "Exportá Sin Barreras Verdes",
+          "Reducir la Huella de Carbono"
+        ],
+        "descriptions": [
+          "Certifica tu Huella y Exporta sin trabas",
+          "Que las normativas ambientales no frenen tu negocio",
+          "Mide el impacto de tu organización. Cumple normativas internacionales y Gana clientes"
+        ],
+        "impressions_30d": 2205,
+        "clicks_30d": 96,
+        "ctr_30d": 4.35,
+        "cost_30d": 80470.08
       },
       {
         "ad_id": "791550456360",
@@ -2059,10 +2041,10 @@
           "Gestionamos Permisos y Habilitaciones ante organismos oficiales. Asesoramiento Experto.",
           "Nos encargamos de todo el proceso de habilitaciones y permisos. Ingresá y Agendá Reunión"
         ],
-        "impressions_30d": 1821,
-        "clicks_30d": 50,
-        "ctr_30d": 2.75,
-        "cost_30d": 35492.21
+        "impressions_30d": 1884,
+        "clicks_30d": 61,
+        "ctr_30d": 3.24,
+        "cost_30d": 52770.71
       },
       {
         "ad_id": "829275931174",
@@ -2082,10 +2064,10 @@
           "Contacto Ahora",
           "Asesoramiento integral para empresas y organizaciones. Mira Más"
         ],
-        "impressions_30d": 956,
-        "clicks_30d": 38,
-        "ctr_30d": 3.97,
-        "cost_30d": 23414.04
+        "impressions_30d": 1275,
+        "clicks_30d": 51,
+        "ctr_30d": 4.0,
+        "cost_30d": 35159.66
       },
       {
         "ad_id": "818191502823",
@@ -2105,10 +2087,10 @@
           "Gestión integral ante ACUMAR, OPDS, APRA, Autoridad del Agua y Municipios.",
           "Simplificá tus trámites ambientales. Ingresá y Agendá una Reunión"
         ],
-        "impressions_30d": 758,
-        "clicks_30d": 36,
-        "ctr_30d": 4.75,
-        "cost_30d": 20612.41
+        "impressions_30d": 963,
+        "clicks_30d": 53,
+        "ctr_30d": 5.5,
+        "cost_30d": 31200.89
       },
       {
         "ad_id": "827357924075",
@@ -2128,10 +2110,10 @@
           "Garantizamos el Cumplimiento Normativo Ambiental. Permisos Ambientales sin complicaciones",
           "Asegurá la continuidad de tus operaciones con la documentación ambiental en regla"
         ],
-        "impressions_30d": 574,
-        "clicks_30d": 11,
-        "ctr_30d": 1.92,
-        "cost_30d": 15958.25
+        "impressions_30d": 155,
+        "clicks_30d": 5,
+        "ctr_30d": 3.23,
+        "cost_30d": 6812.24
       },
       {
         "ad_id": "818187212112",
@@ -2151,236 +2133,260 @@
           "Garantizamos el Cumplimiento Normativo Ambiental. Permisos Ambientales sin complicaciones",
           "Asegurá la continuidad de tus operaciones con la documentación ambiental en regla"
         ],
-        "impressions_30d": 266,
-        "clicks_30d": 5,
-        "ctr_30d": 1.88,
-        "cost_30d": 8790.53
+        "impressions_30d": 68,
+        "clicks_30d": 3,
+        "ctr_30d": 4.41,
+        "cost_30d": 3086.06
       }
     ]
   },
   "device_matrix": {
     "Google Ads": {
       "desktop": {
-        "sessions": 310,
-        "engagement_rate": 64.5,
-        "avg_duration": 178.4,
+        "sessions": 313,
+        "engagement_rate": 64.2,
+        "avg_duration": 188.6,
         "key_events": 3,
-        "conv_rate": 0.97
+        "conv_rate": 0.96
       },
       "mobile": {
-        "sessions": 587,
-        "engagement_rate": 60.6,
-        "avg_duration": 74.2,
+        "sessions": 586,
+        "engagement_rate": 62.5,
+        "avg_duration": 74.3,
         "key_events": 0,
         "conv_rate": 0.0
       }
     },
     "Meta Ads (IG/FB/AN)": {
       "desktop": {
-        "sessions": 42,
-        "engagement_rate": 33.3,
-        "avg_duration": 132.6,
-        "key_events": 3,
-        "conv_rate": 7.14
+        "sessions": 49,
+        "engagement_rate": 34.7,
+        "avg_duration": 170.1,
+        "key_events": 6,
+        "conv_rate": 12.24
       },
       "mobile": {
-        "sessions": 7818,
-        "engagement_rate": 16.4,
-        "avg_duration": 103.5,
+        "sessions": 8695,
+        "engagement_rate": 15.6,
+        "avg_duration": 93.3,
         "key_events": 0,
         "conv_rate": 0.0
       }
     },
     "Google Orgánico": {
       "desktop": {
-        "sessions": 291,
-        "engagement_rate": 62.9,
-        "avg_duration": 227.4,
-        "key_events": 16,
-        "conv_rate": 5.5
+        "sessions": 281,
+        "engagement_rate": 63.7,
+        "avg_duration": 234.1,
+        "key_events": 15,
+        "conv_rate": 5.34
       },
       "mobile": {
-        "sessions": 86,
-        "engagement_rate": 51.2,
-        "avg_duration": 131.1,
+        "sessions": 85,
+        "engagement_rate": 50.6,
+        "avg_duration": 139.9,
         "key_events": 4,
-        "conv_rate": 4.65
+        "conv_rate": 4.71
       }
     },
     "Directo": {
       "desktop": {
-        "sessions": 498,
-        "engagement_rate": 28.1,
-        "avg_duration": 71.2,
-        "key_events": 41,
-        "conv_rate": 8.23
+        "sessions": 502,
+        "engagement_rate": 28.9,
+        "avg_duration": 85.3,
+        "key_events": 42,
+        "conv_rate": 8.37
       },
       "mobile": {
-        "sessions": 211,
+        "sessions": 216,
         "engagement_rate": 41.7,
-        "avg_duration": 61.4,
+        "avg_duration": 60.3,
         "key_events": 67,
-        "conv_rate": 31.75
+        "conv_rate": 31.02
       }
     }
   },
   "hablemos_audit": {
-    "hablemos_page_views_90d": 142,
-    "hablemos_conversions_90d": 142,
-    "hablemos_session_starts_90d": 80,
+    "hablemos_page_views_90d": 143,
+    "hablemos_conversions_90d": 143,
+    "hablemos_session_starts_90d": 78,
     "is_1to1_pageview_trigger": true,
-    "direct_session_reset_pct": 56.3,
+    "direct_session_reset_pct": 54.5,
     "conversion_attribution_breakdown": [
       {
         "first_user_source_medium": "(direct) / (none)",
         "session_source_medium": "(direct) / (none)",
         "page_referrer": "(sin referrer)",
-        "sessions": 684,
+        "sessions": 692,
         "key_events": 79,
-        "avg_duration": 41.8
+        "avg_duration": 53.9
       },
       {
         "first_user_source_medium": "(direct) / (none)",
         "session_source_medium": "(direct) / (none)",
         "page_referrer": "https://www.dhartec.com/",
-        "sessions": 31,
-        "key_events": 16,
-        "avg_duration": 112.7
+        "sessions": 34,
+        "key_events": 18,
+        "avg_duration": 107.8
       },
       {
         "first_user_source_medium": "google / organic",
         "session_source_medium": "google / organic",
         "page_referrer": "https://www.dhartec.com/",
-        "sessions": 51,
-        "key_events": 10,
-        "avg_duration": 158.3
+        "sessions": 45,
+        "key_events": 9,
+        "avg_duration": 173.4
       },
       {
         "first_user_source_medium": "google / organic",
         "session_source_medium": "google / organic",
         "page_referrer": "https://www.dhartec.com/empresa-b/",
-        "sessions": 6,
+        "sessions": 7,
         "key_events": 4,
-        "avg_duration": 7.4
+        "avg_duration": 14.7
+      },
+      {
+        "first_user_source_medium": "(direct) / (none)",
+        "session_source_medium": "eventsmanager.facebook.com / referral",
+        "page_referrer": "(sin referrer)",
+        "sessions": 8,
+        "key_events": 3,
+        "avg_duration": 475.5
+      },
+      {
+        "first_user_source_medium": "google / organic",
+        "session_source_medium": "google / organic",
+        "page_referrer": "(sin referrer)",
+        "sessions": 18,
+        "key_events": 2,
+        "avg_duration": 206.5
       },
       {
         "first_user_source_medium": "(direct) / (none)",
         "session_source_medium": "(direct) / (none)",
         "page_referrer": "https://www.dhartec.com/faq/",
         "sessions": 5,
-        "key_events": 3,
-        "avg_duration": 37.1
+        "key_events": 2,
+        "avg_duration": 37.5
       },
       {
-        "first_user_source_medium": "google / organic",
-        "session_source_medium": "google / organic",
-        "page_referrer": "(sin referrer)",
-        "sessions": 20,
-        "key_events": 2,
-        "avg_duration": 152.2
+        "first_user_source_medium": "(direct) / (none)",
+        "session_source_medium": "(direct) / (none)",
+        "page_referrer": "https://www.dhartec.com/articulos/",
+        "sessions": 5,
+        "key_events": 1,
+        "avg_duration": 139.6
+      },
+      {
+        "first_user_source_medium": "(direct) / (none)",
+        "session_source_medium": "(direct) / (none)",
+        "page_referrer": "https://www.dhartec.com/hablemos/",
+        "sessions": 5,
+        "key_events": 1,
+        "avg_duration": 20.8
       }
     ]
   },
   "geo_summary": [
     {
       "province": "Buenos Aires",
-      "sessions": 3678,
-      "avg_duration": 125.0,
-      "engagement_rate": 24.3,
+      "sessions": 4040,
+      "avg_duration": 116.7,
+      "engagement_rate": 23.2,
       "key_events": 26,
       "top_segments": [
-        "Meta Ads (IG/FB/AN): 3225 ses (1m 57s, 19% eng)",
-        "Google Ads: 236 ses (2m 10s, 64% eng)",
-        "Google Orgánico: 141 ses (3m 37s, 62% eng)"
+        "Meta Ads (IG/FB/AN): 3571 ses (1m 46s, 18% eng)",
+        "Google Ads: 242 ses (2m 15s, 62% eng)",
+        "Google Orgánico: 144 ses (3m 45s, 65% eng)"
       ]
     },
     {
       "province": "Buenos Aires",
-      "sessions": 1498,
-      "avg_duration": 87.2,
-      "engagement_rate": 27.2,
-      "key_events": 76,
+      "sessions": 1676,
+      "avg_duration": 78.5,
+      "engagement_rate": 25.0,
+      "key_events": 79,
       "top_segments": [
-        "Meta Ads (IG/FB/AN): 1089 ses (1m 6s, 13% eng)",
-        "Google Ads: 188 ses (1m 46s, 57% eng)",
-        "Directo: 114 ses (2m 13s, 76% eng)"
+        "Meta Ads (IG/FB/AN): 1273 ses (57s, 12% eng)",
+        "Google Ads: 187 ses (1m 42s, 58% eng)",
+        "Directo: 117 ses (2m 22s, 77% eng)"
       ]
     },
     {
       "province": "Santa Fe",
-      "sessions": 897,
-      "avg_duration": 125.6,
-      "engagement_rate": 21.3,
+      "sessions": 966,
+      "avg_duration": 116.9,
+      "engagement_rate": 20.5,
       "key_events": 0,
       "top_segments": [
-        "Meta Ads (IG/FB/AN): 842 ses (2m 10s, 18% eng)",
-        "Google Ads: 55 ses (1m 1s, 73% eng)"
+        "Meta Ads (IG/FB/AN): 909 ses (2m 0s, 17% eng)",
+        "Google Ads: 57 ses (1m 2s, 72% eng)"
       ]
     },
     {
       "province": "Cordoba",
-      "sessions": 825,
-      "avg_duration": 71.3,
-      "engagement_rate": 18.2,
+      "sessions": 912,
+      "avg_duration": 65.9,
+      "engagement_rate": 17.2,
       "key_events": 0,
       "top_segments": [
-        "Meta Ads (IG/FB/AN): 744 ses (1m 6s, 13% eng)",
-        "Google Ads: 81 ses (2m 4s, 68% eng)"
+        "Meta Ads (IG/FB/AN): 827 ses (1m 0s, 12% eng)",
+        "Google Ads: 85 ses (2m 8s, 69% eng)"
       ]
     },
     {
       "province": "Mendoza",
-      "sessions": 264,
-      "avg_duration": 176.1,
-      "engagement_rate": 23.5,
+      "sessions": 287,
+      "avg_duration": 162.0,
+      "engagement_rate": 22.0,
       "key_events": 0,
       "top_segments": [
-        "Meta Ads (IG/FB/AN): 264 ses (2m 56s, 23% eng)"
+        "Meta Ads (IG/FB/AN): 287 ses (2m 42s, 22% eng)"
       ]
     },
     {
       "province": "Tucuman",
-      "sessions": 231,
-      "avg_duration": 120.6,
-      "engagement_rate": 20.3,
+      "sessions": 251,
+      "avg_duration": 111.3,
+      "engagement_rate": 19.9,
       "key_events": 0,
       "top_segments": [
-        "Meta Ads (IG/FB/AN): 231 ses (2m 1s, 20% eng)"
+        "Meta Ads (IG/FB/AN): 251 ses (1m 51s, 20% eng)"
       ]
     }
   ],
   "target_landings": {
     "Habilitaciones y Permisos": {
-      "users": 5055,
-      "sessions": 6151,
-      "avg_duration": 93.67255335295073,
-      "engagement_rate": 16.680214599252157,
+      "users": 4177,
+      "sessions": 4950,
+      "avg_duration": 87.6850268509091,
+      "engagement_rate": 16.90909090909091,
       "key_events": 0,
       "paths": [
-        "/habilitaciones-permisos (5054 u, 1m 34s)",
+        "/habilitaciones-permisos (4176 u, 1m 28s)",
         "/gracias-por-tu-envio-habilitaciones-y-permisos (1 u, 0s)"
       ]
     },
     "Huella de Carbono": {
-      "users": 134,
-      "sessions": 143,
-      "avg_duration": 91.47770775524474,
-      "engagement_rate": 67.83216783216784,
-      "key_events": 0,
+      "users": 129,
+      "sessions": 139,
+      "avg_duration": 110.93135400719424,
+      "engagement_rate": 65.46762589928058,
+      "key_events": 3,
       "paths": [
-        "/huella-de-carbono (128 u, 1m 32s)",
-        "/la-huella-de-carbono-en-la-industria-textil-argentina-una-oportunidad-para-ganar-nuevos-mercados-y-clientes (5 u, 1m 30s)",
+        "/huella-de-carbono (124 u, 1m 52s)",
+        "/la-huella-de-carbono-en-la-industria-textil-argentina-una-oportunidad-para-ganar-nuevos-mercados-y-clientes (4 u, 1m 38s)",
         "/faq-items/que-es-exactamente-la-huella-de-carbono-y-por-que-deberia-importarle-a-mi-pyme (1 u, 0s)"
       ]
     },
     "Sustentabilidad": {
-      "users": 15,
-      "sessions": 15,
-      "avg_duration": 137.1892294,
-      "engagement_rate": 26.666666666666668,
+      "users": 13,
+      "sessions": 13,
+      "avg_duration": 143.028029,
+      "engagement_rate": 30.76923076923077,
       "key_events": 0,
       "paths": [
-        "/la-sustentabilidad-en-la-industria-hotelera-un-compromiso-con-el-futuro (9 u, 3m 48s)",
+        "/la-sustentabilidad-en-la-industria-hotelera-un-compromiso-con-el-futuro (7 u, 4m 25s)",
         "/portfolio-items/sustentabilidad-y-cambio-climatico (4 u, 0s)",
         "/gracias-por-tu-envio-programa-de-sustentabilidad (2 u, 3s)"
       ]
@@ -2390,146 +2396,137 @@
     {
       "path": "/habilitaciones-permisos/",
       "title": "Habilitaciones y Permisos | DHARTEC - Ingeniería Ambiental",
-      "users": 5054,
-      "sessions": 6173,
-      "avg_duration": 93.41633772962902,
-      "views": 7575,
-      "engagement_rate": 16.63696743884659
+      "users": 4178,
+      "sessions": 4992,
+      "avg_duration": 87.27034688982371,
+      "views": 6157,
+      "engagement_rate": 16.887019230769234
     },
     {
       "path": "/",
       "title": "Home | DHARTEC - Ingeniería Ambiental",
-      "users": 173,
-      "sessions": 192,
-      "avg_duration": 62.50972052604167,
-      "views": 210,
-      "engagement_rate": 39.58333333333333
+      "users": 175,
+      "sessions": 195,
+      "avg_duration": 60.4799199025641,
+      "views": 214,
+      "engagement_rate": 37.43589743589744
     },
     {
       "path": "/huella-de-carbono/",
       "title": "Huella de Carbono | DHARTEC - Ingeniería Ambiental",
-      "users": 129,
-      "sessions": 140,
-      "avg_duration": 90.04070634999998,
-      "views": 206,
-      "engagement_rate": 67.14285714285714
+      "users": 125,
+      "sessions": 136,
+      "avg_duration": 105.65816882352941,
+      "views": 196,
+      "engagement_rate": 66.17647058823529
     },
     {
       "path": "/hablemos/",
       "title": "Hablemos | DHARTEC - Ingeniería Ambiental",
-      "users": 84,
-      "sessions": 85,
-      "avg_duration": 49.75981591764706,
-      "views": 87,
+      "users": 81,
+      "sessions": 82,
+      "avg_duration": 51.23437429268293,
+      "views": 85,
       "engagement_rate": 100.0
     },
     {
       "path": "/faq/",
       "title": "FAQ | DHARTEC - Ingeniería Ambiental",
-      "users": 32,
-      "sessions": 33,
-      "avg_duration": 15.892747727272729,
-      "views": 33,
-      "engagement_rate": 30.303030303030305
-    },
-    {
-      "path": "/nosotros/",
-      "title": "Nosotros | DHARTEC - Ingeniería Ambiental",
-      "users": 17,
-      "sessions": 19,
-      "avg_duration": 29.23541505263158,
-      "views": 19,
-      "engagement_rate": 78.94736842105263
+      "users": 30,
+      "sessions": 31,
+      "avg_duration": 9.663835967741935,
+      "views": 31,
+      "engagement_rate": 29.03225806451613
     },
     {
       "path": "/servicios/",
       "title": "Servicios | DHARTEC - Ingeniería Ambiental",
       "users": 17,
-      "sessions": 18,
-      "avg_duration": 218.68889955555557,
+      "sessions": 19,
+      "avg_duration": 191.4130025263158,
       "views": 20,
-      "engagement_rate": 94.44444444444444
+      "engagement_rate": 89.47368421052632
+    },
+    {
+      "path": "/nosotros/",
+      "title": "Nosotros | DHARTEC - Ingeniería Ambiental",
+      "users": 15,
+      "sessions": 16,
+      "avg_duration": 71.46883162499999,
+      "views": 16,
+      "engagement_rate": 87.5
     },
     {
       "path": "/empresa-b/",
       "title": "Empresa B | DHARTEC - Ingeniería Ambiental",
-      "users": 11,
-      "sessions": 14,
-      "avg_duration": 10.174042142857143,
-      "views": 13,
-      "engagement_rate": 71.42857142857143
-    },
-    {
-      "path": "/tasa-ambiental-anual-2025-guia-completa-para-generadores-de-residuos-peligrosos/",
-      "title": "Tasa Ambiental Anual 2025: Guía Completa para Generadores de Residuos Peligrosos | DHARTEC - Ingeniería Ambiental",
-      "users": 11,
+      "users": 12,
       "sessions": 15,
-      "avg_duration": 145.90233126666666,
+      "avg_duration": 16.1057406,
       "views": 15,
-      "engagement_rate": 40.0
+      "engagement_rate": 73.33333333333333
     },
     {
       "path": "/articulos/",
       "title": "Artículos | DHARTEC - Ingeniería Ambiental",
-      "users": 9,
-      "sessions": 16,
-      "avg_duration": 19.033321312499996,
-      "views": 25,
-      "engagement_rate": 81.25
+      "users": 10,
+      "sessions": 17,
+      "avg_duration": 21.12637329411765,
+      "views": 27,
+      "engagement_rate": 82.35294117647058
     },
     {
-      "path": "/la-sustentabilidad-en-la-industria-hotelera-un-compromiso-con-el-futuro/",
-      "title": "La Sustentabilidad en la Industria Hotelera: Un Compromiso con el Futuro | DHARTEC - Ingeniería Ambiental",
-      "users": 9,
-      "sessions": 10,
-      "avg_duration": 205.2728231,
-      "views": 9,
-      "engagement_rate": 40.0
-    },
-    {
-      "path": "/que-es-una-auditoria-ambiental-de-cumplimiento-legal/",
-      "title": "Que es una auditoria ambiental de cumplimiento legal | DHARTEC - Ingeniería Ambiental",
-      "users": 8,
-      "sessions": 9,
-      "avg_duration": 18.375789666666666,
-      "views": 8,
-      "engagement_rate": 33.33333333333333
-    },
-    {
-      "path": "/como-hacer-la-declaracion-jurada-de-efluentes-gaseosos/",
-      "title": "Como hacer la Declaración Jurada de efluentes gaseosos | DHARTEC - Ingeniería Ambiental",
-      "users": 6,
-      "sessions": 7,
-      "avg_duration": 80.62034885714286,
-      "views": 6,
+      "path": "/tasa-ambiental-anual-2025-guia-completa-para-generadores-de-residuos-peligrosos/",
+      "title": "Tasa Ambiental Anual 2025: Guía Completa para Generadores de Residuos Peligrosos | DHARTEC - Ingeniería Ambiental",
+      "users": 10,
+      "sessions": 14,
+      "avg_duration": 156.32392635714285,
+      "views": 14,
       "engagement_rate": 42.857142857142854
+    },
+    {
+      "path": "/permisos/",
+      "title": "Permisos Ambientales y Habilitaciones | DHARTEC - Ingeniería Ambiental",
+      "users": 8,
+      "sessions": 15,
+      "avg_duration": 164.90773086666667,
+      "views": 21,
+      "engagement_rate": 53.333333333333336
     },
     {
       "path": "/como-hacer-una-declaracion-jurada-de-residuos-especiales/",
       "title": "Como hacer una declaración jurada de residuos especiales | DHARTEC - Ingeniería Ambiental",
-      "users": 6,
-      "sessions": 9,
-      "avg_duration": 191.48724788888887,
-      "views": 9,
-      "engagement_rate": 55.55555555555556
+      "users": 7,
+      "sessions": 10,
+      "avg_duration": 176.15039819999998,
+      "views": 10,
+      "engagement_rate": 60.0
     },
     {
       "path": "/efluentes-gaseosos-en-buenos-aires-guia-2025-de-dispersion-y-normativa/",
       "title": "Efluentes Gaseosos en Buenos Aires: Guía 2025 de Dispersión y Normativa | DHARTEC - Ingeniería Ambiental",
-      "users": 6,
-      "sessions": 9,
-      "avg_duration": 140.78769599999998,
-      "views": 8,
-      "engagement_rate": 44.44444444444444
+      "users": 7,
+      "sessions": 10,
+      "avg_duration": 138.2485641,
+      "views": 9,
+      "engagement_rate": 50.0
     },
     {
-      "path": "/la-huella-de-carbono-en-la-industria-textil-argentina-una-oportunidad-para-ganar-nuevos-mercados-y-clientes/",
-      "title": "La Huella de Carbono en la Industria Textil Argentina: Una Oportunidad para Ganar Nuevos Mercados y Clientes. | DHARTEC - Ingeniería Ambiental",
-      "users": 6,
-      "sessions": 9,
-      "avg_duration": 63.50716911111111,
-      "views": 9,
-      "engagement_rate": 77.77777777777779
+      "path": "/guia-de-residuos-patogenicos-en-caba-ley-154-como-tramitar-la-inscripcion-y-renovacion-ante-apra-sin-frenar-tu-operacion/",
+      "title": "Guía de Residuos Patogénicos en CABA (Ley 154): Cómo Tramitar la Inscripción y Renovación ante APrA sin Frenar tu Operación | DHARTEC - Ingeniería Ambiental",
+      "users": 7,
+      "sessions": 8,
+      "avg_duration": 145.90500925,
+      "views": 10,
+      "engagement_rate": 75.0
+    },
+    {
+      "path": "/la-sustentabilidad-en-la-industria-hotelera-un-compromiso-con-el-futuro/",
+      "title": "La Sustentabilidad en la Industria Hotelera: Un Compromiso con el Futuro | DHARTEC - Ingeniería Ambiental",
+      "users": 7,
+      "sessions": 8,
+      "avg_duration": 231.781770875,
+      "views": 7,
+      "engagement_rate": 50.0
     },
     {
       "path": "/portfolio-items/sustentabilidad-y-cambio-climatico/",
@@ -2541,80 +2538,89 @@
       "engagement_rate": 33.33333333333333
     },
     {
+      "path": "/que-es-una-auditoria-ambiental-de-cumplimiento-legal/",
+      "title": "Que es una auditoria ambiental de cumplimiento legal | DHARTEC - Ingeniería Ambiental",
+      "users": 6,
+      "sessions": 7,
+      "avg_duration": 1.4451877142857141,
+      "views": 6,
+      "engagement_rate": 14.285714285714285
+    },
+    {
       "path": "/realizar-la-inscripcion-en-residuos-peligrosos-en-apra/",
       "title": "Realizar la inscripción en residuos peligrosos en APrA | DHARTEC - Ingeniería Ambiental",
       "users": 6,
-      "sessions": 10,
-      "avg_duration": 521.4399136,
-      "views": 10,
-      "engagement_rate": 80.0
+      "sessions": 9,
+      "avg_duration": 573.2313273333334,
+      "views": 8,
+      "engagement_rate": 88.88888888888889
+    },
+    {
+      "path": "/como-hacer-la-declaracion-jurada-de-efluentes-gaseosos/",
+      "title": "Como hacer la Declaración Jurada de efluentes gaseosos | DHARTEC - Ingeniería Ambiental",
+      "users": 5,
+      "sessions": 6,
+      "avg_duration": 73.26479483333334,
+      "views": 5,
+      "engagement_rate": 33.33333333333333
+    },
+    {
+      "path": "/la-huella-de-carbono-en-la-industria-textil-argentina-una-oportunidad-para-ganar-nuevos-mercados-y-clientes/",
+      "title": "La Huella de Carbono en la Industria Textil Argentina: Una Oportunidad para Ganar Nuevos Mercados y Clientes. | DHARTEC - Ingeniería Ambiental",
+      "users": 5,
+      "sessions": 8,
+      "avg_duration": 65.473976375,
+      "views": 8,
+      "engagement_rate": 75.0
+    },
+    {
+      "path": "/plan-de-gestion-ambiental-y-social-para-obras-de-infraestructura/",
+      "title": "Plan de gestión ambiental y social para obras de infraestructura | DHARTEC - Ingeniería Ambiental",
+      "users": 5,
+      "sessions": 5,
+      "avg_duration": 7.315794199999999,
+      "views": 5,
+      "engagement_rate": 20.0
     },
     {
       "path": "/el-mecanismo-de-ajuste-en-frontera-por-carbono-la-nueva-barrera-ambiental-de-la-union-europea/",
       "title": "El Mecanismo de Ajuste en Frontera por Carbono: La Nueva Barrera Ambiental de la Unión Europea | DHARTEC - Ingeniería Ambiental",
-      "users": 5,
-      "sessions": 5,
-      "avg_duration": 8.2623418,
-      "views": 5,
-      "engagement_rate": 80.0
+      "users": 4,
+      "sessions": 4,
+      "avg_duration": 8.68975775,
+      "views": 4,
+      "engagement_rate": 75.0
     },
     {
       "path": "/la-doble-materialidad-en-la-gestion-corporativa-un-enfoque-integral/",
       "title": "La Doble Materialidad en la Gestión Corporativa: Un Enfoque Integral | DHARTEC - Ingeniería Ambiental",
-      "users": 5,
-      "sessions": 6,
-      "avg_duration": 12.201298666666666,
-      "views": 6,
-      "engagement_rate": 100.0
-    },
-    {
-      "path": "/el-blog/",
-      "title": "Blog | DHARTEC - Ingeniería Ambiental",
-      "users": 4,
-      "sessions": 4,
-      "avg_duration": 13.3171615,
-      "views": 4,
-      "engagement_rate": 100.0
-    },
-    {
-      "path": "/implementacion-de-estrategias-de-sustentabilidad-guiando-tu-empresa-hacia-el-exito/",
-      "title": "Implementación de Estrategias de Sustentabilidad: Guiando tu Empresa hacia el Éxito | DHARTEC - Ingeniería Ambiental",
-      "users": 4,
-      "sessions": 4,
-      "avg_duration": 8.28126425,
-      "views": 4,
-      "engagement_rate": 100.0
-    },
-    {
-      "path": "/un-paso-decisivo-hacia-la-transparencia-empresarial-y-la-sostenibilidad-en-la-union-europea/",
-      "title": "Un Paso Decisivo hacia la Transparencia Empresarial y la Sostenibilidad en la Unión Europea | DHARTEC - Ingeniería Ambiental",
       "users": 4,
       "sessions": 5,
-      "avg_duration": 22.5730912,
-      "views": 7,
-      "engagement_rate": 60.0
+      "avg_duration": 13.2853376,
+      "views": 5,
+      "engagement_rate": 100.0
     },
     {
       "path": "/declaracion-jurada-de-efluentes-liquidos/",
       "title": "Declaración jurada de efluentes líquidos | DHARTEC - Ingeniería Ambiental",
       "users": 3,
-      "sessions": 4,
-      "avg_duration": 42.3038545,
-      "views": 4,
-      "engagement_rate": 50.0
+      "sessions": 3,
+      "avg_duration": 56.40513933333333,
+      "views": 3,
+      "engagement_rate": 66.66666666666666
     },
     {
-      "path": "/plan-de-gestion-ambiental-y-social-para-obras-de-infraestructura/",
-      "title": "Plan de gestión ambiental y social para obras de infraestructura | DHARTEC - Ingeniería Ambiental",
+      "path": "/el-blog/",
+      "title": "Blog | DHARTEC - Ingeniería Ambiental",
       "users": 3,
       "sessions": 3,
-      "avg_duration": 4.957583666666666,
+      "avg_duration": 14.201732999999999,
       "views": 3,
-      "engagement_rate": 0.0
+      "engagement_rate": 100.0
     }
   ],
-  "gemini_insights_html": "<b>💰 1. Publicidad en Google: Por qué no aparecemos más y dónde se va la plata</b><br>En la campaña de Habilitaciones ('CAMPAÑA-UNI-HAB.AR') el presupuesto sobra: solo perdemos un 0.8% de apariciones por falta de plata. Sin embargo, en <b>6 de cada 10 búsquedas (66.7%) NO aparecemos</b> porque Google califica a nuestra página web con notas pésimas (1 sobre 10 en 'gestión ambiental' y 2 sobre 10 en 'informe de impacto ambiental'). Para duplicar apariciones sin gastar un peso más, la solución es directa: colocar esas frases exactas en los títulos principales de la página <i>/habilitaciones-permisos/</i>.<br>Además, vemos con claridad dónde rinde el dinero y dónde se tira: las búsquedas de 'gestoría medioambiental' y 'consultor ambiental' retienen entre 6 y 8 minutos de lectura calificada, mientras que frases amplias como 'reducir la huella de carbono' apenas retienen 58 segundos. Para peor, en la red de 'Partners de búsqueda' fuera de Google, la gente entra y se va a los 6 segundos. <b>Indicación clara:</b> destildar 'Partners de búsqueda' en la configuración de Google Ads y reasignar ese saldo a las búsquedas directas de consultoría y gestoría.<br><br><b>🚨 2. Formulario de Contacto, Celulares vs. Computadoras e Instagram</b><br>En la página de contacto (<i>/hablemos/</i>), el sistema figura con 143 supuestas consultas porque está mal configurado: cuenta como cliente ganado a cualquiera que simplemente abrió la página sin haber completado nada. Para colmo, el 55% de esas entradas pierde el rastro de qué anuncio las originó. <b>Indicación clara:</b> pedirle urgente al programador web que la consulta se cuente recién cuando la persona hace clic en 'Enviar formulario'.<br>En cuanto a dispositivos, en Google Ads quienes entran desde una computadora leen más de 3 minutos y generan las consultas, pero se gasta el doble de dinero en celulares, donde la gente solo está 1m 17s y nadie consulta. La fuga más grande está en Instagram: pagamos 3.381 visitas que duraron 2 segundos (toques accidentales al pasar el dedo). <b>Indicación clara:</b> reducir la oferta económica en celulares para priorizar computadoras de oficina y pausar o revisar a fondo los anuncios en Instagram.<br><br><b>🗺️ 3. Provincias y Servicios que más rinden</b><br>Buenos Aires y CABA concentran las búsquedas inmediatas de habilitaciones comerciales y trámites industriales, pero en el interior fabril hay un interés genuino muy desaprovechado: en Mendoza el tiempo promedio de lectura roza los 3 minutos (con consultas específicas de hasta 5m 45s) y en Santa Fe supera los 2 minutos sostenidos.<br><b>Indicación clara:</b> aclarar explícitamente en la página de habilitaciones que Dhartec gestiona trámites bajo normativas provinciales de PBA, CABA, Santa Fe y Mendoza, y colocar botones directos para pedir presupuesto dentro de los artículos del blog sobre residuos y sustentabilidad.",
-  "gemini_memory_html": "Actualmente tenemos <b>0 tareas completadas</b> y <b>7 tareas prioritarias pendientes</b>.<br>Al implementarlas, corregiremos la medición errónea de contactos en la web, dejaremos de perder el 66.7% de visibilidad en Google Ads sin gastar más plata y frenaremos el desperdicio de presupuesto en clics accidentales de celulares e Instagram.",
+  "gemini_insights_html": "<b>💰 1. Publicidad en Google: Por qué no aparecemos más y dónde se va la plata</b><br>• En la campaña de Habilitaciones (<b>CAMPAÑA-UNI-HAB.AR</b>) la plata no es el problema: solo dejamos de mostrarnos en un porcentaje mínimo por presupuesto, pero <b>en más de 6 de cada 10 búsquedas (66.7%) quedamos afuera</b> porque Google califica a nuestra página web con notas pésimas (entre 1 y 3 puntos sobre 10 en términos clave como <i>gestión ambiental</i> e <i>informe de impacto ambiental</i>).<br>• <i>Qué hacer exactamente:</i> Escribir esas palabras exactas en los títulos principales de la página <i>/habilitaciones-permisos/</i>. Con solo mejorar ese texto, Google subirá nuestra calificación y duplicaremos las veces que aparecemos sin gastar ni un peso más.<br>• <i>Dónde sí rinde y dónde se fuga:</i> La gente que busca <i>gestoría medioambiental</i> o <i>consultor ambiental</i> pasa entre 6 y 8 minutos leyendo nuestra web (interés comercial genuino), mientras que frases muy amplias como <i>reducir la huella de carbono</i> apenas retienen 58 segundos. Además, en los llamados <b>Partners de búsqueda</b> (sitios externos asociados a Google) las visitas rebotan a los 6 segundos.<br>• <i>Indicación directa:</i> Destildar de inmediato la casilla de 'Incluir partners de búsqueda' en Google Ads y reasignar ese dinero a las búsquedas directas de consultoría y habilitación.<br><br><b>🚨 2. Formulario de Contacto, Celulares vs. Computadoras e Instagram</b><br>• En la página de contacto (<i>/hablemos/</i>) el sistema hoy reporta <b>143 consultas</b>, pero es un dato engañoso: está configurado para contar como 'contacto exitoso' a cualquier persona que simplemente abre la página, aunque cierre la ventana al segundo sin escribir nada. Además, el 55% de esas entradas pierde el rastro del anuncio que las generó.<br>• <i>Indicación directa:</i> Pedirle al programador web que la consulta se registre en las estadísticas únicamente cuando el cliente haga clic efectivo en <b>'Enviar formulario'</b>.<br>• <i>Celulares vs. Computadoras:</i> En Google Ads, los directores que entran desde una <b>computadora de escritorio</b> leen más de 3 minutos y generan las consultas comerciales. Sin embargo, estamos gastando casi el doble de presupuesto en celulares, donde la gente solo navega 1m 17s y nadie cotiza. Peor aún: en <b>Instagram</b> pagamos por más de 3.300 visitas que duraron apenas 2 segundos (toques involuntarios en la pantalla mientras scrolleaban).<br>• <i>Indicación directa:</i> Reducir la puja en celulares para concentrar los anuncios en computadoras de oficina (horario comercial) y pausar o replantear los anuncios en Instagram.<br><br><b>🗺️ 3. Provincias y Servicios que más rinden</b><br>• <i>Distribución geográfica:</i> Buenos Aires y Capital Federal concentran la mayor urgencia y volumen de habilitaciones. Sin embargo, en plazas industriales del interior como <b>Mendoza</b> (promedios de lectura de casi 3 minutos y picos de 5m 45s) y <b>Santa Fe</b> (más de 2 minutos) hay un interés técnico altísimo.<br>• <i>Aprovechamiento comercial:</i> En la página de Habilitaciones debemos detallar explícitamente que gestionamos normativas provinciales y municipales de <b>PBA, CABA, Santa Fe y Mendoza</b>.<br>• <i>Indicación directa:</i> Aprovechar las lecturas largas en nuestros artículos de residuos peligrosos y sustentabilidad hotelera agregando botones destacados a mitad y final de nota para que esos lectores deriven directo a una solicitud de cotización.",
+  "gemini_memory_html": "<b>Estado general del plan de trabajo:</b><br>Actualmente no registramos tareas finalizadas del ciclo anterior y contamos con <b>7 tareas prioritarias pendientes</b>.<br>Llevar a cabo estas acciones nos permitirá dejar de desperdiciar presupuesto en clics accidentales de celular, duplicar la cantidad de veces que mostramos nuestros anuncios en Google sin pagar de más, y medir de forma 100% real cuántos presupuestos de habilitaciones e impacto ambiental están entrando a la empresa.",
   "memory_actions": [
     {
       "id": "ACT-001",
