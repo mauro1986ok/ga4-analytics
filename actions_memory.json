@@ -275,33 +275,33 @@
     }
   ],
   "last_run_snapshot": {
-    "captured_at": "2026-11-20",
-    "quality_score_weighted_avg": 3.05,
-    "quality_score_critical_count": 13,
-    "google_ads_30d_sessions": 314,
-    "google_ads_30d_eng_rate": 65.0,
-    "meta_ads_30d_sessions": 4832,
-    "meta_ads_30d_eng_rate": 14.9,
-    "organic_30d_sessions": 103,
-    "ads_cost_90d": 553.19,
-    "hablemos_views_90d": 143,
-    "hablemos_conversions_90d": 143,
-    "hablemos_direct_reset_pct": 54.5,
+    "captured_at": "2026-11-27",
+    "quality_score_weighted_avg": 3.23,
+    "quality_score_critical_count": 14,
+    "google_ads_30d_sessions": 293,
+    "google_ads_30d_eng_rate": 63.8,
+    "meta_ads_30d_sessions": 3432,
+    "meta_ads_30d_eng_rate": 7.6,
+    "organic_30d_sessions": 96,
+    "ads_cost_90d": 549.84,
+    "hablemos_views_90d": 142,
+    "hablemos_conversions_90d": 142,
+    "hablemos_direct_reset_pct": 54.9,
     "landings_30d": {
       "Habilitaciones y Permisos": {
-        "sessions": 4950,
-        "avg_duration_sec": 87.7,
-        "eng_rate": 16.9
+        "sessions": 3486,
+        "avg_duration_sec": 16.3,
+        "eng_rate": 10.3
       },
       "Huella de Carbono": {
         "sessions": 139,
-        "avg_duration_sec": 110.9,
-        "eng_rate": 65.5
+        "avg_duration_sec": 102.7,
+        "eng_rate": 63.3
       },
       "Sustentabilidad": {
-        "sessions": 13,
-        "avg_duration_sec": 143.0,
-        "eng_rate": 30.8
+        "sessions": 30,
+        "avg_duration_sec": 180.1,
+        "eng_rate": 30.0
       }
     }
   }
